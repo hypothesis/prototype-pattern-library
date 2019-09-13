@@ -1,0 +1,52 @@
+@each $key, $value in $colors {
+	.color__bg--#{$key} {
+		background-color: var(--color__#{$key});
+	}
+	.color__border--#{$key} {
+		border-color: var(--color__#{$key});
+	}
+	.color__type--#{$key} {
+		color: var(--color__#{$key});
+	}
+}
+
+@each $directionKey, $value in $directions {
+	@each $sizeKey, $value in $sizes {
+		.margin__#{$directionKey}--#{$sizeKey} {
+			margin-#{$directionKey}: var(--size__#{$sizeKey});
+		}
+		.padding__#{$directionKey}--#{$sizeKey} {
+			padding-#{$directionKey}: var(--size__#{$sizeKey});
+		}
+	}
+}
+
+@each $sizeKey, $value in $sizes {
+	.margin__all--#{$sizeKey} {
+		margin: var(--size__#{$sizeKey});
+	}
+	.padding__all--#{$sizeKey} {
+		padding: var(--size__#{$sizeKey});
+	}
+}
+
+@each $value in $type__alignments {
+	.type__align--#{$value} {
+		text-align: #{$value};
+	}
+}
+
+@each $key, $value in $type__families {
+	.type__family--#{$key} {
+		font-family: var(--typeFamily__#{$key});
+	}
+}
+
+@each $sizeKey, $value in $type__sizes {
+	@each $lineheightKey, $value in $type__lineheights {
+		.type__size--#{$sizeKey}-#{$lineheightKey} {
+			font-size: var(--typeSize__#{$sizeKey});
+			line-height: var(--typeLineheight__#{$sizeKey});
+		}
+	}
+}

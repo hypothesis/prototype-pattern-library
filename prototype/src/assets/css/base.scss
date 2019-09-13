@@ -1,0 +1,75 @@
+:root {
+	@each $key, $value in $colors {
+    --color__#{$key}: #{$value};
+	}
+	@each $key, $value in $sizes {
+    --size__#{$key}: #{$value};
+	}
+	@each $key, $value in $type__families {
+    --typeFamily__#{$key}: #{$value};
+	}
+	@each $key, $value in $type__lineheights {
+    --typeLineheight__#{$key}: #{$value};
+	}
+	@each $key, $value in $type__sizes {
+    --typeSize__#{$key}: #{$value};
+  }
+}
+
+:root[data-theme="dark"] {
+	@each $key, $value in $colors__dark {
+    --color__#{$key}: #{$value};
+	}
+}
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Source+Code+Pro");
+
+html {
+	background-color: var(--color__contrast);
+	color: var(--color__base);
+	font-family: var(--typeFamily__sans);
+	font-size: 100%;
+}
+h1 {
+	font-size: var(--typeSize__xxl);
+	line-height: var(--typeLineheight__l);
+}
+h2 {
+	font-size: var(--typeSize__xl);
+	line-height: var(--typeLineheight__l);
+}
+h3 {
+	font-size: var(--typeSize__l);
+	line-height: var(--typeLineheight__l);
+}
+h4 {
+	font-size: var(--typeSize__m);
+	line-height: var(--typeLineheight__l);
+}
+h5 {
+	font-size: var(--typeSize__xs);
+	line-height: var(--typeLineheight__s);
+}
+p {
+	font-size: var(--typeSize__m);
+	line-height: var(--typeLineheight__l);
+}
+li {
+	font-size: var(--typeSize__s);
+	line-height: var(--typeLineheight__m);
+}
+a {
+	@include smooth;
+	&:focus,
+	&:hover {
+		text-decoration: underline;
+	}
+}
+code {
+	background-color: var(--color__base);
+	border-radius: var(--size__xs);
+	color: var(--color__contrast);
+	font-family: var(--typeFamily__mono);
+	font-size: 88%;
+	padding: var(--size__xs) var(--size__s);
+}
