@@ -12,9 +12,9 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "assets/css/reset";
-@import "assets/css/base";
-@import "assets/css/helpers";
+@import "../../styles/reset";
+@import "../../styles/base";
+@import "../../styles/helpers";
 main {
   padding-top: rem(96);
 }
