@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { components } from "./components";
-import { icons } from "./icons";
 
 Vue.use(Vuex);
 
@@ -31,7 +30,6 @@ export default new Vuex.Store({
 	state: {
 		colors: [],
 		components: components,
-		icons: icons,
 		selected: "Components",
 		theme: "light"
 	}

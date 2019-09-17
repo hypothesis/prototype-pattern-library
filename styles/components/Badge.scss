@@ -1,0 +1,22 @@
+.Badge {
+	@include smooth;
+	align-items: center;
+	border-radius: rem(12);
+	display: inline-flex;
+	justify-content: center;
+	min-height: calc(var(--size__m) + var(--size__s));
+	min-width: calc(var(--size__m) + var(--size__s));
+	padding-left: var(--size__s);
+	padding-right: var(--size__s);
+	width: auto;
+	&--brand {
+		background-color: var(--color__brand);
+		color: var(--color__contrast);
+	}
+	&--primary {
+		background-color: var(--color__base-ghost);
+	}
+	&__label {
+		font-weight: bold;
+	}
+}

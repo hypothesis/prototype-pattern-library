@@ -5,7 +5,7 @@
       <h3 :id="name.toLowerCase()">{{ name }}</h3>
     </router-link>
     <slot />
-    <footer :class="$options.name + '__props'">
+    <footer v-if="getProps.length" :class="$options.name + '__props'">
       <h4>Props</h4>
       <section
         v-for="prop in getProps"
@@ -54,7 +54,8 @@ export default {
       let filtered = array.filter(item => {
         return item.title === this.name;
       });
-      return filtered.map(item => item.props).flat();
+      let props = filtered.map(item => item.props).flat();
+      return props;
     }
   },
   props: {

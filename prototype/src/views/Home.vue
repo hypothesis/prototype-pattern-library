@@ -51,12 +51,6 @@ export default {
       }
     }
   }
-  figure {
-    background-color: var(--color__contrast);
-    border: rem(1) solid var(--color__base-ghost);
-    border-radius: var(--size__s);
-    box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
-  }
   .section {
     align-items: center;
     display: flex;

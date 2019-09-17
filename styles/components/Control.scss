@@ -1,0 +1,78 @@
+.Control {
+	display: block;
+	&__wrap {
+		@include smooth;
+		align-items: stretch;
+		border: rem(1) solid var(--color__base-light);
+		border-radius: var(--size__xs);
+		display: flex;
+		justify-content: space-between;
+		min-height: calc(var(--size__l) + var(--size__s));
+		overflow: hidden;
+		&:focus-within {
+			border-color: var(--color__base);
+			box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+		}
+		input,
+		select,
+		textarea {
+			color: var(--color__base);
+			flex-grow: 1;
+			font-size: var(--typeSize__m);
+			line-height: var(--typeLineheight__l);
+			padding: var(--size__xs) var(--size__m);
+			&::placeholder {
+				color: var(--color__base-mid);
+			}
+		}
+		&--reversed {
+			flex-direction: row-reverse;
+			input,
+			select,
+			textarea {
+				padding-left: 0;
+			}
+		}
+	}
+	&__label {
+		display: block;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	&__icon {
+		align-items: center;
+		color: var(--color__base-light);
+		display: inline-flex;
+		flex: 0 0 var(--size__l);
+		justify-content: center;
+		min-width: calc(var(--size__l) + var(--size__s));
+	}
+	&__action {
+		@include smooth;
+		background-color: var(--color__base-ghost);
+		color: var(--color__base-mid);
+		&:focus,
+		&:hover {
+			color: var(--color__base);
+		}
+	}
+	&--disabled {
+		.Control__wrap {
+			border-color: var(--color__base-ghost);
+			input,
+			select,
+			textarea {
+				&::placeholder {
+					color: var(--color__base-light);
+				}
+			}
+		}
+		.Control__action {
+			cursor: not-allowed;
+			&:focus,
+			&:hover {
+				color: var(--color__base-mid);
+			}
+		}
+	}
+}

@@ -48,7 +48,7 @@
 	@each $lineheightKey, $value in $type__lineheights {
 		.type__size--#{$sizeKey}-#{$lineheightKey} {
 			font-size: var(--typeSize__#{$sizeKey});
-			line-height: var(--typeLineheight__#{$sizeKey});
+			line-height: var(--typeLineheight__#{$lineheightKey});
 		}
 	}
 }

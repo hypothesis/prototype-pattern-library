@@ -7,7 +7,7 @@
     </router-link>
     <p>It’s helpful in a color palette to strive for as much color contrast as possible. For text items in the interface stick with those that pass color-contrast tests. For borders and backgrounds, those that fail are still acceptable.</p>
     <section :class="$options.name + '__grid'">
-      <figure v-for="(color,index) in colors" :key="index" :class="$options.name + '__color'">
+      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__color'">
         <span :class="[$options.name + '__color--bg', 'color__bg--' + color.name]"></span>
         <span :class="$options.name + '__color--label'">
           <code>--{{ color.name }}</code>
@@ -16,7 +16,7 @@
           <Icon name="contrast" :size="14" />
           {{ color.ratio + ':1'}} • {{ color.pass }}
         </span>
-      </figure>
+      </Card>
     </section>
     <router-link class="section" to="#color-helper-classes">
       <Icon name="link" :size="16" />
@@ -28,12 +28,12 @@
       <code>background-color</code> value to elements.
     </p>
     <section :class="$options.name + '__rows'">
-      <figure v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
+      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
         <span :class="[$options.name + '__row--bg', 'color__bg--' + color.name]"></span>
         <span :class="$options.name + '__row--label'">
           <code>.color__bg--{{ color.name }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h4>.color__border--value</h4>
     <p>
@@ -41,14 +41,14 @@
       <code>border-color</code> value to elements.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--border']">
-      <figure v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
+      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
         <span
           :class="[$options.name + '__row--bg', 'color__border--' + color.name, color.name === 'contrast' ? 'color__bg--brand':'']"
         ></span>
         <span :class="$options.name + '__row--label'">
           <code>.color__border--{{ color.name }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h4>.color__type--value</h4>
     <p>
@@ -56,7 +56,7 @@
       <code>color</code> value to elements.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <figure v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
+      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
         <span
           :class="[$options.name + '__row--example', 'color__type--' + color.name, color.name === 'contrast' ? 'color__bg--brand':'']"
         >
@@ -68,7 +68,7 @@
         <span :class="$options.name + '__row--label'">
           <code>.color__type--{{ color.name }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h2>Type</h2>
     <router-link class="section" to="#type-family">
@@ -81,7 +81,7 @@
       <code>sans</code> type family for a bit of brand punch.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <figure v-for="item in typeFamilies" :key="item" :class="$options.name + '__row'">
+      <Card v-for="item in typeFamilies" :key="item" :class="$options.name + '__row'">
         <span :class="[$options.name + '__row--example', 'type__family--' + item]">
           <p>
             I’m type set in the
@@ -91,7 +91,7 @@
         <span :class="$options.name + '__row--label'">
           <code>.type__family--{{ item }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <router-link class="section" to="#type-size">
       <Icon name="link" :size="16" />
@@ -116,7 +116,7 @@
       <code>s, m, l, xl</code>
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <figure v-for="(item, index) in typeSizes" :key="index" :class="$options.name + '__row'">
+      <Card v-for="(item, index) in typeSizes" :key="index" :class="$options.name + '__row'">
         <span :class="$options.name + '__row--example'">
           <p :class="'type__size--' + item.fontSize + '-' + item.lineHeight">
             I’m
@@ -128,7 +128,7 @@
         <span :class="$options.name + '__row--label'">
           <code>.type__size--{{ item.fontSize }}-{{ item.lineHeight}}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <router-link class="section" to="#type-alignment">
       <Icon name="link" :size="16" />
@@ -139,7 +139,7 @@
       <code>text-align</code> is that we could map other global styles for center-aligned type for example.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <figure v-for="(item, index) in typeAlignments" :key="index" :class="$options.name + '__row'">
+      <Card v-for="(item, index) in typeAlignments" :key="index" :class="$options.name + '__row'">
         <span :class="[$options.name + '__row--example', 'type__align--' + item]">
           <p>
             I’m
@@ -149,7 +149,7 @@
         <span :class="$options.name + '__row--label'">
           <code>.type__align--{{ item }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h2>Position</h2>
     <p>
@@ -167,7 +167,7 @@
     <h4>.margin__all--size</h4>
     <p>Places equal margin around the entire item.</p>
     <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
-      <figure v-for="size in sizes" :key="size" :class="$options.name + '__marginItem'">
+      <Card v-for="size in sizes" :key="size" :class="[$options.name + '__marginItem', 'type__align--center']">
         <span :class="$options.name + '__marginItem--bg'">
           <span :class="['margin__all--' + size, $options.name + '__marginItem--shape']"></span>
         </span>
@@ -175,7 +175,7 @@
         <span :class="$options.name + '__marginItem--label'">
           <code>.margin__all--{{ size }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h4>.margin__direction--size</h4>
     <p>Places margin based on a direction and size argument.</p>
@@ -184,7 +184,7 @@
       :key="size"
       :class="[$options.name + '__grid', $options.name + '__grid--position']"
     >
-      <figure
+      <Card
         v-for="direction in directions"
         :key="direction"
         :class="$options.name + '__marginItem'"
@@ -197,7 +197,7 @@
         <section :class="$options.name + '__marginItem--label'">
           <code>.margin__{{ direction }}--{{ size }}</code>
         </section>
-      </figure>
+      </Card>
     </section>
     <router-link class="section" to="#padding">
       <Icon name="link" :size="16" />
@@ -210,7 +210,7 @@
     <h4>.padding__all--size</h4>
     <p>Places equal padding within an item.</p>
     <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
-      <figure v-for="(size,index) in sizes" :key="index" :class="$options.name + '__paddingItem'">
+      <Card v-for="(size,index) in sizes" :key="index" :class="$options.name + '__paddingItem'">
         <span :class="$options.name + '__paddingItem--bg'">
           <span :class="['padding__all--' + size, $options.name + '__paddingItem--shape']"></span>
         </span>
@@ -218,7 +218,7 @@
         <span :class="$options.name + '__paddingItem--label'">
           <code>.padding__all--{{ size }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
     <h4>.padding__direction--size</h4>
     <p>Places padding based on a direction and size argument.</p>
@@ -227,7 +227,7 @@
       :key="index"
       :class="[$options.name + '__grid', $options.name + '__grid--position']"
     >
-      <figure
+      <Card
         v-for="direction in directions"
         :key="direction"
         :class="$options.name + '__paddingItem'"
@@ -241,12 +241,13 @@
         <span :class="$options.name + '__paddingItem--label'">
           <code>.padding__{{ direction }}--{{ size }}</code>
         </span>
-      </figure>
+      </Card>
     </section>
   </article>
 </template>
 <script>
 import axios from "axios";
+import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 export default {
   name: "Helpers",
@@ -265,7 +266,7 @@ export default {
       return colors;
     }
   },
-  components: { Icon },
+  components: { Card, Icon },
   data() {
     return {
       directions: ["bottom", "left", "right", "top"],
@@ -293,6 +294,7 @@ export default {
     }
   }
   &__color {
+    padding: 0;
     overflow: hidden;
     &--bg {
       border-bottom: rem(1) solid var(--color__base-ghost);
@@ -324,6 +326,7 @@ export default {
     display: flex;
     height: var(--size__xl);
     overflow: hidden;
+    padding: 0;
     .Helpers__rows--type & {
       height: auto;
       flex-wrap: wrap;
@@ -354,6 +357,7 @@ export default {
   }
   &__marginItem {
     overflow: hidden;
+    padding: 0;
     &--bg {
       border-bottom: rem(1) solid var(--color__base-ghost);
       display: block;
@@ -375,6 +379,7 @@ export default {
   }
   &__paddingItem {
     overflow: hidden;
+    padding: 0;
     &--bg {
       border-bottom: rem(1) solid var(--color__base-ghost);
       display: flex;

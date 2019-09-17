@@ -1,8 +1,11 @@
 <template>
-  <button :class="[
+  <button
+    :class="[
     $options.name,
-    $options.name + '--' + variant
-  ]">
+    $options.name + '--' + variant,
+    reverse ? $options.name + '--reversed':''
+  ]"
+  >
     <section v-if="icon" :class="$options.name + '__icon'">
       <Icon :name="icon" :size="iconSize" />
     </section>
@@ -28,10 +31,11 @@ export default {
     icon: { default: false },
     iconSize: { default: 14 },
     label: { default: "Button label" },
+    reverse: { default: false },
     variant: { default: "primary" }
   }
 };
 </script>
 <style lang="scss">
-@import '../../../styles/components/Button';
+@import "../../../styles/components/Button";
 </style>

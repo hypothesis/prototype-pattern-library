@@ -27,6 +27,7 @@
   </svg>
 </template>
 <script>
+import { icons } from "./icons";
 export default {
   name: "Icon",
   computed: {
@@ -41,7 +42,7 @@ export default {
   },
   data() {
     return {
-      icons: this.$store.state.icons
+      icons: icons
     };
   },
   props: {

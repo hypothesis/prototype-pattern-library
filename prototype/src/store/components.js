@@ -1,5 +1,21 @@
 export const components = [
 	{
+		title: "Badge",
+		props: [
+			{
+				name: "label",
+				default: "Button label",
+				type: "String"
+			},
+			{
+				name: "variant",
+				default: "primary",
+				options: ["primary", "brand"],
+				type: "String"
+			}
+		]
+	},
+	{
 		title: "Button",
 		props: [
 			{
@@ -10,7 +26,8 @@ export const components = [
 			{
 				name: "icon",
 				default: "false",
-				notes: "Users must select a valid icon from the <a href='/#icon'>Icon</a> component.",
+				notes:
+					"Users must select a valid icon from the <a href='/#icon'>Icon</a> component.",
 				type: "Boolean/String"
 			},
 			{
@@ -24,10 +41,57 @@ export const components = [
 				type: "String"
 			},
 			{
+				name: "reverse",
+				default: "false",
+				notes:
+					"If you’d like the icon on the right instead of the default left position",
+				type: "Boolean"
+			},
+			{
 				name: "variant",
 				default: "primary",
-				options: ["primary", "secondary", "tertiary"],
+				options: ["primary", "secondary", "tertiary", "brand"],
 				type: "String"
+			}
+		]
+	},
+	{
+		title: "Card",
+		props: []
+	},
+	{
+		title: "Control",
+		props: [
+			{
+				name: "action",
+				default: "false",
+				notes:
+					"Decides if wrapper around icon is a button or not.",
+				type: "Boolean"
+			},
+			{
+				name: "disabled",
+				default: "false",
+				type: "Boolean"
+			},
+			{
+				name: "icon",
+				default: "false",
+				notes:
+					"Users must select a valid icon from the <a href='/#icon'>Icon</a> component.",
+				type: "Boolean/String"
+			},
+			{
+				name: "label",
+				default: "Input label",
+				type: "String"
+			},
+			{
+				name: "reverse",
+				default: "false",
+				notes:
+					"If you’d like the icon on the left instead of the default right position.",
+				type: "Boolean"
 			}
 		]
 	},
@@ -47,7 +111,8 @@ export const components = [
 			{
 				name: "width",
 				default: "2",
-				notes: "Most icons are drawn with a <code>stroke</code>, you can dynamically adjust the <em>thickness</em> of the icon using this property. It’s especially useful when setting icons below their default size.",
+				notes:
+					"Most icons are drawn with a <code>stroke</code>, you can dynamically adjust the <em>thickness</em> of the icon using this property. It’s especially useful when setting icons below their default size.",
 				type: "Number"
 			}
 		]
