@@ -161,7 +161,7 @@
       </Card>
       <Card>
         <Control icon="search" :label="false" :reverse="true">
-          <input type="search" placeholder="Search for something…" />
+          <input type="text" placeholder="Search for something…" />
         </Control>
         <figcaption>
           <p>
