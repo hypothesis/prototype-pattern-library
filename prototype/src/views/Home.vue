@@ -28,9 +28,16 @@ export default {
   article {
     margin-left: auto;
     margin-right: auto;
-    max-width: rem(960);
-    padding: var(--size__l);
+    max-width: rem(360);
+    padding: var(--size__m);
     width: 100%;
+    @include breakpoint(xsl) {
+      max-width: rem(640);
+    }
+    @include breakpoint(m) {
+      max-width: rem(960);
+      padding: var(--size__l);
+    }
     > * + * {
       margin-top: var(--size__l);
     }

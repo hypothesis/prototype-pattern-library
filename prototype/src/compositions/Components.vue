@@ -171,9 +171,18 @@
       </Card>
     </ComponentWrapper>
     <ComponentWrapper name="Icon">
+      <p>Need a copy of one of these icons as an SVG? Simply click the icon you’d like and it will be copied to your clipboard.</p>
+      <Badge
+        class="copiedIcon"
+        v-if="copiedIcon"
+        :label="'“' + copiedIcon + '” icon copied successfully!'"
+        variant="brand"
+      />
       <section class="icons">
-        <Card v-for="(icon,index) in icons" :key="index" class="icon">
-          <Icon :name="icon.name" :size="24" />
+        <Card v-for="(icon,index) in icons" :key="index">
+          <button class="icon" @click.self="copyIcon">
+            <Icon :name="icon.name" :size="24" />
+          </button>
           <figcaption>
             <p>
               <code>{{ icon.name }}</code>
@@ -181,6 +190,51 @@
           </figcaption>
         </Card>
       </section>
+    </ComponentWrapper>
+    <ComponentWrapper name="Menu">
+      <p>The <code>Menu</code> component is a hybrid slot/wrapper component which provides a way to wrap any matter of content with an element which controls the position of the menu that floats underneath it. You can pass an <code>active</code> prop to trigger the visibilty of the menu. The menu itself can accept children via a slot.</p>
+      <Card>
+        <Menu :active="controlMenuFocused" :style="{width: '100%'}">
+          <Control icon="search" :label="false" :reverse="true">
+            <input
+              type="text"
+              placeholder="Search for something…"
+              @focus="controlMenuFocused = !controlMenuFocused"
+            />
+          </Control>
+          <p slot="menu">A bunch of really cool filter stuffs</p>
+        </Menu>
+        <figcaption>
+          <p>
+            <em>
+              Menu wrapping a
+              <code>Control</code> component
+            </em>
+          </p>
+        </figcaption>
+      </Card>
+      <Card>
+        <Menu :active="buttonMenuFocused" class="type__align--center">
+          <Button
+            :dropdown="true"
+            icon="profile"
+            :iconSize="16"
+            :label="false"
+            variant="tertiary"
+            @click.native="buttonMenuFocused = !buttonMenuFocused"
+          />
+          <Button label="Cancel" slot="menu" variant="secondary"/>
+          <Button class="margin__left--s" icon="check" label="Save" slot="menu"/>
+        </Menu>
+        <figcaption>
+          <p>
+            <em>
+              Menu wrapping a
+              <code>Button</code> component
+            </em>
+          </p>
+        </figcaption>
+      </Card>
     </ComponentWrapper>
   </article>
 </template>
@@ -190,6 +244,7 @@ import Button from "@/components/Button";
 import Card from "@/components/Card";
 import Control from "@/components/Control";
 import Icon from "@/components/Icon";
+import Menu from "@/components/Menu";
 import ComponentWrapper from "@/compositions/ComponentWrapper";
 import { icons } from "../components/icons";
 export default {
@@ -200,18 +255,44 @@ export default {
     Card,
     ComponentWrapper,
     Control,
-    Icon
+    Icon,
+    Menu
   },
   data() {
     return {
-      icons: icons
+      icons: icons,
+      copiedIcon: false,
+      controlMenuFocused: false,
+      buttonMenuFocused: false
     };
+  },
+  methods: {
+    copyIcon() {
+      let children = event.srcElement.childNodes[0];
+      let code = children.outerHTML.replace(
+        new RegExp('width="24" height="24"', "g"),
+        'width="16" height="16"'
+      );
+      let title = children.getAttribute("class").replace("Icon Icon--", "");
+      let dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.setAttribute("id", "dummy_id");
+      document.getElementById("dummy_id").value = code;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      this.copiedIcon = title;
+      setTimeout(() => {
+        this.copiedIcon = false;
+      }, 1500);
+    }
   }
 };
 </script>
 <style lang="scss">
 .Components {
-  .Card {
+  .ComponentWrapper > .Card,
+  .icons > .Card {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -238,6 +319,13 @@ export default {
     @include breakpoint(s) {
       grid-template-columns: repeat(auto-fit, minmax(rem(240), 1fr));
     }
+  }
+  .copiedIcon {
+    box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+    left: 50%;
+    position: fixed;
+    top: rem(72);
+    transform: translateX(-50%);
   }
 }
 </style>

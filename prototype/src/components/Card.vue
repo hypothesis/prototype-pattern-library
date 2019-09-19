@@ -1,5 +1,5 @@
 <template>
-  <section :class="$options.name">
+  <section :class="[$options.name, 'padding__all--m']">
     <slot />
   </section>
 </template>

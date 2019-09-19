@@ -1,0 +1,32 @@
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translate(-50%,90%);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%,100%);
+	}
+}
+.Menu {
+	position: relative;
+	&__wrap {
+		bottom: rem(-8);
+		display: none;
+		left: 50%;
+		opacity: 1;
+		min-width: rem(240);	
+		position: absolute;
+		transform: translate(-50%,100%);
+		width: 100%;
+		[data-theme="dark"] & {
+			background-color: var(--color__contrast-extra);
+		}
+	}
+	&--active .Menu__wrap {
+		animation: slideIn 0.375s ease-in;
+		animation-direction: alternate;
+		animation-iteration-count: 1;
+		display: block;
+	}
+}

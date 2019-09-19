@@ -1,10 +1,12 @@
 <template>
-  <button :class="[$options.name, $options.name + '--' + variant]">
+  <section
+    :class="[$options.name, $options.name + '--' + variant, 'padding__left--s padding__right--s']"
+  >
     <section :class="[
       $options.name + '__label',
       'type__size--xs-s'
     ]">{{ label }}</section>
-  </button>
+  </section>
 </template>
 <script>
 export default {

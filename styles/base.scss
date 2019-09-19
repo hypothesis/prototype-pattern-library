@@ -70,8 +70,11 @@ a {
 code {
 	background-color: var(--color__base);
 	border-radius: var(--size__xs);
-	color: var(--color__contrast);
+	color: white;
 	font-family: var(--typeFamily__mono);
 	font-size: 88%;
 	padding: var(--size__xs) var(--size__s);
+	[data-theme="dark"] & {
+		background-color: var(--color__contrast-extra);
+	}
 }

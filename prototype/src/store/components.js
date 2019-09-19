@@ -65,8 +65,7 @@ export const components = [
 			{
 				name: "action",
 				default: "false",
-				notes:
-					"Decides if wrapper around icon is a button or not.",
+				notes: "Decides if wrapper around icon is a button or not.",
 				type: "Boolean"
 			},
 			{
@@ -114,6 +113,18 @@ export const components = [
 				notes:
 					"Most icons are drawn with a <code>stroke</code>, you can dynamically adjust the <em>thickness</em> of the icon using this property. It’s especially useful when setting icons below their default size.",
 				type: "Number"
+			}
+		]
+	},
+	{
+		title: "Menu",
+		props: [
+			{
+				name: "active",
+				default: "false",
+				notes:
+					"Controls the visibility of the Menu. Typically this is controlled via the parent component through a user interaction.",
+				type: "Boolean"
 			}
 		]
 	}

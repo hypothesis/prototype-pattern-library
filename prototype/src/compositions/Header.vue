@@ -1,6 +1,6 @@
 <template>
   <header :class="$options.name">
-    <section :class="$options.name + '__inner'">
+    <section :class="[$options.name + '__inner', 'padding__all--m']">
       <router-link to="/" :class="$options.name + '__logo'">
         <Logo :size="32" />
         <h3>Pattern Library</h3>
@@ -23,7 +23,7 @@
       </section>
       <nav
         v-if="navActive && $route.name === 'Home'"
-        :class="[$options.name + '__nav', navActive ? $options.name + '__nav--active':'']"
+        :class="[$options.name + '__nav', navActive ? $options.name + '__nav--active':'', 'padding__all--m']"
       >
         <section v-if="selected === 'Components'">
           <h4>Components</h4>
@@ -153,13 +153,18 @@ export default {
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    max-width: rem(960);
-    padding: var(--size__l);
+    max-width: rem(360);
     width: 100%;
+    @include breakpoint(xsl) {
+      max-width: rem(640);
+    }
+    @include breakpoint(m) {
+      max-width: rem(960);
+    }
   }
   &__logo {
     align-items: center;
-    color: var(--color__contrast);
+    color: white;
     display: inline-flex;
     > * + * {
       margin-left: var(--size__m);
@@ -178,10 +183,10 @@ export default {
     color: var(--color__brand);
     display: inline-flex;
     flex-shrink: 0;
-    height: var(--size__l);
+    height: calc(var(--size__s) + var(--size__l));
     justify-content: center;
     transform-origin: center;
-    width: var(--size__l);
+    width: calc(var(--size__s) + var(--size__l));
     &:focus,
     &:hover {
       transform: scale(1.0625);
@@ -191,14 +196,16 @@ export default {
     background-color: var(--color__contrast);
     border-left: rem(1) solid var(--color__base-ghost);
     bottom: 0;
-    padding: var(--size__m);
     overflow: hidden;
     overflow-y: auto;
     position: fixed;
     right: 0;
-    top: rem(96);
+    top: rem(72);
     transform: translateX(100%);
     width: rem(240);
+    [data-theme="dark"] & {
+      background-color: var(--color__contrast-extra);
+    }
     &--active {
       box-shadow: rem(-16) 0 rem(32) rem(-16) rgba(black, 0.125);
       transform: translateX(0);

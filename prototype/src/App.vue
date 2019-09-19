@@ -16,6 +16,6 @@ export default {
 @import "../../styles/base";
 @import "../../styles/helpers";
 main {
-  padding-top: rem(96);
+  padding-top: rem(72);
 }
 </style>

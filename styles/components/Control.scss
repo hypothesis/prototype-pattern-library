@@ -3,12 +3,16 @@
 	&__wrap {
 		@include smooth;
 		align-items: stretch;
+		background-color: var(--color__contrast);
 		border: rem(1) solid var(--color__base-light);
 		border-radius: var(--size__xs);
 		display: flex;
 		justify-content: space-between;
 		min-height: calc(var(--size__l) + var(--size__s));
 		overflow: hidden;
+		[data-theme="dark"] & {
+			background-color: var(--color__contrast-extra);
+		}
 		&:focus-within {
 			border-color: var(--color__base);
 			box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
