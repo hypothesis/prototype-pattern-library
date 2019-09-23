@@ -57,7 +57,13 @@ export const components = [
 	},
 	{
 		title: "Card",
-		props: []
+		props: [
+			{
+				name: "padding",
+				default: "true",
+				type: "Boolean"
+			}
+		]
 	},
 	{
 		title: "Control",
@@ -124,6 +130,50 @@ export const components = [
 				default: "false",
 				notes:
 					"Controls the visibility of the Menu. Typically this is controlled via the parent component through a user interaction.",
+				type: "Boolean"
+			},
+			{
+				name: "direction",
+				default: "center",
+				notes:
+					"Determines the direction the menu attaches itself to, related to the element.",
+				options: ['center', 'left', 'right'],
+				type: "String"
+			}
+		]
+	},
+	{
+		title: "NavItem",
+		props: [
+			{
+				name: "dropdown",
+				default: "false",
+				type: "Boolean"
+			},
+			{
+				name: "icon",
+				default: "false",
+				notes:
+					"Users must select a valid icon from the <a href='/#icon'>Icon</a> component.",
+				type: "Boolean/String"
+			},
+			{
+				name: "label",
+				default: "Button label",
+				type: "String"
+			},
+			{
+				name: "reverse",
+				default: "false",
+				notes:
+					"If you’d like the icon on the right instead of the default left position",
+				type: "Boolean"
+			},
+			{
+				name: "small",
+				default: "false",
+				notes:
+					"Determines the overall size of the text and height of the element.",
 				type: "Boolean"
 			}
 		]

@@ -1,21 +1,25 @@
 <template>
   <main :class="$options.name">
-    <SegmentedController
-      :options="['Components', 'Helpers']"
-      :selected="selected"
-      @segmentSelected="$store.dispatch('updateSelected', $event)"
-    />
+    <section class="margin__top--m type__align--center">
+      <SegmentedController
+        :options="['Components', 'Compositions', 'Helpers']"
+        :selected="selected"
+        @segmentSelected="$store.dispatch('updateSelected', $event)"
+      />
+    </section>
     <Components v-if="selected === 'Components'" />
+    <Compositions v-if="selected === 'Compositions'" />
     <Helpers v-if="selected === 'Helpers'" />
   </main>
 </template>
 <script>
-import SegmentedController from "@/components/SegmentedController";
-import Components from "@/compositions/Components";
-import Helpers from "@/compositions/Helpers";
+import SegmentedController from "@/components/presentational/SegmentedController";
+import Components from "@/compositions/presentational/Components";
+import Compositions from "@/compositions/presentational/Compositions";
+import Helpers from "@/compositions/presentational/Helpers";
 export default {
   name: "Home",
-  components: { Components, Helpers, SegmentedController },
+  components: { Components, Compositions, Helpers, SegmentedController },
   computed: {
     selected() {
       return this.$store.state.selected;
@@ -73,10 +77,9 @@ export default {
     }
   }
   .SegmentedController {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: var(--size__l);
-    max-width: rem(320);
+    @include breakpoint(xsl) {
+      width: rem(360);
+    }
   }
 }
 </style>

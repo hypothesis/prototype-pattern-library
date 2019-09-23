@@ -1,0 +1,35 @@
+.Annotation {
+  &__header {
+    border-bottom: rem(1) solid var(--color__base-light);
+    > * {
+      align-items: center;
+      display: flex;
+    }
+    &--primary {
+      justify-content: space-between;
+    }
+    &--secondary {
+      flex-wrap: wrap;
+      margin-top: rem(-8);
+    }
+  }
+	&__editMenu .Menu__wrap {
+		> * + * {
+			border-top: rem(1) solid var(--color__base-light);
+		}
+  }
+  &__quote {
+    @include smooth;
+    border-left: var(--size__xs) solid var(--color__base-light);
+    &:hover {
+      border-color: var(--color__brand);
+      color: var(--color__base);
+    }
+  }
+  &__footer {
+    align-items: center;
+    border-top: rem(1) solid var(--color__base-light);
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,7 +1,10 @@
 <template>
   <section :class="[$options.name, active ? $options.name + '--active':'']">
     <slot />
-    <Card :class="$options.name + '__wrap'">
+    <Card
+      :padding="false"
+      :class="[$options.name + '__wrap', $options.name + '__wrap--' + direction]"
+    >
       <slot name="menu" />
     </Card>
   </section>
@@ -12,7 +15,8 @@ export default {
   name: "Menu",
   components: { Card },
   props: {
-    active: { default: false }
+    active: { default: false },
+    direction: { default: "center" }
   }
 };
 </script>

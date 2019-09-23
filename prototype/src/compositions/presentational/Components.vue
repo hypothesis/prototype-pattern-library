@@ -102,7 +102,7 @@
       </p>
       <Card>
         <Control>
-          <input placeholder="Type into me…" type="text" />
+          <input id="coolInput" name="coolInput" placeholder="Type into me…" type="text" />
         </Control>
         <figcaption>
           <p>
@@ -112,7 +112,12 @@
       </Card>
       <Card>
         <Control icon="email" label="Your email address">
-          <input placeholder="ex. cooldude@gmail.com" type="text" />
+          <input
+            id="coolEmailInput"
+            name="coolEmailInput"
+            placeholder="ex. cooldude@gmail.com"
+            type="text"
+          />
         </Control>
         <figcaption>
           <p>
@@ -123,6 +128,8 @@
       <Card>
         <Control :action="true" icon="copy" :label="false">
           <input
+            id="coolURLInput"
+            name="coolURLInput"
             placeholder="Type into me…"
             value="https://somereallylongurl.withsome.1202020?"
             type="text"
@@ -136,7 +143,7 @@
       </Card>
       <Card>
         <Control icon="caret-down" label="What’s your favorite…">
-          <select>
+          <select id="coolSelect" name="coolSelect">
             <option selected>Please choose…</option>
             <option>Option 1</option>
             <option>Option 2</option>
@@ -151,7 +158,7 @@
       </Card>
       <Card>
         <Control label="Your comment">
-          <textarea placeholder="Type into me…"></textarea>
+          <textarea id="coolTextarea" name="coolTextarea" placeholder="Type into me…"></textarea>
         </Control>
         <figcaption>
           <p>
@@ -161,7 +168,12 @@
       </Card>
       <Card>
         <Control icon="search" :label="false" :reverse="true">
-          <input type="text" placeholder="Search for something…" />
+          <input
+            id="coolSearchInput"
+            name="coolSearchInput"
+            type="text"
+            placeholder="Search for something…"
+          />
         </Control>
         <figcaption>
           <p>
@@ -180,7 +192,11 @@
       />
       <section class="icons">
         <Card v-for="(icon,index) in icons" :key="index">
-          <button class="icon" @click.self="copyIcon">
+          <button
+            :aria-label="'Click to copy the ' + icon + ' icon'"
+            class="icon"
+            @click.self="copyIcon"
+          >
             <Icon :name="icon.name" :size="24" />
           </button>
           <figcaption>
@@ -192,9 +208,13 @@
       </section>
     </ComponentWrapper>
     <ComponentWrapper name="Menu">
-      <p>The <code>Menu</code> component is a hybrid slot/wrapper component which provides a way to wrap any matter of content with an element which controls the position of the menu that floats underneath it. You can pass an <code>active</code> prop to trigger the visibilty of the menu. The menu itself can accept children via a slot.</p>
+      <p>
+        The
+        <code>Menu</code> component is a hybrid slot/wrapper component which provides a way to wrap any matter of content with an element which controls the position of the menu that floats underneath it. You can pass an
+        <code>active</code> prop to trigger the visibilty of the menu. The menu itself can accept children via a slot.
+      </p>
       <Card>
-        <Menu :active="controlMenuFocused" :style="{width: '100%'}">
+        <Menu :active="controlMenuFocused" class="controlMenuFocused">
           <Control icon="search" :label="false" :reverse="true">
             <input
               type="text"
@@ -202,7 +222,7 @@
               @focus="controlMenuFocused = !controlMenuFocused"
             />
           </Control>
-          <p slot="menu">A bunch of really cool filter stuffs</p>
+          <p slot="menu" class="padding__all--m">A bunch of really cool filter stuffs</p>
         </Menu>
         <figcaption>
           <p>
@@ -223,8 +243,10 @@
             variant="tertiary"
             @click.native="buttonMenuFocused = !buttonMenuFocused"
           />
-          <Button label="Cancel" slot="menu" variant="secondary"/>
-          <Button class="margin__left--s" icon="check" label="Save" slot="menu"/>
+          <section slot="menu" class="padding__all--s">
+            <Button label="Cancel" variant="secondary" />
+            <Button class="margin__left--s" icon="check" label="Save" />
+          </section>
         </Menu>
         <figcaption>
           <p>
@@ -233,6 +255,33 @@
               <code>Button</code> component
             </em>
           </p>
+        </figcaption>
+      </Card>
+    </ComponentWrapper>
+    <ComponentWrapper name="NavItem">
+      <p>The <code>NavItem</code> compoonent shines in menus and takes many of the properties of a <code>Button</code> component. One of the best use cases where this particular component is flexible is with nesting children <code>NavItem</code> comnponents inside a parent using the <code>nested</code> slot.</p>
+      <Card>
+        <NavItem
+          :dropdown="true"
+        >
+          <NavItem icon="external" label="Option 1" :small="true" slot="nested" />
+          <NavItem icon="copy" label="Option 2" :small="true" slot="nested" />
+          <NavItem icon="leave" label="Option 3" :small="true" slot="nested" />
+        </NavItem>
+        <figcaption>
+          <p><em>NavItem with a dropdown </em></p>
+        </figcaption>
+      </Card>
+      <Card>
+        <NavItem icon="settings" label="Account settings" :reverse="true" />
+        <figcaption>
+          <p><em>NavItem with <code>reverse</code> prop</em></p>
+        </figcaption>
+      </Card>
+      <Card>
+        <NavItem icon="plus" label="Add something" :small="true"/>
+        <figcaption>
+          <p><em>NavItem with <code>small</code> prop</em></p>
         </figcaption>
       </Card>
     </ComponentWrapper>
@@ -245,8 +294,9 @@ import Card from "@/components/Card";
 import Control from "@/components/Control";
 import Icon from "@/components/Icon";
 import Menu from "@/components/Menu";
-import ComponentWrapper from "@/compositions/ComponentWrapper";
-import { icons } from "../components/icons";
+import NavItem from "@/components/NavItem";
+import ComponentWrapper from "@/compositions/presentational/ComponentWrapper";
+import { icons } from "../../components/icons";
 export default {
   name: "Components",
   components: {
@@ -256,7 +306,8 @@ export default {
     ComponentWrapper,
     Control,
     Icon,
-    Menu
+    Menu,
+    NavItem
   },
   data() {
     return {
@@ -324,8 +375,18 @@ export default {
     box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
     left: 50%;
     position: fixed;
+    padding: 0 var(--size__s);
     top: rem(72);
     transform: translateX(-50%);
+    .Badge__label {
+      font-size: var(--typeSize__s);
+    }
+  }
+  .controlMenuFocused {
+    width: 100%;
+    .Menu__wrap {
+      width: 100%;
+    }
   }
 }
 </style>

@@ -51,6 +51,9 @@ export default {
   computed: {
     getProps() {
       let array = this.$store.state.components;
+      if(this.array === 'compositions') {
+        array = this.$store.state.compositions;
+      }
       let filtered = array.filter(item => {
         return item.title === this.name;
       });
@@ -59,6 +62,7 @@ export default {
     }
   },
   props: {
+    array: { default: "components" },
     name: { default: "Button" }
   }
 };

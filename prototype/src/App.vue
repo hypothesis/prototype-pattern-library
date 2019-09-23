@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import Header from "@/compositions/Header";
+import Header from "@/compositions/presentational/Header";
 export default {
   name: "App",
   components: { Header }

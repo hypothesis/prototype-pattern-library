@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { components } from "./components";
+import { compositions } from "./compositions";
 
 Vue.use(Vuex);
 
@@ -30,6 +31,7 @@ export default new Vuex.Store({
 	state: {
 		colors: [],
 		components: components,
+		compositions: compositions,
 		selected: "Components",
 		theme: "light"
 	}

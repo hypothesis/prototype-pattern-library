@@ -1,11 +1,14 @@
 <template>
-  <section :class="[$options.name, 'padding__all--m']">
+  <section :class="[$options.name, padding ? 'padding__all--m':'']">
     <slot />
   </section>
 </template>
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  props: {
+    padding: { default: true }
+  }
 };
 </script>
 <style lang="scss">

@@ -5,6 +5,7 @@
     $options.name + '--' + variant,
     reverse ? $options.name + '--reversed':''
   ]"
+    :aria-label="label ? '':'Button with ' + icon + ' action'"
   >
     <section v-if="icon" :class="$options.name + '__icon'">
       <Icon :name="icon" :size="iconSize" />
@@ -13,7 +14,7 @@
       v-if="label"
       :class="[
       $options.name + '__label',
-      'type__size--m-l'
+      'type__size--s-l'
     ]"
     >{{ label }}</section>
     <section v-if="dropdown" :class="$options.name + '__dropdown'">

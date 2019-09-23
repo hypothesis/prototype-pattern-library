@@ -35,9 +35,6 @@ export default {
       return this.icons.filter(icon => {
         return icon.name === this.name;
       });
-    },
-    rounded() {
-      return this.$store.state.round;
     }
   },
   data() {
@@ -47,6 +44,7 @@ export default {
   },
   props: {
     name: { default: "arrow-down" },
+    rounded: { default: true },
     size: { default: 14 },
     width: { default: 2 }
   }

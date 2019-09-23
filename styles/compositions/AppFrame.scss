@@ -1,0 +1,57 @@
+.AppFrame {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	&--collapsed {
+		overflow: hidden;
+		width: calc(var(--size__m) + var(--size__l));
+		.AppFrame__inner {
+			background-color: rgba(black, 0.05);
+		}
+	}
+	&__top {
+		border-bottom: rem(1) solid var(--color__base-light);
+		border-left: rem(1) solid var(--color__base-light);
+		border-bottom-left-radius: var(--size__xs);
+		flex-shrink: 0;
+		z-index: 100;
+	}
+	&__nav {
+		align-items: center;
+		display: flex;
+		flex-shrink: 1;
+		height: calc(var(--size__s) + var(--size__l));
+		justify-content: space-between;
+		max-width: 100%;
+		&--collapse {
+			flex-shrink: 0;
+			margin-right: var(--size__s);
+		}
+		&--secondary {
+			left: 0;
+			position: absolute;
+			top: rem(48);
+			width: rem(40);
+		}
+		&--top {
+			flex-shrink: 0;
+			.Button {
+				min-width: var(--size__l);
+			}
+		}
+	}
+	&__inner {
+		flex-grow: 1;
+		margin-left: calc(var(--size__xs) + var(--size__m));
+		padding-left: calc(var(--size__m) * 2);
+		> * + * {
+			margin-top: var(--size__m);
+		}
+	}
+	&__userMenu .Menu__wrap {
+		> * + * {
+			border-top: rem(1) solid var(--color__base-light);
+		}
+	}
+}

@@ -1,26 +1,40 @@
 @keyframes slideIn {
 	from {
 		opacity: 0;
-		transform: translate(-50%,90%);
+		transform: translate(var(--direction), 90%);
 	}
 	to {
 		opacity: 1;
-		transform: translate(-50%,100%);
+		transform: translate(var(--direction), 100%);
 	}
 }
+
 .Menu {
+	--direction: 0;
+	display: inline-block;
 	position: relative;
 	&__wrap {
-		bottom: rem(-8);
+		border-color: var(--color__base-light);
+		bottom: rem(-4);
 		display: none;
-		left: 50%;
+		left: auto;
 		opacity: 1;
-		min-width: rem(240);	
 		position: absolute;
-		transform: translate(-50%,100%);
-		width: 100%;
+		transform: translate(var(--direction), 100%);
+		width: rem(240);
+		z-index: 100;
 		[data-theme="dark"] & {
 			background-color: var(--color__contrast-extra);
+		}
+		&--center {
+			--direction: -50%;
+			left: 50%;
+		}
+		&--left {
+			left: rem(-4);
+		}
+		&--right {
+			right: rem(-4);
 		}
 	}
 	&--active .Menu__wrap {

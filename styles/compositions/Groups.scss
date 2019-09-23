@@ -1,0 +1,26 @@
+.Groups {
+	align-items: center;
+	display: inline-flex;
+	flex: 1 1;
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		max-height: rem(320);
+		overflow: hidden;
+		&Header,
+		&Footer {
+			flex-shrink: 0;
+		}
+		&Content {
+			flex: 1 1;
+			overflow: hidden;
+			overflow-y: auto;
+		}
+		&Footer {
+			border-top: rem(1) solid var(--color__base-light);
+			.Button {
+				width: 100%;
+			}
+		}
+	}
+}

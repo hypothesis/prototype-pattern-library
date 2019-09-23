@@ -5,7 +5,8 @@
       :key="item"
       :class="[
         $options.name + '__item',
-        currentlySelected === item ? 'color__bg--base-mid color__border--base-mid color__type--contrast':'color__bg--contrast color__border--base-light color__type--base-mid']"
+        currentlySelected === item ? $options.name + '__item--selected':'',
+        'padding__left--s padding__right--s']"
       @click="updateSelected(item)"
     >
       <span :class="[$options.name + '__item--label', 'type__size--m-l']">{{ item }}</span>
@@ -38,24 +39,41 @@ export default {
 <style lang="scss">
 .SegmentedController {
   align-items: stretch;
-  display: flex;
+  display: inline-flex;
   &__item {
+    @include smooth;
     align-items: center;
+    background-color: var(--color__contrast);
+    border: rem(1) solid var(--color__base-light);
     border-right-width: 0;
-    border-style: solid;
-    border-width: rem(1);
+    color: var(--color__base-mid);
     display: inline-flex;
-    flex: 1 0 rem(160);
+    flex: 1 0;
     height: rem(40);
     justify-content: center;
+    &:focus,
+    &:hover {
+      background-color: var(--color__base-ghost);
+    }
     &:first-child {
-      border-bottom-left-radius: var(--size__xs);
-      border-top-left-radius: var(--size__xs);
+      border-bottom-left-radius: rem(20);
+      border-top-left-radius: rem(20);
     }
     &:last-child {
-      border-bottom-right-radius: var(--size__xs);
+      border-bottom-right-radius: rem(20);
       border-right-width: rem(1);
-      border-top-right-radius: var(--size__xs);
+      border-top-right-radius: rem(20);
+    }
+    &--selected {
+      background-color: var(--color__brand);
+      border-color: var(--color__brand);
+      box-shadow: 0 rem(2) rem(4) rem(-2) rgba(black, 0.1),
+        0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+      color: white;
+      &:focus,
+      &:hover {
+        background-color: var(--color__brand);
+      }
     }
     &__label {
       max-width: 100%;

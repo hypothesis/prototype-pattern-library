@@ -4,7 +4,7 @@
   >
     <section :class="[
       $options.name + '__label',
-      'type__size--xs-s'
+      'type__size--xxs-s'
     ]">{{ label }}</section>
   </section>
 </template>

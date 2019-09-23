@@ -135,6 +135,10 @@ export const icons = [
 		stroke: "M12 8V5a4 4 0 1 0-8 0v3m11 0v7H1V8h14z"
 	},
 	{
+		name: "logout",
+		stroke: "M5 8h9m-3-4l4 4-4 4m-2 3H1V1h8"
+	},
+	{
 		name: "notes",
 		stroke: "M1 15h6l8-6V1H1v14zm6-1V9h7"
 	},
@@ -192,6 +196,11 @@ export const icons = [
 	{
 		name: "tag",
 		stroke: "M1 7l9 8 5-7-8-7H1v6zm4-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+	},
+	{
+		name: "theme",
+		stroke:
+			"M8 6C7 6 6 7 6 8s1 2 2 2 2-1 2-2-1-2-2-2zm0 1c-.5 0-1 .5-1 1s.5 1 1 1 1-.5 1-1-.5-1-1-1zm0-6v2m0 10v2m7-7h-2M3 8H1m11.95-4.95l-1.414 1.414m-7.072 7.072L3.05 12.95m0-9.9l1.414 1.414m7.072 7.072l1.414 1.414"
 	},
 	{
 		name: "trash",

@@ -6,20 +6,8 @@
         <h3>Pattern Library</h3>
       </router-link>
       <section :class="$options.name + '__toggles'">
-        <button
-          v-if="$route.name === 'Home'"
-          :class="$options.name + '__toggle'"
-          @click="toggleTheme"
-        >
-          <Icon name="contrast" />
-        </button>
-        <button
-          v-if="$route.name === 'Home'"
-          :class="$options.name + '__toggle'"
-          @click="navActive = !navActive"
-        >
-          <Icon :name="navActive ? 'cancel':'list'" />
-        </button>
+        <Button v-if="$route.name === 'Home'" icon="theme" :label="false" variant="secondary" @click.native="toggleTheme"/>
+        <Button v-if="$route.name === 'Home'" :icon="navActive ? 'cancel':'list'" :label="false" variant="secondary" @click.native="navActive = !navActive"/>
       </section>
       <nav
         v-if="navActive && $route.name === 'Home'"
@@ -32,6 +20,14 @@
             :key="component.title"
             :to="'#' + component.title.toLowerCase()"
           >{{ component.title }}</router-link>
+        </section>
+        <section v-if="selected === 'Compositions'">
+          <h4>Compositions</h4>
+          <router-link
+            v-for="composition in $store.state.compositions"
+            :key="composition.title"
+            :to="'#' + composition.title.toLowerCase()"
+          >{{ composition.title }}</router-link>
         </section>
         <section v-if="selected === 'Helpers'">
           <h4>Helpers</h4>
@@ -57,11 +53,12 @@
   </header>
 </template>
 <script>
+import Button from "@/components/Button";
 import Icon from "@/components/Icon";
-import Logo from "@/components/Logo";
+import Logo from "@/components/presentational/Logo";
 export default {
   name: "Header",
-  components: { Icon, Logo },
+  components: { Button, Icon, Logo },
   computed: {
     selected() {
       return this.$store.state.selected;
@@ -174,22 +171,13 @@ export default {
     > * + * {
       margin-left: var(--size__s);
     }
-  }
-  &__toggle {
-    @include smooth;
-    align-items: center;
-    background-color: var(--color__contrast);
-    border-radius: 50%;
-    color: var(--color__brand);
-    display: inline-flex;
-    flex-shrink: 0;
-    height: calc(var(--size__s) + var(--size__l));
-    justify-content: center;
-    transform-origin: center;
-    width: calc(var(--size__s) + var(--size__l));
-    &:focus,
-    &:hover {
-      transform: scale(1.0625);
+    .Button {
+      border: none;
+      color: var(--color__brand);
+      border-radius: 50%;
+      &:focus, &:hover {
+        transform: scale(1.0625);
+      }
     }
   }
   &__nav {

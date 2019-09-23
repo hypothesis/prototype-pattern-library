@@ -8,18 +8,17 @@
 $colors: (
 	base: hsl(346, 4%, 8%),
 	base-mid: hsl(346, 4%, 38%),
-	base-light: hsl(346, 4%, 64%),
-	base-ghost: hsl(346, 4%, 88%),
+	base-light: hsl(346, 4%, 75%),
+	base-ghost: hsl(346, 4%, 96%),
 	brand: hsl(346, 100%, 38%),
 	contrast: #ffffff
 );
 
 $colors__dark: (
 	base: #ffffff,
-	base-mid: hsl(346, 4%, 64%),
-	base-light: hsl(346, 4%, 48%),
-	base-ghost: hsl(346, 4%, 32%),
-	brand: hsl(346, 100%, 50%),
+	base-mid: hsl(346, 4%, 56%),
+	base-light: hsl(346, 4%, 32%),
+	base-ghost: hsl(346, 4%, 16%),
 	contrast: hsl(346, 4%, 10%),
 	contrast-extra: hsl(346, 4%, 1%)
 );
