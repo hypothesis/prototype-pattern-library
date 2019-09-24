@@ -15,10 +15,10 @@
         :class="[$options.name + '__action', $options.name + '__icon']"
         :aria-label="icon + ' action'"
       >
-        <Icon :name="icon" :size="16" />
+        <Icon :name="icon" :size="14" />
       </button>
       <section v-if="!action && icon" :class="$options.name + '__icon'">
-        <Icon :name="icon" :size="16" />
+        <Icon :name="icon" :size="14" />
       </section>
     </section>
   </fieldset>

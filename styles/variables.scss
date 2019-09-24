@@ -6,21 +6,21 @@
 
 // Maps
 $colors: (
-	base: hsl(346, 4%, 8%),
-	base-mid: hsl(346, 4%, 38%),
-	base-light: hsl(346, 4%, 75%),
-	base-ghost: hsl(346, 4%, 96%),
+	base: hsl(240, 8%, 8%),
+	base-mid: hsl(240, 8%, 38%),
+	base-light: hsl(240, 8%, 75%),
+	base-ghost: hsl(240, 8%, 96%),
 	brand: hsl(346, 100%, 38%),
 	contrast: #ffffff
 );
 
 $colors__dark: (
 	base: #ffffff,
-	base-mid: hsl(346, 4%, 56%),
-	base-light: hsl(346, 4%, 32%),
-	base-ghost: hsl(346, 4%, 16%),
-	contrast: hsl(346, 4%, 10%),
-	contrast-extra: hsl(346, 4%, 1%)
+	base-mid: hsl(240, 8%, 56%),
+	base-light: hsl(240, 8%, 38%),
+	base-ghost: hsl(240, 8%, 24%),
+	contrast: hsl(240, 8%, 10%),
+	contrast-extra: hsl(240, 8%, 1%)
 );
 
 $directions: (bottom, left, right, top);

@@ -1,6 +1,9 @@
 .Tabs {
 	align-items: center;
 	display: flex;
+	&:first-child {
+		margin-top: var(--size__s);
+	}
 	&__item {
 		align-items: flex-start;
 		display: inline-flex;

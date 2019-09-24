@@ -2,24 +2,28 @@
   <section
     :class="[
     $options.name,
+    active ? $options.name + '--active':'',
     expanded ? $options.name + '--expanded':'',
     reverse ? $options.name + '--reversed':'',
     small ? $options.name + '--small':''
   ]"
   >
-    <button :class="$options.name + '__top'" @click="toggleNested">
+    <button
+      :class="$options.name + '__top'"
+      @click="toggleNested"
+    >
       <section v-if="$slots.img" :class="[$options.name + '__img', 'margin__right--s']">
         <slot name="img" />
       </section>
       <section
         v-if="label"
         :class="[
-      $options.name + '__label', small ? 'type__size--s-m':'type__size--s-l', offset ? $options.name + '__label--offset':''
+      $options.name + '__label', small ? 'type__size--s-m':'type__size--s-l', offset ? $options.name + '__label--offset':'', reverse ? 'margin__left--s':''
     ]"
       >{{ label }}</section>
       <section
         v-if="icon"
-        :class="[$options.name + '__icon', reverse ? 'margin__right--s':'margin__left--s']"
+        :class="[$options.name + '__icon', reverse ? '':'margin__left--s']"
       >
         <Icon :name="icon" :size="14" />
       </section>
@@ -46,6 +50,7 @@ export default {
     };
   },
   props: {
+    active: { default: false },
     dropdown: { default: false },
     icon: { default: false },
     label: { default: "NavItem label" },
@@ -59,7 +64,9 @@ export default {
         this.expanded = false;
       } else if (this.$slots.nested) {
         this.expanded = true;
-        this.$emit("navItemExpanded", this.label);
+        this.$emit('NavItem', this.label);
+      } else {
+        this.$emit('NavItem', this.label);
       }
     }
   }

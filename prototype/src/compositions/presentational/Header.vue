@@ -6,8 +6,20 @@
         <h3>Pattern Library</h3>
       </router-link>
       <section :class="$options.name + '__toggles'">
-        <Button v-if="$route.name === 'Home'" icon="theme" :label="false" variant="secondary" @click.native="toggleTheme"/>
-        <Button v-if="$route.name === 'Home'" :icon="navActive ? 'cancel':'list'" :label="false" variant="secondary" @click.native="navActive = !navActive"/>
+        <Button
+          v-if="$route.name === 'Home'"
+          icon="theme"
+          :label="false"
+          variant="secondary"
+          @click.native="toggleTheme"
+        />
+        <Button
+          v-if="$route.name === 'Home'"
+          :icon="navActive ? 'cancel':'list'"
+          :label="false"
+          variant="secondary"
+          @click.native="navActive = !navActive"
+        />
       </section>
       <nav
         v-if="navActive && $route.name === 'Home'"
@@ -143,7 +155,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 500;
   &__inner {
     align-items: center;
     display: flex;
@@ -175,7 +187,8 @@ export default {
       border: none;
       color: var(--color__brand);
       border-radius: 50%;
-      &:focus, &:hover {
+      &:focus,
+      &:hover {
         transform: scale(1.0625);
       }
     }

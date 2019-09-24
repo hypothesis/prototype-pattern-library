@@ -50,7 +50,7 @@ export const components = [
 			{
 				name: "variant",
 				default: "primary",
-				options: ["primary", "secondary", "tertiary", "brand"],
+				options: ["primary", "secondary", "tertiary", "brand", "muted"],
 				type: "String"
 			}
 		]

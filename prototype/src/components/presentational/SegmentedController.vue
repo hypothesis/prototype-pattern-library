@@ -39,11 +39,15 @@ export default {
 <style lang="scss">
 .SegmentedController {
   align-items: stretch;
+  background-color: var(--color__contrast);
+  border-radius: rem(20);
   display: inline-flex;
+  [data-theme="dark"] & {
+    background-color: var(--color__contrast-extra);
+  }
   &__item {
     @include smooth;
     align-items: center;
-    background-color: var(--color__contrast);
     border: rem(1) solid var(--color__base-light);
     border-right-width: 0;
     color: var(--color__base-mid);

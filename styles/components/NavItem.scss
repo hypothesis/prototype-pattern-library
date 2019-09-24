@@ -24,6 +24,9 @@
 		.NavItem--small & {
 			min-height: var(--size__l);
 		}
+		.NavItem--active & {
+			box-shadow: inset var(--size__xs) 0 0 0 var(--color__brand);
+		}
 	}
 	&__dropdown {
 		@include smooth;
@@ -46,6 +49,9 @@
 		justify-content: center;
 		+ .NavItem__dropdown {
 			margin-left: rem(2);
+		}
+		+ .NavItem__label {
+			margin-left: 0;
 		}
 		.NavItem--reversed & {
 			order: -1;
@@ -90,6 +96,9 @@
 		padding-right: var(--size__s);
 		&--offset {
 			padding-left: calc(var(--size__s) + var(--size__m));
+		}
+		.NavItem__top {
+			box-shadow: none;
 		}
 		.NavItem__label {
 			font-weight: normal;

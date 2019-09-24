@@ -30,11 +30,13 @@
 			}
 		}
 		&--reversed {
-			flex-direction: row-reverse;
 			input,
 			select,
 			textarea {
 				padding-left: 0;
+			}
+			.Control__icon {
+				order: -1;
 			}
 		}
 	}

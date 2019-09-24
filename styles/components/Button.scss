@@ -42,7 +42,8 @@
 	}
 	&--primary,
 	&--secondary,
-	&--brand {
+	&--brand,
+	&--muted {
 		padding-left: var(--size__s);
 		padding-right: var(--size__s);
 	}
@@ -77,6 +78,15 @@
 		&:focus,
 		&:hover {
 			color: rgba(white, 0.88);
+		}
+	}
+	&--muted {
+		background-color: var(--color__base-ghost);
+		color: var(--color__base-mid);
+		&:focus,
+		&:hover {
+			border-color: var(--color__base-light);
+			color: var(--color__base);
 		}
 	}
 }

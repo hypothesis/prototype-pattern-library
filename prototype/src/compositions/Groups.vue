@@ -18,10 +18,11 @@
         <NavItem
           v-for="item in groups"
           :key="item.title"
+          :active="currentlySelected === item.title"
           :dropdown="true"
           :label="item.title"
           :offset="true"
-          @navItemExpanded="updateSelected"
+          @NavItem="currentlySelected = $event"
         >
           <Logo v-if="item.img" slot="img" />
           <NavItem icon="external" label="Group activity" :small="true" slot="nested" />

@@ -9,8 +9,7 @@
         </p>
         <Menu :active="editMenu" direction="right" :class="$options.name + '__editMenu'">
           <Button
-            :dropdown="true"
-            icon="settings"
+            icon="ellipsis"
             :label="false"
             variant="tertiary"
             @click.native="editMenu = !editMenu"
