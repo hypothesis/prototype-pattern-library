@@ -12,12 +12,7 @@
 			font-weight: bold;
 		}
 		.Badge {
-			background-color: var(--color__contrast);
-			padding: 0 var(--size__xs);
 			transform: translateY(rem(-4));
-		}
-		+ * {
-			margin-left: var(--size__m);
 		}
 	}
 }

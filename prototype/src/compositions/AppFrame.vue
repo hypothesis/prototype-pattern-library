@@ -2,10 +2,12 @@
   <section
     :class="[$options.name, collapsed ? $options.name + '--collapsed':'', searchActive ? $options.name + '--searched':'', 'type__family--system']"
   >
-    <header :class="[$options.name + '__top', 'color__bg--contrast padding__right--s']">
+    <header
+      :class="[$options.name + '__top', 'border__bottom border__left color__bg--contrast color__border--base-light padding__right--s']"
+    >
       <nav :class="$options.name + '__nav'">
         <Button
-          :class="$options.name + '__nav--collapse'"
+          :class="[$options.name + '__nav--collapse', 'margin__right--s']"
           :icon="collapsed ? 'expand':'collapse'"
           :iconSize="16"
           :label="false"
@@ -76,7 +78,7 @@
       </nav>
     </header>
     <section
-      :class="[$options.name + '__inner', 'color__bg--base-ghost padding__bottom--m padding__right--m padding__top--s']"
+      :class="[$options.name + '__inner', 'color__bg--base-ghost padding__bottom--m padding__left--l oomph__v--m padding__right--m padding__top--s']"
     >
       <form
         v-on:submit.prevent

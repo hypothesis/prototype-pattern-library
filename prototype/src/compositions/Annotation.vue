@@ -1,7 +1,7 @@
 <template>
   <Card :class="[$options.name, 'type__family--system']" :padding="false">
     <header
-      :class="[$options.name + '__header', 'padding__bottom--s padding__left--m padding__right--s padding__top--xs']"
+      :class="[$options.name + '__header', 'border__bottom color__border--base-light padding__bottom--s padding__left--m padding__right--s padding__top--xs']"
     >
       <section :class="$options.name + '__header--primary'">
         <p>
@@ -20,34 +20,39 @@
           <p
             slot="menu"
             v-if="edited"
-            class="color__type--base-mid padding__bottom--xs padding__left--m padding__right--m padding__top--xs type__size--s-l"
+            class="border__top color__border--base-light color__type--base-mid padding__bottom--xs padding__left--m padding__right--m padding__top--xs type__size--s-l"
           >
             <em>Edited {{ edited}}</em>
           </p>
         </Menu>
       </section>
-      <section :class="$options.name + '__header--secondary'">
-        <p class="color__type--base-mid margin__right--m type__size--s-m">
+      <section :class="[$options.name + '__header--secondary', 'oomph__h--m']">
+        <p class="color__type--base-mid type__size--s-m">
           {{ created }}
           <span v-if="edited">(edited)</span>
         </p>
         <Button icon="groups" :label="group" variant="tertiary" />
       </section>
     </header>
-    <section :class="[$options.name + '__content', 'padding__all--m']">
+    <section :class="[$options.name + '__content', 'oomph__v--m padding__all--m']">
       <blockquote :class="[$options.name + '__quote', 'color__type--base-mid padding__left--m']">
         <p>
           <em>{{ quote }}</em>
         </p>
       </blockquote>
-      <p :class="[$options.name + '__excerpt', 'margin__top--m']">{{ excerpt }}</p>
+      <p :class="$options.name + '__excerpt'">{{ excerpt }}</p>
     </section>
     <footer
-      :class="[$options.name + '__footer', 'padding__bottom--xs padding__left--s padding__right--s padding__top--xs']"
+      :class="[$options.name + '__footer', 'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs']"
     >
-      <Button icon="reply" :label="false" variant="tertiary" />
-      <Button icon="external" :label="false" variant="tertiary" />
-      <Button icon="share" :label="false" variant="tertiary" />
+      <section v-if="tags" :class="$options.name + '__tags'">
+        <Tag v-for="(tag, index) in tags" :key="index" :label="tag" class="margin__all--xs"/>
+      </section>
+      <nav :class="$options.name + '__actions'">
+        <Button icon="reply" :iconSize="16" :label="false" variant="tertiary" />
+        <Button icon="external" :iconSize="16" :label="false" variant="tertiary" />
+        <Button icon="share" :iconSize="16" :label="false" variant="tertiary" />
+      </nav>
     </footer>
   </Card>
 </template>
@@ -56,9 +61,10 @@ import Button from "@/components/Button";
 import Card from "@/components/Card";
 import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
+import Tag from "@/components/Tag";
 export default {
   name: "Annotation",
-  components: { Button, Card, Menu, NavItem },
+  components: { Button, Card, Menu, NavItem, Tag },
   data() {
     return {
       editMenu: false

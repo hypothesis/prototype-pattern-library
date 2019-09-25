@@ -1,6 +1,5 @@
 .Annotation {
   &__header {
-    border-bottom: rem(1) solid var(--color__base-light);
     > * {
       align-items: center;
       display: flex;
@@ -13,11 +12,6 @@
       margin-top: rem(-8);
     }
   }
-	&__editMenu .Menu__wrap {
-		> * + * {
-			border-top: rem(1) solid var(--color__base-light);
-		}
-  }
   &__quote {
     @include smooth;
     border-left: var(--size__xs) solid var(--color__base-light);
@@ -28,8 +22,14 @@
   }
   &__footer {
     align-items: center;
-    border-top: rem(1) solid var(--color__base-light);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+  }
+  &__tags {
+    flex: 1 0;
+  }
+  &__actions {
+    align-self: flex-start;
+    flex-shrink: 0;
   }
 }

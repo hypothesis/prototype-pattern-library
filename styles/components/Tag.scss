@@ -1,0 +1,26 @@
+.Tag {
+	align-items: center;
+	border-radius: var(--size__xs);
+	display: inline-flex;
+	height: var(--size__l);
+	overflow: hidden;
+	width: auto;
+	&__parent, &__action {
+		align-items: center;
+		display: inline-flex;
+		height: var(--size__l);
+	}
+	&__action {
+		@include smooth;
+		flex-shrink: 0;
+		justify-content: center;
+		width: var(--size__l);
+		&:focus,
+		&:hover {
+			background-color: var(--color__base);
+		}
+	}
+	&__label, &__parent {
+		white-space: nowrap;
+	}
+}

@@ -30,7 +30,9 @@
           <NavItem icon="leave" label="Leave group" :small="true" slot="nested" />
         </NavItem>
       </section>
-      <footer :class="[$options.name + '__innerFooter', 'padding__left--s padding__right--s']">
+      <footer
+        :class="[$options.name + '__innerFooter', 'border__top color__border--base-light padding__left--s padding__right--s']"
+      >
         <Button icon="plus" label="New private group" variant="tertiary" />
       </footer>
     </section>

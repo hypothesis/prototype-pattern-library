@@ -9,9 +9,6 @@
 	min-height: calc(var(--size__s) + var(--size__l));
 	min-width: calc(var(--size__s) + var(--size__l));
 	width: auto;
-	&--reversed {
-		flex-direction: row-reverse;
-	}
 	&__dropdown {
 		display: inline-flex;
 		flex-shrink: 0;
@@ -21,6 +18,9 @@
 		display: inline-flex;
 		flex-shrink: 0;
 		justify-content: center;
+		.Button--reversed & {
+			order: -1;
+		}
 		+ .Button__dropdown {
 			margin-left: rem(2);
 		}

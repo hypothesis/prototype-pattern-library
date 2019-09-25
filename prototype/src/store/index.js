@@ -10,9 +10,6 @@ export default new Vuex.Store({
 		themeSwitch({ commit }, value) {
 			commit("themeSwitch", value);
 		},
-		updateColors({ commit }, value) {
-			commit("updateColors", value);
-		},
 		updateSelected({ commit }, value) {
 			commit("updateSelected", value);
 		}
@@ -21,15 +18,19 @@ export default new Vuex.Store({
 		themeSwitch(state, value) {
 			state.theme = value;
 		},
-		updateColors(state, value) {
-			state.colors = value;
-		},
 		updateSelected(state, value) {
 			state.selected = value;
 		}
 	},
 	state: {
-		colors: [],
+		colors: [
+			"base",
+			"base-mid",
+			"base-light",
+			"base-ghost",
+			"brand",
+			"contrast"
+		],
 		components: components,
 		compositions: compositions,
 		selected: "Components",

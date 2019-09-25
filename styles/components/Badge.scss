@@ -11,6 +11,10 @@
 		background-color: var(--color__brand);
 		color: white;
 	}
+	&--contrast {
+		background-color: var(--color__base);
+		color: var(--color__contrast);
+	}
 	&--primary {
 		background-color: var(--color__base-ghost);
 	}

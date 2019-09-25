@@ -1,5 +1,7 @@
 <template>
-  <section :class="[$options.name, padding ? 'padding__all--m':'']">
+  <section
+    :class="[$options.name, padding ? 'padding__all--m':'', 'border__all color__bg--contrast color__border--base-ghost']"
+  >
     <slot />
   </section>
 </template>

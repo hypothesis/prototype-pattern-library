@@ -1,6 +1,6 @@
 .NavItem {
-	&--expanded {
-		background-color: var(--color__base-ghost);
+	+ .NavItem {
+		border-top: rem(1) solid var(--color__base-light);
 	}
 	&__top {
 		align-items: center;
@@ -8,7 +8,6 @@
 		display: flex;
 		justify-content: center;
 		min-height: calc(var(--size__s) + var(--size__l));
-		padding: 0 var(--size__s);
 		&:focus,
 		&:hover {
 			.NavItem__dropdown {
@@ -18,7 +17,7 @@
 				color: var(--color__base);
 			}
 			.NavItem__label {
-				color: var(--color__brand);
+				color: var(--color__base-mid);
 			}
 		}
 		.NavItem--small & {
@@ -31,9 +30,6 @@
 	&__dropdown {
 		@include smooth;
 		align-items: center;
-		background-color: var(--color__base-ghost);
-		border-radius: var(--size__xs);
-		color: var(--color__base-mid);
 		display: inline-flex;
 		height: var(--size__l);
 		justify-content: center;
@@ -43,7 +39,6 @@
 	&__icon {
 		@include smooth;
 		align-items: center;
-		color: var(--color__base-mid);
 		display: inline-flex;
 		flex-shrink: 0;
 		justify-content: center;
@@ -59,7 +54,6 @@
 	}
 	&__label {
 		@include smooth;
-		color: var(--color__base);
 		font-weight: bold;
 		flex-grow: 1;
 		max-width: 100%;
@@ -92,16 +86,17 @@
 		animation-direction: alternate;
 		animation-iteration-count: 1;
 		margin-top: rem(-8);
-		padding-bottom: var(--size__xs);
-		padding-right: var(--size__s);
 		&--offset {
 			padding-left: calc(var(--size__s) + var(--size__m));
 		}
-		.NavItem__top {
-			box-shadow: none;
-		}
-		.NavItem__label {
-			font-weight: normal;
+		.NavItem {
+			border-top: none;
+			&__top {
+				box-shadow: none;
+			}
+			&__label {
+				font-weight: normal;
+			}
 		}
 	}
 }

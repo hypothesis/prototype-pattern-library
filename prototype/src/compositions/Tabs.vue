@@ -1,5 +1,5 @@
 <template>
-  <section :class="$options.name">
+  <section :class="[$options.name, 'oomph__h--m']">
     <button
       v-for="item in items"
       :key="item.title"
@@ -7,7 +7,7 @@
       @click="updateSelected(item)"
     >
       {{ item.title }}
-      <Badge v-if="item.count > 0" class="margin__left--xs" :label="item.count" />
+      <Badge v-if="item.count > 0" class="margin__left--xs" :label="item.count" variant="contrast" />
     </button>
   </section>
 </template>

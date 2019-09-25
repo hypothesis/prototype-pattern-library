@@ -10,7 +10,7 @@ export const components = [
 			{
 				name: "variant",
 				default: "primary",
-				options: ["primary", "brand"],
+				options: ["primary", "brand", "contrast"],
 				type: "String"
 			}
 		]
@@ -175,6 +175,33 @@ export const components = [
 				notes:
 					"Determines the overall size of the text and height of the element.",
 				type: "Boolean"
+			}
+		]
+	},
+	{
+		title: "Tag",
+		props: [
+			{
+				name: "count",
+				default: "false",
+				type: "Boolean/Number"
+			},
+			{
+				name: "icon",
+				default: "false",
+				notes:
+					"Users must select a valid icon from the <a href='/#icon'>Icon</a> component.",
+				type: "Boolean/String"
+			},
+			{
+				name: "label",
+				default: "Tag label",
+				type: "String"
+			},
+			{
+				name: "parent",
+				default: "false",
+				type: "String"
 			}
 		]
 	}

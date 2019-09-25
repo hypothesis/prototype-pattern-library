@@ -3,8 +3,6 @@
 	&__wrap {
 		@include smooth;
 		align-items: stretch;
-		background-color: var(--color__contrast);
-		border: rem(1) solid var(--color__base-light);
 		border-radius: var(--size__xs);
 		display: flex;
 		justify-content: space-between;
@@ -47,7 +45,6 @@
 	}
 	&__icon {
 		align-items: center;
-		color: var(--color__base-mid);
 		display: inline-flex;
 		flex: 0 0 var(--size__l);
 		justify-content: center;
@@ -55,8 +52,6 @@
 	}
 	&__action {
 		@include smooth;
-		background-color: var(--color__base-ghost);
-		color: var(--color__base-mid);
 		&:focus,
 		&:hover {
 			color: var(--color__base);

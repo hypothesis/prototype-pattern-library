@@ -17,6 +17,14 @@
           </p>
         </figcaption>
       </Card>
+      <Card>
+        <Badge label="Something bold goes here!" variant="contrast" />
+        <figcaption>
+          <p>
+            <em>Contrast variant</em>
+          </p>
+        </figcaption>
+      </Card>
     </ComponentWrapper>
     <ComponentWrapper name="Button">
       <Card>
@@ -188,7 +196,7 @@
         class="copiedIcon"
         v-if="copiedIcon"
         :label="'“' + copiedIcon + '” icon copied successfully!'"
-        variant="brand"
+        variant="contrast"
       />
       <section class="icons">
         <Card v-for="(icon,index) in icons" :key="index">
@@ -259,29 +267,65 @@
       </Card>
     </ComponentWrapper>
     <ComponentWrapper name="NavItem">
-      <p>The <code>NavItem</code> compoonent shines in menus and takes many of the properties of a <code>Button</code> component. One of the best use cases where this particular component is flexible is with nesting children <code>NavItem</code> comnponents inside a parent using the <code>nested</code> slot.</p>
+      <p>
+        The
+        <code>NavItem</code> compoonent shines in menus and takes many of the properties of a
+        <code>Button</code> component. One of the best use cases where this particular component is flexible is with nesting children
+        <code>NavItem</code> comnponents inside a parent using the
+        <code>nested</code> slot.
+      </p>
       <Card>
-        <NavItem
-          :dropdown="true"
-        >
+        <NavItem :dropdown="true">
           <NavItem icon="external" label="Option 1" :small="true" slot="nested" />
           <NavItem icon="copy" label="Option 2" :small="true" slot="nested" />
           <NavItem icon="leave" label="Option 3" :small="true" slot="nested" />
         </NavItem>
         <figcaption>
-          <p><em>NavItem with a dropdown </em></p>
+          <p>
+            <em>NavItem with a dropdown</em>
+          </p>
         </figcaption>
       </Card>
       <Card>
         <NavItem icon="settings" label="Account settings" :reverse="true" />
         <figcaption>
-          <p><em>NavItem with <code>reverse</code> prop</em></p>
+          <p>
+            <em>
+              NavItem with
+              <code>reverse</code> prop
+            </em>
+          </p>
         </figcaption>
       </Card>
       <Card>
-        <NavItem icon="plus" label="Add something" :small="true"/>
+        <NavItem icon="plus" label="Add something" :small="true" />
         <figcaption>
-          <p><em>NavItem with <code>small</code> prop</em></p>
+          <p>
+            <em>
+              NavItem with
+              <code>small</code> prop
+            </em>
+          </p>
+        </figcaption>
+      </Card>
+    </ComponentWrapper>
+    <ComponentWrapper name="Tag">
+      <Card>
+        <Tag />
+        <figcaption>
+          <p><em>Default Tag</em></p>
+        </figcaption>
+      </Card>
+      <Card>
+        <Tag icon="cancel" label="Hypothesis Reading" parent="Group" />
+        <figcaption>
+          <p><em>Tag with <code>parent</code> and <code>icon</code> props</em></p>
+        </figcaption>
+      </Card>
+      <Card>
+        <Tag :count="58" label="h-breadcrumbs"/>
+        <figcaption>
+          <p><em>Tag with <code>count</code> prop</em></p>
         </figcaption>
       </Card>
     </ComponentWrapper>
@@ -295,6 +339,7 @@ import Control from "@/components/Control";
 import Icon from "@/components/Icon";
 import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
+import Tag from "@/components/Tag";
 import ComponentWrapper from "@/compositions/presentational/ComponentWrapper";
 import { icons } from "../../components/icons";
 export default {
@@ -307,7 +352,8 @@ export default {
     Control,
     Icon,
     Menu,
-    NavItem
+    NavItem,
+    Tag
   },
   data() {
     return {
@@ -352,7 +398,7 @@ export default {
       width: 100%;
     }
     figcaption {
-      border-top: rem(1) solid var(--color__base-ghost);
+      border-top: rem(1) solid var(--color__base-light);
       margin-left: rem(-16);
       margin-right: rem(-16);
       margin-top: var(--size__m);
@@ -378,9 +424,6 @@ export default {
     padding: 0 var(--size__s);
     top: rem(72);
     transform: translateX(-50%);
-    .Badge__label {
-      font-size: var(--typeSize__s);
-    }
   }
   .controlMenuFocused {
     width: 100%;

@@ -7,14 +7,14 @@
     </router-link>
     <p>It’s helpful in a color palette to strive for as much color contrast as possible. For text items in the interface stick with those that pass color-contrast tests. For borders and backgrounds, those that fail are still acceptable.</p>
     <section :class="$options.name + '__grid'">
-      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__color'">
-        <span :class="[$options.name + '__color--bg', 'color__bg--' + color.name]"></span>
+      <Card
+        v-for="(color,index) in colors"
+        :key="'color' + index"
+        :class="$options.name + '__color'"
+      >
+        <span :class="[$options.name + '__color--bg', 'color__bg--' + color]"></span>
         <span :class="$options.name + '__color--label'">
-          <code>--{{ color.name }}</code>
-        </span>
-        <span :class="$options.name + '__color--contrast'">
-          <Icon name="contrast" :size="14" />
-          {{ color.ratio + ':1'}} • {{ color.pass }}
+          <code>--{{ color }}</code>
         </span>
       </Card>
     </section>
@@ -28,10 +28,14 @@
       <code>background-color</code> value to elements.
     </p>
     <section :class="$options.name + '__rows'">
-      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
-        <span :class="[$options.name + '__row--bg', 'color__bg--' + color.name]"></span>
+      <Card
+        v-for="(color,index) in colors"
+        :key="'colorBG' + index"
+        :class="$options.name + '__row'"
+      >
+        <span :class="[$options.name + '__row--bg', 'color__bg--' + color]"></span>
         <span :class="$options.name + '__row--label'">
-          <code>.color__bg--{{ color.name }}</code>
+          <code>.color__bg--{{ color }}</code>
         </span>
       </Card>
     </section>
@@ -41,12 +45,16 @@
       <code>border-color</code> value to elements.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--border']">
-      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
+      <Card
+        v-for="(color,index) in colors"
+        :key="'colorBorder' + index"
+        :class="$options.name + '__row'"
+      >
         <span
-          :class="[$options.name + '__row--bg', 'color__border--' + color.name, color.name === 'contrast' ? 'color__bg--brand':'']"
+          :class="[$options.name + '__row--bg', 'color__border--' + color, color === 'contrast' ? 'color__bg--brand':'']"
         ></span>
         <span :class="$options.name + '__row--label'">
-          <code>.color__border--{{ color.name }}</code>
+          <code>.color__border--{{ color }}</code>
         </span>
       </Card>
     </section>
@@ -56,17 +64,21 @@
       <code>color</code> value to elements.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <Card v-for="(color,index) in colors" :key="index" :class="$options.name + '__row'">
+      <Card
+        v-for="(color,index) in colors"
+        :key="'colorType' + index"
+        :class="$options.name + '__row'"
+      >
         <span
-          :class="[$options.name + '__row--example', 'color__type--' + color.name, color.name === 'contrast' ? 'color__bg--brand':'']"
+          :class="[$options.name + '__row--example', 'color__type--' + color, color === 'contrast' ? 'color__bg--brand':'']"
         >
           <p>
             I’m
-            <code>{{color.name}}</code> colored type!
+            <code>{{color}}</code> colored type!
           </p>
         </span>
         <span :class="$options.name + '__row--label'">
-          <code>.color__type--{{ color.name }}</code>
+          <code>.color__type--{{ color }}</code>
         </span>
       </Card>
     </section>
@@ -116,7 +128,11 @@
       <code>s, m, l, xl</code>
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <Card v-for="(item, index) in typeSizes" :key="index" :class="$options.name + '__row'">
+      <Card
+        v-for="(item, index) in typeSizes"
+        :key="'typeSize' + index"
+        :class="$options.name + '__row'"
+      >
         <span :class="$options.name + '__row--example'">
           <p :class="'type__size--' + item.fontSize + '-' + item.lineHeight">
             I’m
@@ -139,7 +155,11 @@
       <code>text-align</code> is that we could map other global styles for center-aligned type for example.
     </p>
     <section :class="[$options.name + '__rows', $options.name + '__rows--type']">
-      <Card v-for="(item, index) in typeAlignments" :key="index" :class="$options.name + '__row'">
+      <Card
+        v-for="(item, index) in typeAlignments"
+        :key="'typeAlign' + index"
+        :class="$options.name + '__row'"
+      >
         <span :class="[$options.name + '__row--example', 'type__align--' + item]">
           <p>
             I’m
@@ -153,8 +173,8 @@
     </section>
     <h2>Position</h2>
     <p>
-      Both of the following properties take a standard set of size variables as an argument
-      <code>xs, s, m, l, xl</code>. These values are defined globally and help standardize the size and position of boxes.
+      The following classes take a standard set of size variables as an argument
+      <code>xs, s, m, l, xl</code>. These values are defined globally and help standardize the size and position of elements.
     </p>
     <router-link class="section" to="#margin">
       <Icon name="link" :size="16" />
@@ -167,7 +187,11 @@
     <h4>.margin__all--size</h4>
     <p>Places equal margin around the entire item.</p>
     <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
-      <Card v-for="size in sizes" :key="size" :class="[$options.name + '__marginItem', 'type__align--center']">
+      <Card
+        v-for="(size,index) in sizes"
+        :key="'marginAll' + index"
+        :class="[$options.name + '__marginItem', 'type__align--center']"
+      >
         <span :class="$options.name + '__marginItem--bg'">
           <span :class="['margin__all--' + size, $options.name + '__marginItem--shape']"></span>
         </span>
@@ -180,8 +204,8 @@
     <h4>.margin__direction--size</h4>
     <p>Places margin based on a direction and size argument.</p>
     <section
-      v-for="size in sizes"
-      :key="size"
+      v-for="(size,index) in sizes"
+      :key="'marginDirection' + index"
       :class="[$options.name + '__grid', $options.name + '__grid--position']"
     >
       <Card
@@ -199,6 +223,48 @@
         </section>
       </Card>
     </section>
+    <router-link class="section" to="#oomph">
+      <Icon name="link" :size="16" />
+      <h3 id="oomph">Oomph</h3>
+    </router-link>
+    <p>
+      This class helps establish horizontal or vertical rhythm for the children of an element. This property can easily be offset by applying a
+      <code>margin__direction--size</code> on the child element itself.
+    </p>
+    <h4>.oomph__h--size</h4>
+    <Card
+      v-for="(size,index) in sizes"
+      :key="'oomphH' + index"
+      :class="$options.name + '__oomphItem'"
+    >
+      <section :class="[$options.name + '__oomphItem--wrap', 'oomph__h--' + size]">
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+      </section>
+      <span :class="$options.name + '__oomphItem--label'">
+        <p>
+          <code>.oomph__h--{{ size }}</code>
+        </p>
+      </span>
+    </Card>
+    <h4>.oomph__v--size</h4>
+    <Card
+      v-for="(size,index) in sizes"
+      :key="'oomphV' + index"
+      :class="[$options.name + '__oomphItem', $options.name + '__oomphItem--vertical']"
+    >
+      <section :class="[$options.name + '__oomphItem--wrap', 'oomph__v--' + size]">
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+        <span :class="$options.name + '__oomphItem--shape'"></span>
+      </section>
+      <span :class="$options.name + '__oomphItem--label'">
+        <p>
+          <code>.oomph__v--{{ size }}</code>
+        </p>
+      </span>
+    </Card>
     <router-link class="section" to="#padding">
       <Icon name="link" :size="16" />
       <h3 id="padding">Padding</h3>
@@ -210,11 +276,14 @@
     <h4>.padding__all--size</h4>
     <p>Places equal padding within an item.</p>
     <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
-      <Card v-for="(size,index) in sizes" :key="index" :class="$options.name + '__paddingItem'">
+      <Card
+        v-for="(size,index) in sizes"
+        :key="'padding' + index"
+        :class="$options.name + '__paddingItem'"
+      >
         <span :class="$options.name + '__paddingItem--bg'">
           <span :class="['padding__all--' + size, $options.name + '__paddingItem--shape']"></span>
         </span>
-
         <span :class="$options.name + '__paddingItem--label'">
           <code>.padding__all--{{ size }}</code>
         </span>
@@ -224,7 +293,7 @@
     <p>Places padding based on a direction and size argument.</p>
     <section
       v-for="(size,index) in sizes"
-      :key="index"
+      :key="'padding' + index"
       :class="[$options.name + '__grid', $options.name + '__grid--position']"
     >
       <Card
@@ -240,6 +309,43 @@
 
         <span :class="$options.name + '__paddingItem--label'">
           <code>.padding__{{ direction }}--{{ size }}</code>
+        </span>
+      </Card>
+    </section>
+    <h2>Utility</h2>
+    <p>The following classes serve as utilities and take the burden off commonly repeated CSS.</p>
+    <router-link class="section" to="#border">
+      <Icon name="link" :size="16" />
+      <h3 id="border">Border</h3>
+    </router-link>
+    <p>
+      This class makes it easy to apply a border either directionally or around an entire element. It does not take an argument for the color of the border, you should use the
+      <code>.color__border--color</code> class listed above.
+    </p>
+    <h4>.border__all</h4>
+    <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
+      <Card :class="$options.name + '__borderItem'">
+        <span :class="$options.name + '__borderItem--bg'">
+          <span :class="['border__all', $options.name + '__borderItem--shape']"></span>
+        </span>
+        <span :class="$options.name + '__borderItem--label'">
+          <code>.border__all</code>
+        </span>
+      </Card>
+    </section>
+    <h4>.border__direction</h4>
+    <section :class="[$options.name + '__grid', $options.name + '__grid--position']">
+      <Card
+        v-for="direction in directions"
+        :key="direction"
+        :class="$options.name + '__borderItem'"
+      >
+        <span :class="$options.name + '__borderItem--bg'">
+          <span :class="['border__' + direction, $options.name + '__borderItem--shape']"></span>
+        </span>
+
+        <span :class="$options.name + '__borderItem--label'">
+          <code>.border__{{ direction }}</code>
         </span>
       </Card>
     </section>
@@ -297,7 +403,7 @@ export default {
     padding: 0;
     overflow: hidden;
     &--bg {
-      border-bottom: rem(1) solid var(--color__base-ghost);
+      border-bottom: rem(1) solid var(--color__base-light);
       display: block;
       padding: var(--size__l);
     }
@@ -341,47 +447,23 @@ export default {
       }
     }
     &--example {
-      border-bottom: rem(1) solid var(--color__base-ghost);
+      border-bottom: rem(1) solid var(--color__base-light);
       padding: var(--size__m);
       width: 100%;
     }
     &--label {
       align-items: center;
       display: inline-flex;
-      border-left: rem(1) solid var(--color__base-ghost);
       padding: var(--size__m);
       .Helpers__rows--type & {
         border-left: none;
       }
     }
   }
-  &__marginItem {
-    overflow: hidden;
+  &__borderItem {
     padding: 0;
     &--bg {
-      border-bottom: rem(1) solid var(--color__base-ghost);
-      display: block;
-      padding: var(--size__s);
-    }
-    &--label {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      padding: var(--size__s);
-      text-align: center;
-    }
-    &--shape {
-      background-color: var(--color__base-ghost);
-      display: inline-block;
-      height: var(--size__l);
-      width: var(--size__l);
-    }
-  }
-  &__paddingItem {
-    overflow: hidden;
-    padding: 0;
-    &--bg {
-      border-bottom: rem(1) solid var(--color__base-ghost);
+      border-bottom: rem(1) solid var(--color__base-light);
       display: flex;
       justify-content: center;
       padding: var(--size__s);
@@ -395,8 +477,87 @@ export default {
     }
     &--shape {
       align-items: stretch;
-      border: rem(1) solid var(--color__base-ghost);
-      background-color: var(--color__base-ghost);
+      background-color: var(--color__contrast);
+      border-color: var(--color__brand);
+      display: inline-flex;
+      height: var(--size__l);
+      width: var(--size__l);
+      [data-theme="dark"] & {
+        background-color: var(--color__contrast-extra);
+      }
+    }
+  }
+  &__marginItem {
+    overflow: hidden;
+    padding: 0;
+    &--bg {
+      border-bottom: rem(1) solid var(--color__base-light);
+      display: block;
+      padding: var(--size__s);
+    }
+    &--label {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: var(--size__s);
+      text-align: center;
+    }
+    &--shape {
+      background-color: var(--color__brand);
+      display: inline-block;
+      height: var(--size__l);
+      width: var(--size__l);
+    }
+  }
+  &__oomphItem {
+    padding: 0;
+    &--wrap {
+      padding: var(--size__s);
+    }
+    &--label {
+      align-items: center;
+      border-top: rem(1) solid var(--color__base-light);
+      display: flex;
+      justify-content: center;
+      padding: var(--size__s);
+      text-align: center;
+    }
+    &--shape {
+      align-items: stretch;
+      background-color: var(--color__brand);
+      display: inline-flex;
+      height: var(--size__l);
+      width: var(--size__l);
+    }
+    &--vertical {
+      .Helpers__oomphItem--wrap {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+  &__paddingItem {
+    overflow: hidden;
+    padding: 0;
+    &--bg {
+      border-bottom: rem(1) solid var(--color__base-light);
+      display: flex;
+      justify-content: center;
+      padding: var(--size__s);
+    }
+    &--label {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: var(--size__s);
+      text-align: center;
+    }
+    &--shape {
+      align-items: stretch;
+      border: rem(1) solid var(--color__brand);
+      background-color: var(--color__brand);
       display: inline-flex;
       &:after {
         background-color: var(--color__contrast);
@@ -404,6 +565,9 @@ export default {
         display: inline-block;
         height: var(--size__l);
         width: var(--size__l);
+        [data-theme="dark"] & {
+          background-color: var(--color__contrast-extra);
+        }
       }
     }
   }

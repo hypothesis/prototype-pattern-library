@@ -8,16 +8,18 @@
         'color__type--base-mid margin__bottom--s type__size--xs-m'
       ]"
     >{{ label }}</label>
-    <section :class="[$options.name + '__wrap', reverse ? $options.name + '__wrap--reversed':'']">
+    <section
+      :class="[$options.name + '__wrap', reverse ? $options.name + '__wrap--reversed':'', 'border__all color__bg--contrast color__border--base-light']"
+    >
       <slot />
       <button
         v-if="action && icon"
-        :class="[$options.name + '__action', $options.name + '__icon']"
+        :class="[$options.name + '__action', $options.name + '__icon', 'color__bg--base-ghost color__type--base-mid']"
         :aria-label="icon + ' action'"
       >
         <Icon :name="icon" :size="14" />
       </button>
-      <section v-if="!action && icon" :class="$options.name + '__icon'">
+      <section v-if="!action && icon" :class="[$options.name + '__icon', 'color__type--base-mid']">
         <Icon :name="icon" :size="14" />
       </section>
     </section>

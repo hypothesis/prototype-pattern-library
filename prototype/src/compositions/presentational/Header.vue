@@ -8,7 +8,7 @@
       <section :class="$options.name + '__toggles'">
         <Button
           v-if="$route.name === 'Home'"
-          icon="theme"
+          icon="contrast"
           :label="false"
           variant="secondary"
           @click.native="toggleTheme"
@@ -57,7 +57,12 @@
           <h5>Position</h5>
           <section :class="$options.name + '__nav--indent'">
             <router-link to="#margin">Margin</router-link>
+            <router-link to="#oomph">Oomph</router-link>
             <router-link to="#padding">Padding</router-link>
+          </section>
+          <h5>Utility</h5>
+          <section :class="$options.name + '__nav--indent'">
+            <router-link to="#border">Border</router-link>
           </section>
         </section>
       </nav>
@@ -81,7 +86,6 @@ export default {
   },
   data() {
     return {
-      colors: [],
       navActive: false
     };
   },
@@ -89,44 +93,6 @@ export default {
     checkTheme() {
       let root = document.getElementsByTagName("html")[0];
       root.setAttribute("data-theme", this.theme);
-    },
-    generateColors() {
-      this.colors = [];
-      let colors = [
-        "base",
-        "base-mid",
-        "base-light",
-        "base-ghost",
-        "brand",
-        "contrast"
-      ];
-      colors.forEach((color, i) => {
-        let bg = window
-          .getComputedStyle(document.documentElement)
-          .getPropertyValue("--color__contrast")
-          .replace("#", "");
-        let hex = window
-          .getComputedStyle(document.documentElement)
-          .getPropertyValue("--color__" + color)
-          .replace("#", "");
-        fetch(
-          "https://webaim.org/resources/contrastchecker/?fcolor=" +
-            bg +
-            "&bcolor=" +
-            hex +
-            "&api"
-        ).then(response =>
-          response.json().then(value =>
-            this.colors.push({
-              index: i,
-              name: color,
-              pass: value.AA,
-              ratio: value.ratio
-            })
-          )
-        );
-        this.$store.dispatch("updateColors", this.colors);
-      });
     },
     toggleTheme() {
       let root = document.getElementsByTagName("html")[0];
@@ -137,12 +103,10 @@ export default {
         this.$store.dispatch("themeSwitch", "light");
         root.setAttribute("data-theme", "light");
       }
-      this.generateColors();
     }
   },
   mounted() {
     this.checkTheme();
-    this.generateColors();
   },
   props: {
     section: { default: "helpers" }

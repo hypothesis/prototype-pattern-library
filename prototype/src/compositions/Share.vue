@@ -1,17 +1,12 @@
 <template>
   <Card :class="[$options.name, 'type__family--system']" :padding="false">
     <header
-      :class="[$options.name + '__header', 'padding__bottom--s padding__left--m padding__right--m padding__top--s']"
+      :class="[$options.name + '__header', 'border__bottom color__border--base-light padding__bottom--s padding__left--m padding__right--m padding__top--s']"
     >
       <p :class="[$options.name + '__header--label', 'color__type--brand margin__right--s']">
         <strong>Share Annotations in {{ group }}</strong>
       </p>
-      <Button
-        icon="cancel"
-        label="Close"
-        variant="muted"
-        @click.native="$emit('share',false)"
-      />
+      <Button icon="cancel" label="Close" variant="muted" @click.native="$emit('share',false)" />
     </header>
     <section :class="[$options.name + '__content', 'padding__all--m']">
       <p class="type__size--s-m">
@@ -32,7 +27,7 @@
       </p>
     </section>
     <footer
-      :class="[$options.name + '__footer', 'padding__bottom--s padding__left--m padding__right--m padding__top--s']"
+      :class="[$options.name + '__footer', 'border__top color__border--base-light padding__bottom--s padding__left--m padding__right--m padding__top--s']"
     >
       <Button icon="social-twitter" :iconSize="20" :label="false" variant="tertiary" />
       <Button icon="social-facebook" :iconSize="20" :label="false" variant="tertiary" />

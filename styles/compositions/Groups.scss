@@ -15,12 +15,8 @@
 			flex: 1 1;
 			overflow: hidden;
 			overflow-y: auto;
-			> * + * {
-				border-top: rem(1) solid var(--color__base-light);
-			}
 		}
 		&Footer {
-			border-top: rem(1) solid var(--color__base-light);
 			.Button {
 				width: 100%;
 			}

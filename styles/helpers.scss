@@ -1,5 +1,16 @@
 @import "variables";
 
+.border {
+	&__all {
+		border: rem(1) solid;
+	}
+	@each $directionKey, $value in $directions {
+		&__#{$directionKey} {
+			border-#{$directionKey}: rem(1) solid;
+		}
+	}
+}
+
 @each $key, $value in $colors {
 	.color__bg--#{$key} {
 		background-color: var(--color__#{$key});
@@ -26,6 +37,12 @@
 @each $sizeKey, $value in $sizes {
 	.margin__all--#{$sizeKey} {
 		margin: var(--size__#{$sizeKey});
+	}
+	.oomph__h--#{$sizeKey} > * + * {
+		margin-left: var(--size__#{$sizeKey});
+	}
+	.oomph__v--#{$sizeKey} > * + * {
+		margin-top: var(--size__#{$sizeKey});
 	}
 	.padding__all--#{$sizeKey} {
 		padding: var(--size__#{$sizeKey});

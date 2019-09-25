@@ -1,6 +1,6 @@
 <template>
   <section
-    :class="[$options.name, $options.name + '--' + variant, 'padding__left--s padding__right--s']"
+    :class="[$options.name, $options.name + '--' + variant, 'padding__left--xs padding__right--xs']"
   >
     <section :class="[
       $options.name + '__label',
