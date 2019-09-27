@@ -16,14 +16,13 @@
 <script>
 export default {
   name: "SegmentedController",
-  data() {
-    return {
-      currentlySelected: this.selected
-    };
+  computed: {
+    currentlySelected() {
+      return this.$store.state.selected;
+    }
   },
   methods: {
     updateSelected(item) {
-      this.currentlySelected = item;
       this.$emit("segmentSelected", item);
     }
   },
@@ -31,8 +30,7 @@ export default {
     options: {
       default: () => ["Option 1", "Option 2", "Option 3"],
       type: Array
-    },
-    selected: { default: "Option 1" }
+    }
   }
 };
 </script>
@@ -46,7 +44,6 @@ export default {
     background-color: var(--color__contrast-extra);
   }
   &__item {
-    @include smooth;
     align-items: center;
     border: rem(1) solid var(--color__base-light);
     border-right-width: 0;

@@ -311,21 +311,34 @@
     </ComponentWrapper>
     <ComponentWrapper name="Tag">
       <Card>
-        <Tag />
+        <Tag path="#yep" />
         <figcaption>
-          <p><em>Default Tag</em></p>
+          <p>
+            <em>Default Tag</em>
+          </p>
         </figcaption>
       </Card>
       <Card>
         <Tag icon="cancel" label="Hypothesis Reading" parent="Group" />
         <figcaption>
-          <p><em>Tag with <code>parent</code> and <code>icon</code> props</em></p>
+          <p>
+            <em>
+              Tag with
+              <code>parent</code> and
+              <code>icon</code> props
+            </em>
+          </p>
         </figcaption>
       </Card>
       <Card>
-        <Tag :count="58" label="h-breadcrumbs"/>
+        <Tag :count="58" label="h-breadcrumbs" />
         <figcaption>
-          <p><em>Tag with <code>count</code> prop</em></p>
+          <p>
+            <em>
+              Tag with
+              <code>count</code> prop
+            </em>
+          </p>
         </figcaption>
       </Card>
     </ComponentWrapper>
@@ -341,7 +354,7 @@ import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
 import Tag from "@/components/Tag";
 import ComponentWrapper from "@/compositions/presentational/ComponentWrapper";
-import { icons } from "../../components/icons";
+import { icons } from "../components/icons";
 export default {
   name: "Components",
   components: {
@@ -383,6 +396,9 @@ export default {
         this.copiedIcon = false;
       }, 1500);
     }
+  },
+  mounted() {
+    this.$store.dispatch('updateSelected', this.$options.name)
   }
 };
 </script>

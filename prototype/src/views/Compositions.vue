@@ -20,6 +20,9 @@ export default {
     Annotation,
     AppFrame,
     ComponentWrapper
+  },
+  mounted() {
+    this.$store.dispatch('updateSelected', this.$options.name)
   }
 };
 </script>

@@ -7,14 +7,14 @@
       </router-link>
       <section :class="$options.name + '__toggles'">
         <Button
-          v-if="$route.name === 'Home'"
+          v-if="$route.name != 'Example'"
           icon="contrast"
           :label="false"
           variant="secondary"
           @click.native="toggleTheme"
         />
         <Button
-          v-if="$route.name === 'Home'"
+          v-if="$route.name != 'Example'"
           :icon="navActive ? 'cancel':'list'"
           :label="false"
           variant="secondary"
@@ -22,7 +22,7 @@
         />
       </section>
       <nav
-        v-if="navActive && $route.name === 'Home'"
+        v-if="navActive"
         :class="[$options.name + '__nav', navActive ? $options.name + '__nav--active':'', 'padding__all--m']"
       >
         <section v-if="selected === 'Components'">

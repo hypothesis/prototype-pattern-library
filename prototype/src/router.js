@@ -7,15 +7,15 @@ export default new Router({
 	mode: "history",
 	base: process.env.BASE_URL,
 	scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        selector: to.hash,
-        offset: { x: 0, y: 112 }
-      };
-    } else {
-      return { x: 0, y: 0 };
-    }
-  },
+		if (to.hash) {
+			return {
+				selector: to.hash,
+				offset: { x: 0, y: 112 }
+			};
+		} else {
+			return { x: 0, y: 0 };
+		}
+	},
 	routes: [
 		{
 			path: "*",
@@ -24,8 +24,18 @@ export default new Router({
 		},
 		{
 			path: "/",
-			name: "Home",
-			component: () => import("./views/Home")
+			name: "Components",
+			component: () => import("./views/Components")
+		},
+		{
+			path: "/compositions",
+			name: "Compositions",
+			component: () => import("./views/Compositions")
+		},
+		{
+			path: "/helpers",
+			name: "Helpers",
+			component: () => import("./views/Helpers")
 		}
 	]
 });

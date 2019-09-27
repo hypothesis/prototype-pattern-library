@@ -1,5 +1,8 @@
 <template>
-  <button :class="[$options.name, 'border__all color__bg--base-ghost color__border--base-light']">
+  <button
+    v-else
+    :class="[$options.name, 'border__all color__bg--base-ghost color__border--base-light']"
+  >
     <section
       v-if="parent"
       :class="[
@@ -9,7 +12,16 @@
     >
       <strong>{{ parent }}</strong>
     </section>
+    <router-link
+      v-if="path"
+      :to="path"
+      :class="[
+      $options.name + '__label',
+      'padding__left--s padding__right--s type__size--xs-m'
+    ]"
+    >{{ label }}</router-link>
     <section
+      v-else
       :class="[
       $options.name + '__label',
       'padding__left--s padding__right--s type__size--xs-m'
@@ -41,7 +53,8 @@ export default {
     count: { default: false },
     icon: { default: false },
     label: { default: "Tag label" },
-    parent: { default: false }
+    parent: { default: false },
+    path: { default: false }
   }
 };
 </script>

@@ -1,15 +1,13 @@
 <template>
-  <main :class="$options.name">
-    <Head title="Uh-oh • Hypothes.is"/>
-    <article>
-      <h2>Uh-oh, something weird happened</h2>
-      <p>
-        <router-link to="/">
-          <Icon name="arrow-left" :size="24"/>Return home
-        </router-link>
-      </p>
-    </article>
-  </main>
+  <article :class="[$options.name, 'type__align--center']">
+    <Head title="Uh-oh • Hypothes.is" />
+    <h2>Uh-oh, something weird happened</h2>
+    <p>
+      <router-link to="/">
+        <Icon name="arrow-left" :size="24" />Return home
+      </router-link>
+    </p>
+  </article>
 </template>
 <script>
 import Icon from "@/components/Icon";
@@ -19,7 +17,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.Error article {
+.Error {
   margin-left: auto;
   margin-right: auto;
   max-width: rem(960);

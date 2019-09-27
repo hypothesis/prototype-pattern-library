@@ -386,6 +386,9 @@ export default {
         { fontSize: "xl", lineHeight: "xl" }
       ]
     };
+  },
+  mounted() {
+    this.$store.dispatch('updateSelected', this.$options.name)
   }
 };
 </script>
