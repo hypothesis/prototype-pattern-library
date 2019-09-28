@@ -36,6 +36,11 @@ export default new Router({
 			path: "/helpers",
 			name: "Helpers",
 			component: () => import("./views/Helpers")
+		},
+		{
+			path: "/example/:path",
+			name: "Example",
+			component: () => import("./views/Example")
 		}
 	]
 });

@@ -1,7 +1,11 @@
 <template>
   <header :class="$options.name">
     <section :class="[$options.name + '__inner', 'padding__all--m']">
-      <router-link to="/" :class="$options.name + '__logo'">
+      <router-link
+        to="/"
+        :class="$options.name + '__logo'"
+        @click.native="$store.dispatch('updateSelected', 'Components');"
+      >
         <Logo :size="32" />
         <h3>Pattern Library</h3>
       </router-link>
@@ -72,7 +76,7 @@
 <script>
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
-import Logo from "@/components/presentational/Logo";
+import Logo from "@/components/Logo";
 export default {
   name: "Header",
   components: { Button, Icon, Logo },

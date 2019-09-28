@@ -23,13 +23,12 @@
   &__footer {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   &__tags {
-    flex: 1 0;
+    margin-left: rem(-4);
   }
   &__actions {
-    align-self: flex-start;
     flex-shrink: 0;
   }
 }

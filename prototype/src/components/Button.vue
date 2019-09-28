@@ -7,7 +7,7 @@
   ]"
     :aria-label="label ? '':'Button with ' + icon + ' action'"
   >
-    <section v-if="icon" :class="$options.name + '__icon'">
+    <section v-if="icon" :class="[$options.name + '__icon', reverse ? 'margin__left--s':'']">
       <Icon :name="icon" :size="iconSize" />
     </section>
     <section

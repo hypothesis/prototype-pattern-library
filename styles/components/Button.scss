@@ -19,7 +19,7 @@
 		flex-shrink: 0;
 		justify-content: center;
 		.Button--reversed & {
-			order: -1;
+			order: 2;
 		}
 		+ .Button__dropdown {
 			margin-left: rem(2);

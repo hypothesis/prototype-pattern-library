@@ -40,7 +40,7 @@
 </template>
 <script>
 import Button from "@/components/Button";
-import Logo from "@/components/presentational/Logo";
+import Logo from "@/components/Logo";
 import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
 export default {

@@ -62,9 +62,15 @@ li {
 }
 a {
 	@include smooth;
+}
+
+p a {
+	color: var(--color__brand);
+	font-weight: bold;
+	text-decoration: underline;
 	&:focus,
 	&:hover {
-		text-decoration: underline;
+		opacity: 0.75;
 	}
 }
 code {

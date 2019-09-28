@@ -41,13 +41,13 @@
         </p>
       </blockquote>
       <p :class="$options.name + '__excerpt'">{{ excerpt }}</p>
+      <section v-if="tags" :class="$options.name + '__tags'">
+        <Tag v-for="(tag, index) in tags" :key="index" :label="tag" class="margin__all--xs" />
+      </section>
     </section>
     <footer
-      :class="[$options.name + '__footer', 'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs']"
+      :class="[$options.name + '__footer', 'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s']"
     >
-      <section v-if="tags" :class="$options.name + '__tags'">
-        <Tag v-for="(tag, index) in tags" :key="index" :label="tag" class="margin__all--xs"/>
-      </section>
       <nav :class="$options.name + '__actions'">
         <Button icon="reply" :iconSize="16" :label="false" variant="tertiary" />
         <Button icon="external" :iconSize="16" :label="false" variant="tertiary" />
@@ -80,7 +80,7 @@ export default {
     quote: {
       default: `Users can already "mute" — as in, hide from view — accounts they find offensive. But now, Twitter is expanding the "mute" function to apply to particular words, phrases or conversations, giving users greater control over posts they don't want to encounter even if those posts specifically name them.`
     },
-    tags: { default: () => [], type: Array },
+    tags: { default: () => [], type: Array/Object },
     username: { default: "username" }
   }
 };

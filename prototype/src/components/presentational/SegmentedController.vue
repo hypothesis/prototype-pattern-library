@@ -21,15 +21,19 @@ export default {
       return this.$store.state.selected;
     }
   },
+  data() {
+    return {
+      options: ["Components", "Compositions", "Helpers"]
+    };
+  },
   methods: {
     updateSelected(item) {
-      this.$emit("segmentSelected", item);
-    }
-  },
-  props: {
-    options: {
-      default: () => ["Option 1", "Option 2", "Option 3"],
-      type: Array
+      this.$store.dispatch("updateSelected", item);
+      if (item === "Components") {
+        this.$router.push("/");
+      } else {
+        this.$router.push("/" + item.toLowerCase());
+      }
     }
   }
 };

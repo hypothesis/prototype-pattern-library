@@ -1,13 +1,15 @@
 <template>
-  <article :class="[$options.name, 'type__align--center']">
-    <Head title="Uh-oh • Hypothes.is" />
-    <h2>Uh-oh, something weird happened</h2>
-    <p>
-      <router-link to="/">
-        <Icon name="arrow-left" :size="24" />Return home
-      </router-link>
-    </p>
-  </article>
+  <main>
+    <Head title="Uh-oh! • Pattern Library • Hypothes.is" />
+    <article :class="[$options.name, 'type__align--center']">
+      <h2>Uh-oh, something weird happened</h2>
+      <p>
+        <router-link to="/">
+          <Icon name="arrow-left" :size="24" />Return home
+        </router-link>
+      </p>
+    </article>
+  </main>
 </template>
 <script>
 import Icon from "@/components/Icon";

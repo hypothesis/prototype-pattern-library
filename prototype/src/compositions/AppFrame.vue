@@ -1,6 +1,7 @@
 <template>
   <section
     :class="[$options.name, collapsed ? $options.name + '--collapsed':'', searchActive ? $options.name + '--searched':'', 'type__family--system']"
+    :style="{ height: height, maxWidth: width }"
   >
     <header
       :class="[$options.name + '__top', 'border__bottom border__left color__bg--contrast color__border--base-light padding__right--s']"
@@ -12,7 +13,7 @@
           :iconSize="16"
           :label="false"
           variant="tertiary"
-          @click.native="collapsed = !collapsed"
+          @click.native="collapse"
         />
         <section :class="$options.name + '__nav--secondary'">
           <Button icon="notes" :label="false" variant="secondary" />
@@ -138,17 +139,25 @@ export default {
     };
   },
   methods: {
+    collapse() {
+      this.collapsed = !this.collapsed;
+      this.helpActive = false;
+      this.searchActive = false;
+      this.shareActive = false;
+      this.sortMenu = false;
+      this.userMenu = false;
+    },
     search() {
       this.searchActive = !this.searchActive;
       this.searchValue = "";
     }
+  },
+  props: {
+    height: { default: "30rem" },
+    width: { default: "30rem" }
   }
 };
 </script>
 <style lang="scss">
 @import "../../../styles/compositions/AppFrame";
-.AppFrame {
-  max-width: rem(480);
-  min-height: rem(480);
-}
 </style>
