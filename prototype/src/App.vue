@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header v-if="$route.name != 'Example'" />
+    <Header v-if="$route.name != 'ExampleActual'" />
     <router-view />
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
 @import "../../styles/base";
 @import "../../styles/helpers";
 main {
-  padding-top: rem(72);
+  padding-top: rem(112);
+  @include breakpoint(xsl) {
+    padding-top: rem(72);
+  }
 }
 </style>

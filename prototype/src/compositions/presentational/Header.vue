@@ -9,24 +9,25 @@
         <Logo :size="32" />
         <h3>Pattern Library</h3>
       </router-link>
-      <section :class="$options.name + '__toggles'">
+      <section :class="[$options.name + '__toggles', 'oomph__h--s type__align--center']">
         <Button
           v-if="$route.name != 'Example'"
-          icon="contrast"
-          :label="false"
+          icon="show"
+          label="Examples"
           variant="secondary"
-          @click.native="toggleTheme"
+          @click.native="$router.push('/examples')"
         />
+        <Button icon="contrast" label="Theme" variant="secondary" @click.native="toggleTheme" />
         <Button
           v-if="$route.name != 'Example'"
           :icon="navActive ? 'cancel':'list'"
-          :label="false"
+          label="Menu"
           variant="secondary"
           @click.native="navActive = !navActive"
         />
       </section>
       <nav
-        v-if="navActive"
+        v-if="navActive && $route.name != 'Example'"
         :class="[$options.name + '__nav', navActive ? $options.name + '__nav--active':'', 'padding__all--m']"
       >
         <section v-if="selected === 'Components'">
@@ -127,6 +128,7 @@ export default {
   &__inner {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
@@ -143,18 +145,25 @@ export default {
     align-items: center;
     color: white;
     display: inline-flex;
+    flex-grow: 1;
+    justify-content: center;
+    @include breakpoint(xsl) {
+      flex-grow: 0;
+    }
     > * + * {
       margin-left: var(--size__m);
     }
   }
   &__toggles {
-    > * + * {
-      margin-left: var(--size__s);
+    flex-grow: 1;
+    margin-top: var(--size__s);
+    @include breakpoint(xsl) {
+      flex-grow: 0;
+      margin-top: 0;
     }
     .Button {
       border: none;
       color: var(--color__brand);
-      border-radius: 50%;
       &:focus,
       &:hover {
         transform: scale(1.0625);
@@ -197,6 +206,10 @@ export default {
       font-size: var(--typeSize__m);
       line-height: var(--typeLineheight__l);
       display: block;
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -20,11 +20,12 @@
 		textarea {
 			color: var(--color__base);
 			flex-grow: 1;
+			flex-shrink: 1;
 			font-size: var(--typeSize__m);
 			line-height: var(--typeLineheight__l);
 			padding: var(--size__xs) var(--size__m);
 			&::placeholder {
-				color: var(--color__base-mid);
+				color: var(--color__base-semi);
 			}
 		}
 		&--reversed {
@@ -64,7 +65,7 @@
 			select,
 			textarea {
 				&::placeholder {
-					color: var(--color__base-light);
+					color: var(--color__base-semi);
 				}
 			}
 		}

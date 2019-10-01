@@ -26,6 +26,7 @@ export default new Vuex.Store({
 		colors: [
 			"base",
 			"base-mid",
+			"base-semi",
 			"base-light",
 			"base-ghost",
 			"brand",

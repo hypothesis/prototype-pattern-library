@@ -1,32 +1,24 @@
 <template>
-  <button
-    v-else
-    :class="[$options.name, 'border__all color__bg--base-ghost color__border--base-light']"
-  >
-    <section
-      v-if="parent"
-      :class="[
-      $options.name + '__parent',
-      'border__right color__border--base-light color__type--base padding__left--s padding__right--s type__size--xs-m'
-    ]"
-    >
-      <strong>{{ parent }}</strong>
-    </section>
-    <router-link
+  <button :class="[$options.name, 'border__all color__bg--base-ghost color__border--base-light']">
+    <a
       v-if="path"
-      :to="path"
+      :href="path"
+      target="_blank"
       :class="[
       $options.name + '__label',
       'padding__left--s padding__right--s type__size--xs-m'
     ]"
-    >{{ label }}</router-link>
+    >{{ label }}</a>
     <section
       v-else
       :class="[
       $options.name + '__label',
       'padding__left--s padding__right--s type__size--xs-m'
     ]"
-    >{{ label }}</section>
+    >
+      <strong v-if="parent">{{ parent }}:</strong>
+      {{ label }}
+    </section>
     <Badge
       v-if="count"
       :class="[$options.name + '__count', 'margin__right--s']"
@@ -35,7 +27,7 @@
     />
     <button
       v-if="icon"
-      :class="[$options.name + '__action', 'color__bg--base-mid color__type--contrast color__type--base-mid']"
+      :class="[$options.name + '__action', 'border__left color__border--base-light color__type--base-mid']"
       @click="$emit('tagAction',callback)"
     >
       <Icon :name="icon" />

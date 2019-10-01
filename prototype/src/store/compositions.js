@@ -6,5 +6,13 @@ export const compositions = [
 	{
 		title: "AppFrame",
 		props: []
+	},
+	{
+		title: "SearchWeb",
+		props: []
+	},
+	{
+		title: "SearchItemWeb",
+		props: []
 	}
 ];

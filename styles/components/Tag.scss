@@ -22,10 +22,17 @@
 		width: var(--size__l);
 		&:focus,
 		&:hover {
-			background-color: var(--color__base);
+			background-color: var(--color__base-light);
+			color: var(--color__base);
 		}
 	}
 	&__label, &__parent {
 		white-space: nowrap;
+	}
+	a.Tag__label {
+		@include smooth;
+		&:focus, &:hover {
+			text-decoration: underline;
+		}
 	}
 }

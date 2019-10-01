@@ -19,6 +19,7 @@
 		display: none;
 		left: auto;
 		opacity: 1;
+		overflow: hidden;
 		position: absolute;
 		transform: translate(var(--direction), 100%);
 		width: rem(240);

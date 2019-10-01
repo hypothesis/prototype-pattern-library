@@ -1,5 +1,5 @@
 <template>
-  <main class="App">
+  <main :class="$options.name">
     <section :class="[$options.name + '__nav', 'type__align--center']">
       <SegmentedController />
     </section>

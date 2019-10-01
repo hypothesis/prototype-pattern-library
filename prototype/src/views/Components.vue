@@ -20,10 +20,10 @@
           </figcaption>
         </Card>
         <Card>
-          <Badge label="Something bold goes here!" variant="contrast" />
+          <Badge label="Something bold goes here!" :micro="false" variant="contrast" />
           <figcaption>
             <p>
-              <em>Contrast variant</em>
+              <em>Contrast variant in a larger size</em>
             </p>
           </figcaption>
         </Card>
@@ -198,6 +198,7 @@
           class="copiedIcon"
           v-if="copiedIcon"
           :label="'“' + copiedIcon + '” icon copied successfully!'"
+          :micro="false"
           variant="contrast"
         />
         <section class="icons">
@@ -439,7 +440,6 @@ export default {
     box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
     left: 50%;
     position: fixed;
-    padding: 0 var(--size__s);
     top: rem(72);
     transform: translateX(-50%);
   }

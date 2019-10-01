@@ -1,7 +1,7 @@
 <template>
-  <article :class="[$options.name, 'color__bg--base-ghost oomph__v--m padding__all--l']">
+  <article :class="[$options.name, 'color__bg--base-ghost oomph__v--m padding__all--m']">
     <header class="oomph__v--m type__align--center">
-      <router-link to="/">
+      <router-link to="/examples">
         <Logo :size="32" />
       </router-link>
       <h2 class="color__type--base-mid">Login</h2>

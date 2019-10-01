@@ -8,6 +8,12 @@ export const components = [
 				type: "String"
 			},
 			{
+				name: "micro",
+				default: "true",
+				notes: "Determines the overall size of the badge.",
+				type: "Boolean"
+			},
+			{
 				name: "variant",
 				default: "primary",
 				options: ["primary", "brand", "contrast"],
@@ -137,7 +143,7 @@ export const components = [
 				default: "center",
 				notes:
 					"Determines the direction the menu attaches itself to, related to the element.",
-				options: ['center', 'left', 'right'],
+				options: ["center", "left", "right"],
 				type: "String"
 			}
 		]

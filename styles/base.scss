@@ -56,9 +56,12 @@ p {
 	font-size: var(--typeSize__m);
 	line-height: var(--typeLineheight__l);
 }
-li {
+li, dd, dt {
 	font-size: var(--typeSize__s);
 	line-height: var(--typeLineheight__m);
+}
+dt {
+	font-weight: bold;
 }
 a {
 	@include smooth;

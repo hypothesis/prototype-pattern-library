@@ -1,12 +1,15 @@
 .Badge {
 	@include smooth;
 	align-items: center;
-	border-radius: rem(12);
+	border-radius: var(--size__m);
 	display: inline-flex;
 	justify-content: center;
 	min-height: calc(var(--size__m) + var(--size__s));
 	min-width: calc(var(--size__m) + var(--size__s));
 	width: auto;
+	&--micro {
+		border-radius: calc(var(--size__xs) + var(--size__s));
+	}
 	&--brand {
 		background-color: var(--color__brand);
 		color: white;

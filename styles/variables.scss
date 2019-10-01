@@ -8,6 +8,7 @@
 $colors: (
 	base: hsl(240, 8%, 8%),
 	base-mid: hsl(240, 8%, 38%),
+	base-semi: hsl(240, 8%, 64%),
 	base-light: hsl(240, 8%, 75%),
 	base-ghost: hsl(240, 8%, 96%),
 	brand: hsl(346, 100%, 38%),
@@ -16,10 +17,11 @@ $colors: (
 
 $colors__dark: (
 	base: #ffffff,
-	base-mid: hsl(240, 8%, 56%),
+	base-mid: hsl(240, 8%, 64%),
+	base-semi: hsl(240, 8%, 48%),
 	base-light: hsl(240, 8%, 38%),
 	base-ghost: hsl(240, 8%, 24%),
-	contrast: hsl(240, 8%, 10%),
+	contrast: hsl(240, 8%, 8%),
 	contrast-extra: hsl(240, 8%, 1%)
 );
 

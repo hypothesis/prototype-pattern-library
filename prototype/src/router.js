@@ -38,8 +38,13 @@ export default new Router({
 			component: () => import("./views/Helpers")
 		},
 		{
-			path: "/example/:path",
+			path: "/examples",
 			name: "Example",
+			component: () => import("./views/Example")
+		},
+		{
+			path: "/examples/:path",
+			name: "ExampleActual",
 			component: () => import("./views/Example")
 		}
 	]

@@ -1,5 +1,10 @@
 <template>
-  <Menu :active="menuActive" direction="left" :class="$options.name">
+  <Menu
+    :active="menuActive"
+    direction="left"
+    :class="$options.name"
+    v-click-outside="hideGroupsMenu"
+  >
     <Button
       :class="'margin__left--xs'"
       :dropdown="true"
@@ -12,7 +17,7 @@
       <header
         :class="[$options.name + '__innerHeader', 'padding__bottom--xs padding__left--s padding__right--s padding__top--s']"
       >
-        <h5>My Groups</h5>
+        <h5 class="color__type--base-semi">My Groups</h5>
       </header>
       <section :class="$options.name + '__innerContent'">
         <NavItem
@@ -20,9 +25,10 @@
           :key="item.title"
           :active="currentlySelected === item.title"
           :dropdown="true"
+          :expanded="currentlyExpanded === item.title"
           :label="item.title"
           :offset="true"
-          @NavItem="currentlySelected = $event"
+          @NavItem="[currentlySelected = $event, currentlyExpanded = $event ]"
         >
           <Logo v-if="item.img" slot="img" />
           <NavItem icon="external" label="Group activity" :small="true" slot="nested" />
@@ -30,10 +36,8 @@
           <NavItem icon="leave" label="Leave group" :small="true" slot="nested" />
         </NavItem>
       </section>
-      <footer
-        :class="[$options.name + '__innerFooter', 'border__top color__border--base-light padding__left--s padding__right--s']"
-      >
-        <Button icon="plus" label="New private group" variant="tertiary" />
+      <footer :class="[$options.name + '__innerFooter', 'border__top color__border--base-light']">
+        <NavItem icon="plus" label="New private group" :reverse="true" />
       </footer>
     </section>
   </Menu>
@@ -54,6 +58,10 @@ export default {
     };
   },
   methods: {
+    hideGroupsMenu() {
+      this.menuActive = false;
+      this.currentlyExpanded = false;
+    },
     updateSelected(item) {
       this.currentlySelected = item;
       this.$emit("groupSelected", item);

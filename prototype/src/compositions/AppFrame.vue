@@ -22,7 +22,7 @@
         <Groups v-if="!collapsed" />
         <section v-if="!collapsed" :class="$options.name + '__nav--top'">
           <Button icon="search" :label="false" variant="tertiary" @click.native="search" />
-          <Menu :class="$options.name + '__sortMenu'" :active="sortMenu" direction="right">
+          <Menu :class="$options.name + '__sortMenu'" :active="sortMenu" direction="right" v-click-outside="hideSortMenu">
             <Button
               icon="sort"
               :label="false"
@@ -63,7 +63,7 @@
             variant="tertiary"
             @click.native="helpActive = !helpActive"
           />
-          <Menu :class="$options.name + '__userMenu'" :active="userMenu" direction="right">
+          <Menu :class="$options.name + '__userMenu'" :active="userMenu" direction="right" v-click-outside="hideUserMenu">
             <Button
               :dropdown="true"
               icon="profile"
@@ -97,12 +97,8 @@
           />
         </Control>
       </form>
-      <Share v-if="shareActive && !collapsed" @share="shareActive = $event" />
-      <Card v-if="helpActive && !collapsed">
-        <p>
-          <strong>Help card</strong>
-        </p>
-      </Card>
+      <Share v-if="shareActive && !collapsed" @shareClose="shareActive = $event" />
+      <Help v-if="helpActive && !collapsed" @helpClose="helpActive = $event"/>
       <Tabs v-if="!collapsed" />
       <section v-if="!collapsed" :class="$options.name + '__innerContent'">
         <slot>
@@ -119,13 +115,14 @@ import Button from "@/components/Button";
 import Card from "@/components/Card";
 import Control from "@/components/Control";
 import Groups from "@/compositions/Groups";
+import Help from "@/compositions/Help";
 import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
 import Share from "@/compositions/Share";
 import Tabs from "@/compositions/Tabs";
 export default {
   name: "AppFrame",
-  components: { Button, Card, Control, Groups, Menu, NavItem, Share, Tabs },
+  components: { Button, Card, Control, Groups, Help, Menu, NavItem, Share, Tabs },
   data() {
     return {
       collapsed: false,
@@ -144,7 +141,13 @@ export default {
       this.helpActive = false;
       this.searchActive = false;
       this.shareActive = false;
+      this.hideSortMenu();
+      this.hideUserMenu();
+    },
+    hideSortMenu() {
       this.sortMenu = false;
+    },
+    hideUserMenu() {
       this.userMenu = false;
     },
     search() {
