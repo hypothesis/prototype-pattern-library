@@ -17,11 +17,7 @@ export default {
 </script>
 <style lang="scss">
 .Library {
-  display: flex;
-  flex-direction: column;
-  max-height: 100vh;
   &__nav {
-    flex-shrink: 0;
     padding: var(--size__m) 0;
     @include breakpoint(m) {
       padding: var(--size__l) 0;
@@ -33,12 +29,9 @@ export default {
     }
   }
   &__content {
-    flex: 1 1;
     margin-left: auto;
     margin-right: auto;
     max-width: rem(360);
-    overflow: hidden;
-    overflow-y: auto;
     padding: var(--size__m);
     width: 100%;
     @include breakpoint(xsl) {

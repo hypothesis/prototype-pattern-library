@@ -178,9 +178,12 @@ export default {
     overflow-y: auto;
     position: fixed;
     right: 0;
-    top: rem(72);
+    top: rem(112);
     transform: translateX(100%);
     width: rem(240);
+    @include breakpoint(xsl) {
+      top: rem(72);
+    }
     [data-theme="dark"] & {
       background-color: var(--color__contrast-extra);
     }
