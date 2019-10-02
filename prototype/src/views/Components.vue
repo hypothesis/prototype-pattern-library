@@ -136,7 +136,7 @@
           </figcaption>
         </Card>
         <Card>
-          <Control :action="true" icon="copy" :label="false">
+          <Control :action="true" actionLabel="Copy" icon="copy" :label="false">
             <input
               id="coolURLInput"
               name="coolURLInput"
@@ -205,7 +205,7 @@
           <Card v-for="(icon,index) in icons" :key="index">
             <button
               :aria-label="'Click to copy the ' + icon + ' icon'"
-              class="icon"
+              class="icon type__align--center"
               @click.self="copyIcon"
             >
               <Icon :name="icon.name" :size="24" />

@@ -12,7 +12,7 @@
       <p class="type__size--s-m">
         <strong>Use this link to share these annotations with anyone:</strong>
       </p>
-      <Control class="margin__top--m" :action="true" icon="copy" :label="false">
+      <Control class="margin__top--m" :action="true" actionLabel="Copy" icon="copy" :label="false">
         <input
           id="coolURLInput"
           name="coolURLInput"

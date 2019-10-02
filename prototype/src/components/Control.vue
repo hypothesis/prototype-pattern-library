@@ -14,10 +14,16 @@
       <slot />
       <button
         v-if="action && icon"
-        :class="[$options.name + '__action', $options.name + '__icon', 'color__bg--base-ghost color__type--base-mid']"
+        :class="[$options.name + '__action', $options.name + '__icon', 'border__left color__bg--base-ghost color__border--base-light color__type--base-mid']"
         :aria-label="icon + ' action'"
       >
         <Icon :name="icon" :size="14" />
+        <span
+          v-if="actionLabel"
+          :class="[$options.name + '__action--label', 'margin__left--s type__size--s-m']"
+        >
+          <strong>{{ actionLabel }}</strong>
+        </span>
       </button>
       <section v-if="!action && icon" :class="[$options.name + '__icon', 'color__type--base-mid']">
         <Icon :name="icon" :size="14" />
@@ -50,6 +56,7 @@ export default {
   },
   props: {
     action: { default: false },
+    actionLabel: { default: false },
     disabled: { default: false },
     icon: { default: false },
     label: { default: "Control label" },

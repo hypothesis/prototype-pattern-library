@@ -60,9 +60,6 @@ a {
 	border: none;
 	color: inherit;
 	cursor: pointer;
-	&:focus {
-		outline: none;
-	}
 }
 
 // Forms
@@ -87,9 +84,6 @@ textarea {
 	border-radius: 0;
 	display: block;
 	font-family: inherit;
-	&:focus {
-		outline: 0;
-	}
 }
 
 label,
@@ -98,13 +92,13 @@ button,
 select,
 textarea {
 	background: transparent;
+	border: none;
+	color: inherit;
 	font-family: inherit;
 	font-weight: inherit;
-	color: inherit;
-	width: 100%;
 	max-width: 100%;
-	border: none;
-	outline: 0;
+	text-align: left;
+	width: 100%;
 }
 
 button {

@@ -7,7 +7,6 @@
 		display: flex;
 		justify-content: space-between;
 		min-height: calc(var(--size__l) + var(--size__s));
-		overflow: hidden;
 		[data-theme="dark"] & {
 			background-color: var(--color__contrast-extra);
 		}
@@ -47,12 +46,16 @@
 	&__icon {
 		align-items: center;
 		display: inline-flex;
-		flex: 0 0 var(--size__l);
 		justify-content: center;
 		min-width: calc(var(--size__l) + var(--size__s));
+		width: auto;
 	}
 	&__action {
 		@include smooth;
+		border-bottom-right-radius: var(--size__xs);
+		border-top-right-radius: var(--size__xs);
+		padding-left: var(--size__m);
+		padding-right: var(--size__m);
 		&:focus,
 		&:hover {
 			color: var(--color__base);
