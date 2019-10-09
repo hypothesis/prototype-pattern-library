@@ -7,12 +7,16 @@
 		display: flex;
 		justify-content: space-between;
 		min-height: calc(var(--size__l) + var(--size__s));
+		position: relative;
 		[data-theme="dark"] & {
 			background-color: var(--color__contrast-extra);
 		}
 		&:focus-within {
 			border-color: var(--color__base);
 			box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+			.Control__icon {
+				color: var(--color__base-mid);
+			}
 		}
 		input,
 		select,
@@ -31,7 +35,7 @@
 			input,
 			select,
 			textarea {
-				padding-left: 0;
+				padding-left: calc(var(--size__l) + var(--size__s));
 			}
 			.Control__icon {
 				order: -1;
@@ -44,22 +48,34 @@
 		text-transform: uppercase;
 	}
 	&__icon {
+		@include smooth;
 		align-items: center;
+		display: inline-flex;
+		height: 100%;
+		justify-content: center;
+		min-width: calc(var(--size__l) + var(--size__s));
+		position: absolute;
+	}
+	&__action {
+		@include smooth;
+		align-items: center;
+		border-bottom-right-radius: var(--size__xs);
+		border-top-right-radius: var(--size__xs);
 		display: inline-flex;
 		justify-content: center;
 		min-width: calc(var(--size__l) + var(--size__s));
 		width: auto;
-	}
-	&__action {
-		@include smooth;
-		border-bottom-right-radius: var(--size__xs);
-		border-top-right-radius: var(--size__xs);
-		padding-left: var(--size__m);
-		padding-right: var(--size__m);
 		&:focus,
 		&:hover {
-			color: var(--color__base);
+			color: var(--color__brand);
 		}
+	}
+	&__status {
+		align-items: center;
+		color: white;
+		display: inline-flex;
+		justify-content: center;
+		width: calc(var(--size__s) + var(--size__m));
 	}
 	&--disabled {
 		.Control__wrap {
@@ -78,6 +94,22 @@
 			&:hover {
 				color: var(--color__base-mid);
 			}
+		}
+	}
+	&--invalid {
+		.Control__wrap {
+			border-color: var(--color__warn);
+		}
+		.Control__status {
+			background-color: var(--color__warn);
+		}
+	}
+	&--valid {
+		.Control__wrap {
+			border-color: var(--color__success);
+		}
+		.Control__status {
+			background-color: var(--color__success);
 		}
 	}
 }

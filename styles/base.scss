@@ -70,10 +70,9 @@ a {
 p a {
 	color: var(--color__brand);
 	font-weight: bold;
-	text-decoration: underline;
 	&:focus,
 	&:hover {
-		opacity: 0.75;
+		text-decoration: underline;
 	}
 }
 code {

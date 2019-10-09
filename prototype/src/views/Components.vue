@@ -191,16 +191,37 @@
             </p>
           </figcaption>
         </Card>
+        <Card class="oomph__v--m">
+          <Control label="Invalid input" :status="invalidValue ? 'valid': 'invalid'">
+            <input
+              id="invalidInput"
+              name="invalidInput"
+              type="text"
+              placeholder="I require something special…"
+              v-model="invalidValue"
+            />
+          </Control>
+          <Control label="Valid input" :status="validValue ? 'valid': 'invalid'">
+            <input
+              id="validInput"
+              name="validInput"
+              type="text"
+              placeholder="I should include a value…"
+              v-model="validValue"
+            />
+          </Control>
+          <figcaption>
+            <p>
+              <em>Validation examples</em>
+            </p>
+          </figcaption>
+        </Card>
       </ComponentWrapper>
       <ComponentWrapper name="Icon">
-        <p>Need a copy of one of these icons as an SVG? Simply click the icon you’d like and it will be copied to your clipboard.</p>
-        <Badge
-          class="copiedIcon"
-          v-if="copiedIcon"
-          :label="'“' + copiedIcon + '” icon copied successfully!'"
-          :micro="false"
-          variant="contrast"
-        />
+        <p class="tip">
+          <Badge label="Tip" :micro="false" variant="brand" />Need a copy of one of these icons as an SVG? Click the icon and it will be copied to your clipboard.
+        </p>
+        <Badge v-if="timer" class="status" :label="timer" :micro="false" variant="contrast" />
         <section class="icons">
           <Card v-for="(icon,index) in icons" :key="index">
             <button
@@ -376,14 +397,17 @@ export default {
   },
   data() {
     return {
-      icons: icons,
-      copiedIcon: false,
+      buttonMenuFocused: false,
       controlMenuFocused: false,
-      buttonMenuFocused: false
+      icons: icons,
+      timer: false,
+      invalidValue: "",
+      validValue: "Yep, I check out"
     };
   },
   methods: {
     copyIcon() {
+      this.timer = false;
       let children = event.srcElement.childNodes[0];
       let code = children.outerHTML.replace(
         new RegExp('width="24" height="24"', "g"),
@@ -397,9 +421,9 @@ export default {
       dummy.select();
       document.execCommand("copy");
       document.body.removeChild(dummy);
-      this.copiedIcon = title;
+      this.timer = "Copied “" + title + "” icon";
       setTimeout(() => {
-        this.copiedIcon = false;
+        this.timer = false;
       }, 1500);
     }
   }

@@ -1,5 +1,7 @@
 <template>
-  <fieldset :class="[$options.name, disabled ? $options.name + '--disabled':'']">
+  <fieldset
+    :class="[$options.name, disabled ? $options.name + '--disabled':'', status ? $options.name + '--' + status:'']"
+  >
     <label
       v-if="label"
       :for="labelID"
@@ -11,10 +13,13 @@
     <section
       :class="[$options.name + '__wrap', reverse ? $options.name + '__wrap--reversed':'', 'border__all color__bg--contrast color__border--base-light']"
     >
+      <section v-if="status" :class="$options.name + '__status'">
+        <Icon :name="status === 'invalid' ? 'cancel':'check'" :size="14" />
+      </section>
       <slot />
       <button
         v-if="action && icon"
-        :class="[$options.name + '__action', $options.name + '__icon', 'border__left color__bg--base-ghost color__border--base-light color__type--base-mid']"
+        :class="[$options.name + '__action', 'border__left color__bg--base-ghost color__border--base-light color__type--base-mid padding__left--m padding__right--m']"
         :aria-label="icon + ' action'"
       >
         <Icon :name="icon" :size="14" />
@@ -25,7 +30,11 @@
           <strong>{{ actionLabel }}</strong>
         </span>
       </button>
-      <section v-if="!action && icon" :class="[$options.name + '__icon', 'color__type--base-mid']">
+      <section
+        v-if="!action && icon"
+        :class="[$options.name + '__icon', 'color__type--base-semi']"
+        :style="{right: (reverse ? '':0), left: (reverse ? 0:'')}"
+      >
         <Icon :name="icon" :size="14" />
       </section>
     </section>
@@ -60,7 +69,8 @@ export default {
     disabled: { default: false },
     icon: { default: false },
     label: { default: "Control label" },
-    reverse: { default: false }
+    reverse: { default: false },
+    status: { default: false }
   }
 };
 </script>

@@ -22,4 +22,25 @@ main {
     padding-top: rem(72);
   }
 }
+.status {
+  left: 50%;
+  position: fixed;
+  top: rem(128);
+  transform: translateX(-50%) !important;
+  z-index: 500;
+  @include breakpoint(xsl) {
+    top: rem(72);
+  }
+}
+.tip {
+  background-color: var(--color__base-ghost);
+  border: rem(1) solid var(--color__base-light);
+  border-radius: var(--size__s);
+  margin-left: rem(-8);
+  margin-right: rem(-8);
+  padding: var(--size__s);
+  .Badge {
+    margin-right: var(--size__s);
+  }
+}
 </style>

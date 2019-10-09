@@ -8,15 +8,22 @@
         <h3 id="color-base-palette">Base palette</h3>
       </router-link>
       <p>It’s helpful in a color palette to strive for as much color contrast as possible. For text items in the interface stick with those that pass color-contrast tests. For borders and backgrounds, those that fail are still acceptable.</p>
+      <p class="tip">
+        <Badge label="Tip" :micro="false" variant="brand" />Need a copy of the HEX value for any of the following colors? Click the color to copy to your clipboard.
+      </p>
+      <Badge v-if="timer" class="status" :label="timer" :micro="false" variant="contrast" />
       <section :class="$options.name + '__grid'">
         <Card
           v-for="(color,index) in colors"
           :key="'color' + index"
           :class="$options.name + '__color'"
         >
-          <span :class="[$options.name + '__color--bg', 'color__bg--' + color]"></span>
+          <button
+            :class="[$options.name + '__color--bg', 'color__bg--' + color]"
+            @click="copyColor(color)"
+          ></button>
           <span :class="$options.name + '__color--label'">
-            <code>--{{ color }}</code>
+            <code>{{ color }}</code>
           </span>
         </Card>
       </section>
@@ -355,13 +362,13 @@
   </Library>
 </template>
 <script>
-import axios from "axios";
+import Badge from "@/components/Badge";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
 import Library from "@/compositions/presentational/Library";
 export default {
   name: "Helpers",
-  components: { Card, Icon, Library },
+  components: { Badge, Card, Icon, Library },
   computed: {
     colors() {
       let colors = this.$store.state.colors;
@@ -388,8 +395,28 @@ export default {
         { fontSize: "m", lineHeight: "l" },
         { fontSize: "l", lineHeight: "l" },
         { fontSize: "xl", lineHeight: "xl" }
-      ]
+      ],
+      timer: false
     };
+  },
+  methods: {
+    copyColor(value) {
+      this.timer = false;
+      let color = window
+        .getComputedStyle(document.documentElement)
+        .getPropertyValue("--color__" + value);
+      let dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.setAttribute("id", "dummy_id");
+      document.getElementById("dummy_id").value = color;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      this.timer = "Copied “" + value + "” HEX value";
+      setTimeout(() => {
+        this.timer = false;
+      }, 3000);
+    }
   }
 };
 </script>

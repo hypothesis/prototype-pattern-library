@@ -47,7 +47,7 @@ pre {
 }
 
 canvas {
-	-ms-touch-action: double-tap-zoom;
+	touch-action: double-tap-zoom;
 }
 
 ul,
@@ -60,6 +60,7 @@ a {
 	border: none;
 	color: inherit;
 	cursor: pointer;
+	outline: none;
 }
 
 // Forms
@@ -97,6 +98,7 @@ textarea {
 	font-family: inherit;
 	font-weight: inherit;
 	max-width: 100%;
+	outline: none;
 	text-align: left;
 	width: 100%;
 }
