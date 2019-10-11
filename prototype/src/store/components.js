@@ -75,12 +75,6 @@ export const components = [
 		title: "Control",
 		props: [
 			{
-				name: "action",
-				default: "false",
-				notes: "Decides if wrapper around icon is a button or not.",
-				type: "Boolean"
-			},
-			{
 				name: "disabled",
 				default: "false",
 				type: "Boolean"
@@ -93,6 +87,11 @@ export const components = [
 				type: "Boolean/String"
 			},
 			{
+				name: "inline",
+				default: "false",
+				type: "Boolean"
+			},
+			{
 				name: "label",
 				default: "Input label",
 				type: "String"
@@ -103,6 +102,17 @@ export const components = [
 				notes:
 					"If you’d like the icon on the left instead of the default right position.",
 				type: "Boolean"
+			},
+			{
+				name: "status",
+				default: "false",
+				options: ["invalid", "valid"],
+				type: "Boolean/String"
+			},
+			{
+				name: "statusLabel",
+				default: "false",
+				type: "Boolean/String"
 			}
 		]
 	},

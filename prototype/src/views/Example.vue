@@ -6,7 +6,9 @@
         :tags="[{ label: 'Cool tag title', path: '#coolurl'}, { label: 'Another great tag', path: '#coolurl'}, { label: 'A reallyl long, but equally important tag', path: '#coolurl'}]"
       />
     </AppFrame>
-    <LMS v-if="path === 'LMS'" />
+    <LMSCredentials v-if="path === 'LMSCredentials'" />
+    <LMSGrader v-if="path === 'LMSGrader'" />
+    <LMSSelectFile v-if="path === 'LMSSelectFile'" />
     <Login v-if="path === 'Login'" />
     <Search v-if="path === 'Search'" />
   </main>
@@ -32,12 +34,14 @@ import Annotation from "@/compositions/Annotation";
 import AppFrame from "@/compositions/AppFrame";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
-import LMS from "@/examples/LMS";
+import LMSCredentials from "@/examples/LMSCredentials";
+import LMSGrader from "@/examples/LMSGrader";
+import LMSSelectFile from "@/examples/LMSSelectFile";
 import Login from "@/examples/Login";
 import Search from "@/examples/Search";
 export default {
   name: "Example",
-  components: { Annotation, AppFrame, Card, Icon, LMS, Login, Search },
+  components: { Annotation, AppFrame, Card, Icon, LMSCredentials, LMSGrader, LMSSelectFile, Login, Search },
   computed: {
     path() {
       return this.$route.params.path;
@@ -45,7 +49,7 @@ export default {
   },
   data() {
     return {
-      examples: ["AppFrame", "LMS", "Login", "Search"]
+      examples: ["AppFrame", "LMSCredentials", "LMSGrader", "LMSSelectFile", "Login", "Search"]
     };
   }
 };

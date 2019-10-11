@@ -63,12 +63,12 @@ import Control from "@/components/Control";
 import Icon from "@/components/Icon";
 import Logo from "@/components/Logo";
 export default {
-  name: "LMS",
+  name: "LMSCredentials",
   components: { Button, Card, Control, Icon, Logo }
 };
 </script>
 <style lang="scss">
-.LMS {
+.LMSCredentials {
   align-items: center;
   display: flex;
   flex-direction: column;

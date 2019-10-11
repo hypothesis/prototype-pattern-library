@@ -12,8 +12,10 @@
       <section class="padding__bottom--xs padding__top--xs type__align--center">
         <Button icon="external" label="Help topics" :reverse="true" variant="tertiary" />
       </section>
-      <section class="border__left color__border--base-light padding__bottom--xs padding__top--xs type__align--center">
-        <Button icon="plus" label="Create support ticket" :reverse="true" variant="tertiary" />
+      <section
+        class="border__left border__top color__border--base-light padding__bottom--xs padding__top--xs type__align--center"
+      >
+        <Button icon="plus" label="New support ticket" :reverse="true" variant="tertiary" />
       </section>
     </nav>
     <section :class="[$options.name + '__content', 'padding__all--m']">

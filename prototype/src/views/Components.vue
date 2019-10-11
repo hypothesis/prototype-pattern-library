@@ -136,7 +136,7 @@
           </figcaption>
         </Card>
         <Card>
-          <Control :action="true" actionLabel="Copy" icon="copy" :label="false">
+          <Control :label="false">
             <input
               id="coolURLInput"
               name="coolURLInput"
@@ -144,6 +144,7 @@
               value="https://somereallylongurl.withsome.1202020?"
               type="text"
             />
+            <Button slot="actionRight" icon="copy" label="Copy" variant="muted" />
           </Control>
           <figcaption>
             <p>
@@ -192,7 +193,11 @@
           </figcaption>
         </Card>
         <Card class="oomph__v--m">
-          <Control label="Invalid input" :status="invalidValue ? 'valid': 'invalid'">
+          <Control
+            label="Invalid input"
+            :status="invalidValue ? 'valid': 'invalid'"
+            :statusLabel="invalidValue ? '': 'Missing value'"
+          >
             <input
               id="invalidInput"
               name="invalidInput"
@@ -201,7 +206,11 @@
               v-model="invalidValue"
             />
           </Control>
-          <Control label="Valid input" :status="validValue ? 'valid': 'invalid'">
+          <Control
+            label="Valid input"
+            :status="validValue ? 'valid': 'invalid'"
+            :statusLabel="validValue ? '': 'Missing value'"
+          >
             <input
               id="validInput"
               name="validInput"

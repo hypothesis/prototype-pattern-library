@@ -6,13 +6,18 @@
       <p :class="[$options.name + '__header--label', 'color__type--base-mid margin__right--s']">
         <strong>Share Annotations in {{ group }}</strong>
       </p>
-      <Button icon="cancel" label="Close" variant="muted" @click.native="$emit('shareClose',false)" />
+      <Button
+        icon="cancel"
+        label="Close"
+        variant="muted"
+        @click.native="$emit('shareClose',false)"
+      />
     </header>
     <section :class="[$options.name + '__content', 'padding__all--m']">
       <p class="type__size--s-m">
         <strong>Use this link to share these annotations with anyone:</strong>
       </p>
-      <Control class="margin__top--m" :action="true" actionLabel="Copy" icon="copy" :label="false">
+      <Control class="margin__top--m" :label="false">
         <input
           id="coolURLInput"
           name="coolURLInput"
@@ -20,6 +25,7 @@
           value="https://somereallylongurl.withsome.1202020?"
           type="text"
         />
+        <Button slot="actionRight" icon="copy" label="Copy" variant="muted" />
       </Control>
       <p class="color__type--base-mid margin__top--m type__size--s-m">
         Anyone using this link may view the annotations in the group

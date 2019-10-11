@@ -38,7 +38,9 @@
 				padding-left: calc(var(--size__l) + var(--size__s));
 			}
 			.Control__icon {
+				left: 0;
 				order: -1;
+				right: auto !important;
 			}
 		}
 	}
@@ -55,19 +57,31 @@
 		justify-content: center;
 		min-width: calc(var(--size__l) + var(--size__s));
 		position: absolute;
+		right: 0;
 	}
-	&__action {
-		@include smooth;
-		align-items: center;
-		border-bottom-right-radius: var(--size__xs);
-		border-top-right-radius: var(--size__xs);
-		display: inline-flex;
-		justify-content: center;
-		min-width: calc(var(--size__l) + var(--size__s));
+	&__action--left,
+	&__action--right {
+		flex-shrink: 0;
 		width: auto;
-		&:focus,
-		&:hover {
-			color: var(--color__brand);
+		.Button {
+			border: none;
+		}
+	}
+	&__action--left {
+		.Button {
+			border-right: rem(1) solid var(--color__base-light);
+			border-bottom-right-radius: 0;
+			border-top-right-radius: 0;
+		}
+	}
+	&__action--right {
+		.Button {
+			border-left: rem(1) solid var(--color__base-light);
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+		}
+		+ .Control__icon {
+			right: calc(var(--size__l) + var(--size__s));
 		}
 	}
 	&__status {
@@ -110,6 +124,24 @@
 		}
 		.Control__status {
 			background-color: var(--color__success);
+		}
+	}
+	&--inline {
+		align-items: center;
+		display: inline-flex;
+		flex-wrap: wrap;
+		.Badge {
+			bottom: rem(-4);
+			left: 0;
+			position: absolute;
+			transform: translateY(100%);
+		}
+		.Control__label {
+			flex-shrink: 0;
+			width: auto;
+		}
+		.Control__wrap {
+			flex-grow: 1;
 		}
 	}
 }

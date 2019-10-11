@@ -13,13 +13,21 @@
 	}
 	&__nav {
 		display: flex;
+		flex-wrap: wrap;
 		> * {
-			flex: 1 0 50%;
+			flex: 1 0 100%;
+			border-left-color: transparent;
+			@include breakpoint(xsl) {
+				border-left-color: inherit;
+				border-top: 0;
+				flex-basis: 50%;
+			}
 		}
 	}
 	&__content {
 		dl {
 			display: grid;
+			grid-row-gap: var(--size__s);
 			grid-template-columns: rem(120) auto;
 		}
 	}

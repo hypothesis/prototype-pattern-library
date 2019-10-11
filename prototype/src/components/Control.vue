@@ -1,50 +1,43 @@
 <template>
-  <fieldset
-    :class="[$options.name, disabled ? $options.name + '--disabled':'', status ? $options.name + '--' + status:'']"
+  <section
+    :class="[$options.name, disabled ? $options.name + '--disabled':'', inline ? $options.name + '--inline':'', status ? $options.name + '--' + status:'']"
   >
     <label
       v-if="label"
       :for="labelID"
       :class="[
         $options.name + '__label',
-        'color__type--base-mid margin__bottom--s type__size--xs-m'
+        inline ? 'margin__right--s':'margin__bottom--s',
+        'color__type--base-mid type__size--xs-m'
       ]"
     >{{ label }}</label>
     <section
       :class="[$options.name + '__wrap', reverse ? $options.name + '__wrap--reversed':'', 'border__all color__bg--contrast color__border--base-light']"
     >
+      <section v-if="$slots.actionLeft" :class="$options.name + '__action--left'">
+        <slot name="actionLeft"></slot>
+      </section>
       <section v-if="status" :class="$options.name + '__status'">
         <Icon :name="status === 'invalid' ? 'cancel':'check'" :size="14" />
       </section>
       <slot />
-      <button
-        v-if="action && icon"
-        :class="[$options.name + '__action', 'border__left color__bg--base-ghost color__border--base-light color__type--base-mid padding__left--m padding__right--m']"
-        :aria-label="icon + ' action'"
-      >
-        <Icon :name="icon" :size="14" />
-        <span
-          v-if="actionLabel"
-          :class="[$options.name + '__action--label', 'margin__left--s type__size--s-m']"
-        >
-          <strong>{{ actionLabel }}</strong>
-        </span>
-      </button>
-      <section
-        v-if="!action && icon"
-        :class="[$options.name + '__icon', 'color__type--base-semi']"
-        :style="{right: (reverse ? '':0), left: (reverse ? 0:'')}"
-      >
+      <section v-if="$slots.actionRight" :class="$options.name + '__action--right'">
+        <slot name="actionRight"></slot>
+      </section>
+      <section v-if="icon" :class="[$options.name + '__icon', 'color__type--base-semi']">
         <Icon :name="icon" :size="14" />
       </section>
+      <Badge v-if="statusLabel && inline" :label="statusLabel" :micro="false" variant="contrast" />
     </section>
-  </fieldset>
+    <Badge class="margin__top--s" v-if="statusLabel && !inline" :label="statusLabel" :micro="false" variant="contrast" />
+  </section>
 </template>
 <script>
+import Badge from "@/components/Badge";
 import Icon from "@/components/Icon";
 export default {
   name: "Control",
-  components: { Icon },
+  components: { Badge, Icon },
   computed: {
     labelID() {
       let id = this.$slots.default[0].data.attrs.id;
@@ -64,13 +57,13 @@ export default {
     };
   },
   props: {
-    action: { default: false },
-    actionLabel: { default: false },
     disabled: { default: false },
     icon: { default: false },
+    inline: { default: false },
     label: { default: "Control label" },
     reverse: { default: false },
-    status: { default: false }
+    status: { default: false },
+    statusLabel: { default: false }
   }
 };
 </script>
