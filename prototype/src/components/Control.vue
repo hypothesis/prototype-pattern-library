@@ -1,6 +1,6 @@
 <template>
   <section
-    :class="[$options.name, disabled ? $options.name + '--disabled':'', inline ? $options.name + '--inline':'', status ? $options.name + '--' + status:'']"
+    :class="[$options.name, disabled ? $options.name + '--disabled':'', inline ? $options.name + '--inline':'', status ? $options.name + '--' + status:'', icon ? $options.name + '--icon':'']"
   >
     <label
       v-if="label"

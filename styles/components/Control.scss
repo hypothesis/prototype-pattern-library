@@ -30,6 +30,16 @@
 			&::placeholder {
 				color: var(--color__base-semi);
 			}
+			&:focus {
+				color: var(--color__brand);
+			}
+		}
+		&--icon {
+			input,
+			select,
+			textarea {
+				padding-right: calc(var(--size__l) + var(--size__s));
+			}
 		}
 		&--reversed {
 			input,
@@ -88,6 +98,7 @@
 		align-items: center;
 		color: white;
 		display: inline-flex;
+		flex-shrink: 0;
 		justify-content: center;
 		width: calc(var(--size__s) + var(--size__m));
 	}

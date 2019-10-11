@@ -38,10 +38,10 @@
 	.margin__all--#{$sizeKey} {
 		margin: var(--size__#{$sizeKey});
 	}
-	.oomph__h--#{$sizeKey} > * + * {
+	.oomph__h--#{$sizeKey} > * + *:not([class*="margin"]) {
 		margin-left: var(--size__#{$sizeKey});
 	}
-	.oomph__v--#{$sizeKey} > * + * {
+	.oomph__v--#{$sizeKey} > * + *:not([class*="margin"]) {
 		margin-top: var(--size__#{$sizeKey});
 	}
 	.padding__all--#{$sizeKey} {

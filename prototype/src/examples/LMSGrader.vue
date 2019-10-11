@@ -13,23 +13,23 @@
       </section>
       <form @submit.prevent :class="$options.name + '__grader'">
         <Control icon="caret-down" :inline="true" label="Student (1 of 3)">
-          <Button slot="actionLeft" icon="arrow-left" :label="false" variant="muted" />
+          <Button slot="actionLeft" icon="arrow-left" :label="false" variant="primary" />
           <select id="coolSelect" name="coolSelect">
             <option>Please choose…</option>
             <option selected>Student 1</option>
             <option>Student 2</option>
             <option>Student 3</option>
           </select>
-          <Button slot="actionRight" icon="arrow-right" :label="false" variant="muted" />
+          <Button slot="actionRight" icon="arrow-right" :label="false" variant="primary" />
         </Control>
         <Control
           :inline="true"
           label="Grade (out of 10)"
-          :status="grade >= 0 && grade <= 10 ? '':'invalid'"
-          :statusLabel="grade >= 0 && grade <= 10 ? '':'Must be less than 10'"
+          :status="error ? 'invalid':''"
+          :statusLabel="error"
         >
           <input id="readingGrade" placeholder="ex. 9" type="text" v-model="grade" />
-          <Button slot="actionRight" icon="check" label="Submit grade" variant="muted" />
+          <Button slot="actionRight" icon="check" label="Submit grade" variant="primary" @click.native="checkValue" />
         </Control>
       </form>
     </header>
@@ -51,8 +51,25 @@ export default {
   components: { Button, Control, Icon },
   data() {
     return {
+      error: "",
       grade: ""
     };
+  },
+  methods: {
+    checkValue() {
+      let grade = Number(this.grade);
+      if ((grade <= 1 || grade > 10)) {
+        this.error = "Must be between 1 and 10";
+        this.grade = "";
+        document.getElementById("readingGrade").focus();
+      } else if ((grade = "")) {
+        this.error = "Must enter grade";
+        this.grade = "";
+        document.getElementById("readingGrade").focus();
+      } else {
+        console.log('Woo-hoo grade submitted!')
+      }
+    }
   }
 };
 </script>
@@ -92,9 +109,7 @@ export default {
   }
   &__grader {
     display: inline-flex;
-    flex-grow: 1;
     flex-wrap: wrap;
-    max-width: rem(960);
     @include breakpoint(xsl) {
       flex-wrap: nowrap;
     }
@@ -107,9 +122,14 @@ export default {
         margin-top: 0;
       }
     }
-    .Control__wrap {
-      @include breakpoint(xsl) {
-        min-width: rem(320);
+    .Control--inline {
+      @include breakpoint(l) {
+        flex-wrap: nowrap;
+      }
+    }
+    .Control:last-of-type {
+      .Control__wrap {
+        max-width: rem(240);
       }
     }
   }
