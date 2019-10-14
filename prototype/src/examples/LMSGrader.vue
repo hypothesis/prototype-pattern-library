@@ -13,14 +13,14 @@
       </section>
       <form @submit.prevent :class="$options.name + '__grader'">
         <Control icon="caret-down" :inline="true" label="Student (1 of 3)">
-          <Button slot="actionLeft" icon="arrow-left" :label="false" variant="primary" />
+          <Button slot="actionLeft" icon="arrow-left" :label="false" variant="secondary" />
           <select id="coolSelect" name="coolSelect">
             <option>Please choose…</option>
             <option selected>Student 1</option>
             <option>Student 2</option>
             <option>Student 3</option>
           </select>
-          <Button slot="actionRight" icon="arrow-right" :label="false" variant="primary" />
+          <Button slot="actionRight" icon="arrow-right" :label="false" variant="secondary" />
         </Control>
         <Control
           :inline="true"
@@ -29,7 +29,13 @@
           :statusLabel="error"
         >
           <input id="readingGrade" placeholder="ex. 9" type="text" v-model="grade" />
-          <Button slot="actionRight" icon="check" label="Submit grade" variant="primary" @click.native="checkValue" />
+          <Button
+            slot="actionRight"
+            icon="check"
+            label="Submit grade"
+            variant="primary"
+            @click.native="checkValue"
+          />
         </Control>
       </form>
     </header>
@@ -58,7 +64,7 @@ export default {
   methods: {
     checkValue() {
       let grade = Number(this.grade);
-      if ((grade <= 1 || grade > 10)) {
+      if (grade <= 1 || grade > 10) {
         this.error = "Must be between 1 and 10";
         this.grade = "";
         document.getElementById("readingGrade").focus();
@@ -67,7 +73,7 @@ export default {
         this.grade = "";
         document.getElementById("readingGrade").focus();
       } else {
-        console.log('Woo-hoo grade submitted!')
+        console.log("Woo-hoo grade submitted!");
       }
     }
   }
@@ -125,6 +131,16 @@ export default {
     .Control--inline {
       @include breakpoint(l) {
         flex-wrap: nowrap;
+      }
+    }
+    .Control:first-of-type {
+      .Control__wrap {
+        &:focus-within .Button--secondary {
+          border-color: var(--color__base);
+        }
+      }
+      .Button--secondary:focus {
+        color: var(--color__brand);
       }
     }
     .Control:last-of-type {
