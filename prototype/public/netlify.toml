@@ -1,7 +1,8 @@
 [[redirects]]
-  from = "https://hypothesis-pattern-library.netlify.com/*"
-  to = "https://hypothesis-pattern-library.netlify.com/"
+  from = "/*"
+  to = "/"
   status = 200
+  force = true
 [[headers]]
   for = "/serviceworker.js"
   [headers.values]
