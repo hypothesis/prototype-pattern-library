@@ -1,9 +1,7 @@
 [[redirects]]
-  from = "/*"
-  to = "/"
+  from = "https://hypothesis-pattern-library.netlify.com/*"
+  to = "https://hypothesis-pattern-library.netlify.com/"
   status = 200
-  force = true
-  headers = {X-From = "Netlify"}
 [[headers]]
   for = "/serviceworker.js"
   [headers.values]
