@@ -12,14 +12,16 @@
 	}
 	&--brand {
 		background-color: var(--color__brand);
+		border-color: transparent;
 		color: white;
 	}
 	&--contrast {
 		background-color: var(--color__base);
+		border-color: transparent;
 		color: var(--color__contrast);
 	}
 	&--primary {
-		background-color: var(--color__base-ghost);
+		background-color: var(--color__contrast);
 	}
 	&__label {
 		font-weight: bold;

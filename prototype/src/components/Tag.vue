@@ -23,7 +23,7 @@
       v-if="count"
       :class="[$options.name + '__count', 'margin__right--s']"
       :label="count"
-      variant="contrast"
+      variant="primary"
     />
     <button
       v-if="icon"

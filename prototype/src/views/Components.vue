@@ -364,7 +364,7 @@
           </figcaption>
         </Card>
         <Card>
-          <Tag :count="58" label="h-breadcrumbs" />
+          <Tag :count="1000" label="h-breadcrumbs" />
           <figcaption>
             <p>
               <em>

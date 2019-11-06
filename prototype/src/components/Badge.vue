@@ -1,6 +1,6 @@
 <template>
   <section
-    :class="[$options.name, $options.name + '--' + variant, micro ? $options.name + '--micro padding__left--xs padding__right--xs':'padding__left--m padding__right--m']"
+    :class="[$options.name, $options.name + '--' + variant, micro ? $options.name + '--micro padding__left--xs padding__right--xs':'padding__left--m padding__right--m', 'border__all color__border--base-light']"
   >
     <section
       :class="[
