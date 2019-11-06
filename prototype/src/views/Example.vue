@@ -11,6 +11,7 @@
     <LMSSelectFile v-if="path === 'LMSSelectFile'" />
     <Login v-if="path === 'Login'" />
     <Search v-if="path === 'Search'" />
+    <Tagcloud v-if="path === 'Tagcloud'" />
   </main>
   <main v-else :class="$options.name">
     <section :class="[$options.name + '__inner', 'oomph__v--m']">
@@ -39,9 +40,21 @@ import LMSGrader from "@/examples/LMSGrader";
 import LMSSelectFile from "@/examples/LMSSelectFile";
 import Login from "@/examples/Login";
 import Search from "@/examples/Search";
+import Tagcloud from "@/examples/Tagcloud";
 export default {
   name: "Example",
-  components: { Annotation, AppFrame, Card, Icon, LMSCredentials, LMSGrader, LMSSelectFile, Login, Search },
+  components: {
+    Annotation,
+    AppFrame,
+    Card,
+    Icon,
+    LMSCredentials,
+    LMSGrader,
+    LMSSelectFile,
+    Login,
+    Search,
+    Tagcloud
+  },
   computed: {
     path() {
       return this.$route.params.path;
@@ -49,7 +62,15 @@ export default {
   },
   data() {
     return {
-      examples: ["AppFrame", "LMSCredentials", "LMSGrader", "LMSSelectFile", "Login", "Search"]
+      examples: [
+        "AppFrame",
+        "LMSCredentials",
+        "LMSGrader",
+        "LMSSelectFile",
+        "Login",
+        "Search",
+        "Tagcloud"
+      ]
     };
   }
 };

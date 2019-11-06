@@ -215,6 +215,12 @@ export const components = [
 				type: "String"
 			},
 			{
+				name: "micro",
+				default: "false",
+				notes: "Determines the compactness of the tag.",
+				type: "Boolean"
+			},
+			{
 				name: "parent",
 				default: "false",
 				type: "String"

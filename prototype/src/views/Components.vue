@@ -364,12 +364,13 @@
           </figcaption>
         </Card>
         <Card>
-          <Tag :count="1000" label="h-breadcrumbs" />
+          <Tag :count="1000" label="h-breadcrumbs" :micro="true" />
           <figcaption>
             <p>
               <em>
                 Tag with
-                <code>count</code> prop
+                <code>count</code> and
+                <code>micro</code> props
               </em>
             </p>
           </figcaption>

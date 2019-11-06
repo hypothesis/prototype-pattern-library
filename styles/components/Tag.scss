@@ -6,10 +6,15 @@
 	height: var(--size__l);
 	transform-origin: center;
 	width: auto;
-	&:focus, &:hover {
+	&:focus,
+	&:hover {
 		border-color: var(--color__base-mid);
 	}
-	&__parent, &__action {
+	&--micro {
+		height: calc(var(--size__m) + var(--size__s));
+	}
+	&__parent,
+	&__action {
 		align-items: center;
 		display: inline-flex;
 		height: var(--size__l);
@@ -25,12 +30,14 @@
 			color: var(--color__base);
 		}
 	}
-	&__label, &__parent {
+	&__label,
+	&__parent {
 		white-space: nowrap;
 	}
 	a.Tag__label {
 		@include smooth;
-		&:focus, &:hover {
+		&:focus,
+		&:hover {
 			text-decoration: underline;
 		}
 	}
