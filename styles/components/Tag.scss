@@ -10,7 +10,7 @@
   &:focus,
   &:hover {
     border-color: var(--color__base-mid);
-    .Tag__label:not(.Tag__label--parent) {
+    .Tag__label {
       color: var(--color__brand);
     }
   }
