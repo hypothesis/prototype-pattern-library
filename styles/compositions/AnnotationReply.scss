@@ -1,0 +1,37 @@
+.AnnotationReply {
+  position: relative;
+  &__header {
+    > * {
+      align-items: center;
+      display: flex;
+    }
+    &--primary {
+      justify-content: space-between;
+    }
+    &--secondary {
+      flex-wrap: wrap;
+      margin-top: rem(-8);
+    }
+  }
+  &__footer {
+    align-items: center;
+    display: flex;
+  }
+  &__tags {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    &--wrap {
+      align-items: center;
+      display: inline-flex;
+      flex-grow: 1;
+    }
+  }
+  &__toggle {
+    background-color: var(--color__contrast);
+    height: rem(40);
+    left: rem(-16);
+    position: absolute;
+    top: 0;
+  }
+}

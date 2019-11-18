@@ -1,35 +1,15 @@
 <template>
   <Card :class="[$options.name, 'type__family--system']" :padding="false">
     <header
-      :class="[$options.name + '__header', 'border__bottom color__border--base-light padding__bottom--s padding__left--m padding__right--s padding__top--xs']"
+      :class="[
+        $options.name + '__header',
+        'border__bottom color__border--base-light padding__bottom--s padding__left--m padding__right--s padding__top--xs'
+      ]"
     >
       <section :class="$options.name + '__header--primary'">
         <p>
           <strong>{{ user }}</strong>
         </p>
-        <Menu
-          :active="editMenu"
-          direction="right"
-          :class="$options.name + '__editMenu'"
-          v-click-outside="hideMenu"
-        >
-          <Button
-            icon="ellipsis"
-            :label="false"
-            variant="tertiary"
-            @click.native="editMenu = !editMenu"
-          />
-          <NavItem slot="menu" icon="flag" label="Flag" :reverse="true" />
-          <NavItem v-if="role === 'user'" slot="menu" icon="edit" label="Edit" :reverse="true" />
-          <NavItem v-if="role === 'user'" slot="menu" icon="trash" label="Delete" :reverse="true" />
-          <p
-            slot="menu"
-            v-if="edited"
-            class="border__top color__border--base-light color__type--base-mid padding__bottom--xs padding__left--m padding__right--m padding__top--xs type__size--s-l"
-          >
-            <em>Edited {{ edited}}</em>
-          </p>
-        </Menu>
       </section>
       <section :class="[$options.name + '__header--secondary', 'oomph__h--m']">
         <p class="color__type--base-mid type__size--s-m">
@@ -39,8 +19,15 @@
         <Button icon="groups" :label="group" variant="tertiary" />
       </section>
     </header>
-    <section :class="[$options.name + '__content', 'oomph__v--m padding__all--m']">
-      <blockquote :class="[$options.name + '__quote', 'color__type--base-mid padding__left--m']">
+    <section
+      :class="[$options.name + '__content', 'oomph__v--s padding__all--m']"
+    >
+      <blockquote
+        :class="[
+          $options.name + '__quote',
+          'color__type--base-mid padding__left--m'
+        ]"
+      >
         <p>
           <em>{{ quote }}</em>
         </p>
@@ -50,25 +37,101 @@
         <Tag
           v-for="(tag, index) in tags"
           :key="index"
-          :label="typeof tag === 'object' ? tag.label:tag"
-          :path="typeof tag === 'object' ? tag.path:false"
+          :label="typeof tag === 'object' ? tag.label : tag"
+          :path="typeof tag === 'object' ? tag.path : false"
           class="margin__all--xs"
         />
       </section>
     </section>
+    <AnnotationReply
+      v-if="edit"
+      actionText="Save changes"
+      :comment="excerpt"
+      :group="group"
+      :tags="tags"
+      :user="user"
+      @reply="edit = !edit"
+    />
+    <AnnotationReply
+      v-if="reply"
+      :group="group"
+      :user="user"
+      @reply="replyAction"
+    />
     <footer
-      :class="[$options.name + '__footer', 'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s']"
+      :class="[
+        $options.name + '__footer',
+        'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs'
+      ]"
     >
       <nav :class="$options.name + '__actions'">
         <Button
-          v-if="role === 'user'"
+          v-if="editable"
+          icon="edit"
+          :iconSize="16"
+          :label="false"
+          variant="tertiary"
+          @click.native="[(edit = !edit), (reply = false)]"
+        />
+        <Menu
+          :active="deleteMenu"
+          direction="right"
+          :reverse="true"
+          v-click-outside="hideDeleteMenu"
+        >
+          <Button
+            v-if="editable"
+            icon="trash"
+            :iconSize="16"
+            :label="false"
+            variant="tertiary"
+            @click.native="deleteMenu = !deleteMenu"
+          />
+          <NavItem
+            icon="trash"
+            label="Delete annotation"
+            :reverse="true"
+            @click.native="hideDeleteMenu"
+            slot="menu"
+          />
+          <NavItem
+            icon="cancel"
+            label="Cancel"
+            :reverse="true"
+            @click.native="hideDeleteMenu"
+            slot="menu"
+          />
+        </Menu>
+        <Button
           icon="reply"
           :iconSize="16"
           :label="false"
           variant="tertiary"
+          @click.native="[(reply = !reply), (edit = false)]"
         />
-        <Button icon="external" :iconSize="16" :label="false" variant="tertiary" />
-        <Button icon="share" :iconSize="16" :label="false" variant="tertiary" />
+        <Menu
+          :active="shareMenu"
+          direction="right"
+          :reverse="true"
+          :class="$options.name + '__shareMenu'"
+          v-click-outside="hideShareMenu"
+        >
+          <Button
+            icon="share"
+            :iconSize="16"
+            :label="false"
+            variant="tertiary"
+            @click.native="shareMenu = !shareMenu"
+          />
+          <ShareIndividual slot="menu" :group="group" />
+        </Menu>
+        <Button
+          v-if="!editable"
+          icon="flag"
+          :iconSize="16"
+          :label="false"
+          variant="tertiary"
+        />
       </nav>
     </footer>
   </Card>
@@ -79,17 +142,45 @@ import Card from "@/components/Card";
 import Menu from "@/components/Menu";
 import NavItem from "@/components/NavItem";
 import Tag from "@/components/Tag";
+import AnnotationReply from "@/compositions/AnnotationReply";
+import ShareIndividual from "@/compositions/ShareIndividual";
 export default {
   name: "Annotation",
-  components: { Button, Card, Menu, NavItem, Tag },
+  components: {
+    AnnotationReply,
+    Button,
+    Card,
+    Menu,
+    NavItem,
+    ShareIndividual,
+    Tag
+  },
   data() {
     return {
-      editMenu: false
+      deleteMenu: false,
+      edit: false,
+      editMenu: false,
+      shareMenu: false,
+      reply: false
     };
   },
   methods: {
-    hideMenu() {
+    hideDeleteMenu() {
+      this.deleteMenu = false;
+    },
+    hideEditMenu() {
       this.editMenu = false;
+    },
+    hideShareMenu() {
+      this.shareMenu = false;
+    },
+    replyAction(value) {
+      if (value === "success") {
+        console.log("Reply posted successfully!");
+      } else {
+        this.reply = false;
+        console.log("Reply cancelled");
+      }
     }
   },
   props: {
@@ -99,13 +190,13 @@ export default {
     },
     created: { default: "September 22, 2019" },
     edited: { default: "1 day ago" },
+    editable: { default: false },
     excerpt: { default: `This is a really great quote!` },
     group: { default: "Public" },
     locked: { default: false },
     quote: {
       default: `Users can already "mute" — as in, hide from view — accounts they find offensive. But now, Twitter is expanding the "mute" function to apply to particular words, phrases or conversations, giving users greater control over posts they don't want to encounter even if those posts specifically name them.`
     },
-    role: { default: "user" },
     tags: { default: () => [], type: Array / Object },
     user: { default: "username" }
   }

@@ -1,47 +1,70 @@
-@keyframes slideIn {
-	from {
-		opacity: 0;
-		transform: translate(var(--direction), 90%);
-	}
-	to {
-		opacity: 1;
-		transform: translate(var(--direction), 100%);
-	}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(var(--direction-h), 90%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--direction-h), 100%);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(var(--direction-h), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--direction-h), rem(-4));
+  }
 }
 
 .Menu {
-	--direction: 0;
-	display: inline-block;
-	position: relative;
-	&__wrap {
-		border-color: var(--color__base-light);
-		bottom: rem(-4);
-		display: none;
-		left: auto;
-		opacity: 1;
-		overflow: hidden;
-		position: absolute;
-		transform: translate(var(--direction), 100%);
-		width: rem(240);
-		z-index: 100;
-		[data-theme="dark"] & {
-			background-color: var(--color__contrast-extra);
-		}
-		&--center {
-			--direction: -50%;
-			left: 50%;
-		}
-		&--left {
-			left: rem(-4);
-		}
-		&--right {
-			right: rem(-4);
-		}
-	}
-	&--active .Menu__wrap {
-		animation: slideIn 0.375s ease-in;
-		animation-direction: alternate;
-		animation-iteration-count: 1;
-		display: block;
-	}
+  --direction-h: 0;
+  --direction-v: 100%;
+  display: inline-block;
+  position: relative;
+  &__wrap {
+    border-color: var(--color__base-light);
+    display: none;
+    left: auto;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    width: rem(240);
+    z-index: 100;
+    [data-theme="dark"] & {
+      background-color: var(--color__contrast-extra);
+    }
+    &--center {
+      --direction-h: -50%;
+      left: 50%;
+    }
+    &--left {
+      left: rem(-4);
+    }
+    &--right {
+      right: rem(-4);
+    }
+    &--down {
+      bottom: rem(-4);
+      transform: translate(var(--direction-h), 100%);
+    }
+    &--up {
+      bottom: 100%;
+      transform: translate(var(--direction-h), rem(-4));
+    }
+  }
+  &--active .Menu__wrap {
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    display: block;
+    &--down {
+      animation: slideDown 0.1875s ease-in;
+    }
+    &--up {
+      animation: slideUp 0.1875s ease-in;
+    }
+  }
 }

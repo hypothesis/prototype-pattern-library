@@ -1,44 +1,45 @@
 .Tag {
-	@include smooth;
-	align-items: center;
-	border-radius: var(--size__xs);
-	display: inline-flex;
-	height: var(--size__l);
-	transform-origin: center;
-	width: auto;
-	&:focus,
-	&:hover {
-		border-color: var(--color__base-mid);
-	}
-	&--micro {
-		height: calc(var(--size__m) + var(--size__s));
-	}
-	&__parent,
-	&__action {
-		align-items: center;
-		display: inline-flex;
-		height: var(--size__l);
-	}
-	&__action {
-		@include smooth;
-		flex-shrink: 0;
-		justify-content: center;
-		width: var(--size__l);
-		&:focus,
-		&:hover {
-			background-color: var(--color__base-light);
-			color: var(--color__base);
-		}
-	}
-	&__label,
-	&__parent {
-		white-space: nowrap;
-	}
-	a.Tag__label {
-		@include smooth;
-		&:focus,
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+  @include smooth;
+  align-items: center;
+  border-radius: var(--size__xs);
+  display: inline-flex;
+  height: calc(var(--size__m) + var(--size__s));
+  overflow: hidden;
+  transform-origin: center;
+  width: auto;
+  &:focus,
+  &:hover {
+    border-color: var(--color__base-mid);
+    .Tag__label:not(.Tag__label--parent) {
+      color: var(--color__brand);
+    }
+  }
+  &__parent,
+  &__action {
+    align-items: center;
+    display: inline-flex;
+    height: calc(var(--size__m) + var(--size__s));
+  }
+  &__action {
+    @include smooth;
+    flex-shrink: 0;
+    justify-content: center;
+    width: calc(var(--size__m) + var(--size__s));
+    &:focus,
+    &:hover {
+      color: var(--color__base);
+    }
+    .Tag:focus,
+    .Tag:hover & {
+      border-color: var(--color__base-mid);
+    }
+  }
+  &__label,
+  &__parent {
+    white-space: nowrap;
+  }
+  &__label {
+    @include smooth;
+    transform: translateY(rem(-2));
+  }
 }

@@ -1,36 +1,44 @@
 <template>
   <button
-    :class="[$options.name, micro ? $options.name + '--micro':'', 'border__all color__bg--base-ghost color__border--base-light']"
+    :class="[
+      $options.name,
+      'border__all color__bg--base-ghost color__border--base-light'
+    ]"
   >
     <a
       v-if="path"
       :href="path"
       target="_blank"
       :class="[
-      $options.name + '__label',
-      micro ? 'padding__left--xs padding__right--xs type__size--xs-s':'padding__left--s padding__right--s type__size--xs-m'
-    ]"
-    >{{ label }}</a>
+        $options.name + '__label',
+        'padding__left--xs padding__right--xs type__size--s-s'
+      ]"
+      >{{ label }}</a
+    >
     <section
       v-else
       :class="[
-      $options.name + '__label',
-      micro ? 'padding__left--xs padding__right--xs type__size--xs-s':'padding__left--s padding__right--s type__size--xs-m'
-    ]"
+        $options.name + '__label',
+        parent ? $options.name + '__label--parent' : '',
+        'padding__left--xs padding__right--xs type__size--s-s'
+      ]"
     >
       <strong v-if="parent">{{ parent }}:</strong>
       {{ label }}
     </section>
     <Badge
       v-if="count"
-      :class="[$options.name + '__count', micro ? 'margin__right--xs':'margin__right--s']"
+      :class="[$options.name + '__count', 'margin__right--xs']"
       :label="count"
       variant="primary"
     />
     <button
       v-if="icon"
-      :class="[$options.name + '__action', 'border__left color__border--base-light color__type--base-mid']"
-      @click="$emit('tagAction',callback)"
+      :class="[
+        $options.name + '__action',
+        'border__left color__border--base-light color__type--base-mid'
+      ]"
+      @click="$emit('tagAction', callback)"
     >
       <Icon :name="icon" />
     </button>
@@ -47,7 +55,6 @@ export default {
     count: { default: false },
     icon: { default: false },
     label: { default: "Tag label" },
-    micro: { default: false },
     parent: { default: false },
     path: { default: false }
   }

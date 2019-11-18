@@ -1,20 +1,35 @@
-.Share {
-	&__header,
-	&__footer {
-		align-items: center;
-		display: flex;
-	}
-	&__header {
-		justify-content: space-between;
-		&--label {
-			flex: 1 1;
-		}
-		.Button {
-			align-self: flex-start;
-			flex-shrink: 0;
-		}
-	}
-	&__footer {
-		justify-content: center;
-	}
+.Share,
+.ShareIndividual {
+  &__header,
+  &__footer {
+    align-items: center;
+    display: flex;
+  }
+  &__header {
+    justify-content: space-between;
+    &--label {
+      flex: 1 1;
+    }
+    .Button {
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+  }
+  &__footer {
+    justify-content: center;
+  }
+}
+
+.ShareIndividual {
+  .Control__wrap {
+    min-height: var(--size__l);
+    input {
+      padding: 0 var(--size__s);
+    }
+    .Button {
+      &__label {
+        line-height: var(--lineHeight__m);
+      }
+    }
+  }
 }

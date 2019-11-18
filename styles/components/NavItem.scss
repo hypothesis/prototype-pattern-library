@@ -14,7 +14,7 @@
 				color: var(--color__base);
 			}
 			.NavItem__icon {
-				color: var(--color__base);
+				color: var(--color__brand);
 			}
 			.NavItem__label {
 				color: var(--color__brand);
@@ -30,6 +30,7 @@
 	&__dropdown {
 		@include smooth;
 		align-items: center;
+		border-radius: var(--size__xs);
 		display: inline-flex;
 		height: var(--size__l);
 		justify-content: center;

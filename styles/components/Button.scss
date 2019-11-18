@@ -6,8 +6,8 @@
 	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;
-	min-height: calc(var(--size__s) + var(--size__l));
-	min-width: calc(var(--size__s) + var(--size__l));
+	min-height: var(--size__l);
+	min-width: var(--size__l);
 	width: auto;
 	&__dropdown {
 		display: inline-flex;
@@ -25,7 +25,7 @@
 			margin-left: rem(2);
 		}
 		+ .Button__label {
-			margin-left: var(--size__s);
+			margin-left: var(--size__xs);
 		}
 	}
 	&__label {

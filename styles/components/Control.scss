@@ -1,158 +1,159 @@
 .Control {
-	display: block;
-	&__wrap {
-		@include smooth;
-		align-items: stretch;
-		border-radius: var(--size__xs);
-		display: flex;
-		justify-content: space-between;
-		min-height: calc(var(--size__l) + var(--size__s));
-		position: relative;
-		[data-theme="dark"] & {
-			background-color: var(--color__contrast-extra);
-		}
-		&:focus-within {
-			border-color: var(--color__base);
-			box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
-			.Control__icon {
-				color: var(--color__base-mid);
-			}
-		}
-		input,
-		select,
-		textarea {
-			color: var(--color__base);
-			flex-grow: 1;
-			flex-shrink: 1;
-			font-size: var(--typeSize__m);
-			line-height: var(--typeLineheight__l);
-			padding: var(--size__xs) var(--size__m);
-			&::placeholder {
-				color: var(--color__base-semi);
-			}
-			&:focus {
-				color: var(--color__brand);
-			}
-		}
-		&--icon {
-			input,
-			select,
-			textarea {
-				padding-right: calc(var(--size__l) + var(--size__s));
-			}
-		}
-		&--reversed {
-			input,
-			select,
-			textarea {
-				padding-left: calc(var(--size__l) + var(--size__s));
-			}
-			.Control__icon {
-				left: 0;
-				order: -1;
-				right: auto !important;
-			}
-		}
-	}
-	&__label {
-		display: block;
-		font-weight: bold;
-		text-transform: uppercase;
-	}
-	&__icon {
-		@include smooth;
-		align-items: center;
-		display: inline-flex;
-		height: 100%;
-		justify-content: center;
-		min-width: calc(var(--size__l) + var(--size__s));
-		position: absolute;
-		right: 0;
-	}
-	&__action--left,
-	&__action--right {
-		flex-shrink: 0;
-		width: auto;
-		.Button {
-			border: none;
-		}
-	}
-	&__action--left {
-		.Button {
-			border-right: rem(1) solid var(--color__base-light);
-			border-bottom-right-radius: 0;
-			border-top-right-radius: 0;
-		}
-	}
-	&__action--right {
-		.Button {
-			border-left: rem(1) solid var(--color__base-light);
-			border-bottom-left-radius: 0;
-			border-top-left-radius: 0;
-		}
-		+ .Control__icon {
-			right: calc(var(--size__l) + var(--size__s));
-		}
-	}
-	&__status {
-		align-items: center;
-		color: white;
-		display: inline-flex;
-		flex-shrink: 0;
-		justify-content: center;
-		width: calc(var(--size__s) + var(--size__m));
-	}
-	&--disabled {
-		.Control__wrap {
-			border-color: var(--color__base-ghost);
-			input,
-			select,
-			textarea {
-				&::placeholder {
-					color: var(--color__base-semi);
-				}
-			}
-		}
-		.Control__action {
-			cursor: not-allowed;
-			&:focus,
-			&:hover {
-				color: var(--color__base-mid);
-			}
-		}
-	}
-	&--invalid {
-		.Control__wrap {
-			border-color: var(--color__warn);
-		}
-		.Control__status {
-			background-color: var(--color__warn);
-		}
-	}
-	&--valid {
-		.Control__wrap {
-			border-color: var(--color__success);
-		}
-		.Control__status {
-			background-color: var(--color__success);
-		}
-	}
-	&--inline {
-		align-items: center;
-		display: inline-flex;
-		flex-wrap: wrap;
-		.Badge {
-			bottom: rem(-4);
-			left: 0;
-			position: absolute;
-			transform: translateY(100%);
-		}
-		.Control__label {
-			flex-shrink: 0;
-			width: auto;
-		}
-		.Control__wrap {
-			flex-grow: 1;
-		}
-	}
+  display: block;
+  &__wrap {
+    @include smooth;
+    align-items: stretch;
+    border-radius: var(--size__xs);
+    display: flex;
+    justify-content: space-between;
+    min-height: calc(var(--size__l) + var(--size__s));
+    position: relative;
+    [data-theme="dark"] & {
+      background-color: var(--color__contrast-extra);
+    }
+    &:focus-within {
+      border-color: var(--color__base);
+      box-shadow: 0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+      .Control__icon {
+        color: var(--color__base-mid);
+      }
+    }
+    input,
+    select,
+    textarea {
+      color: var(--color__base);
+      flex-grow: 1;
+      flex-shrink: 1;
+      font-size: var(--typeSize__m);
+      line-height: var(--typeLineheight__l);
+      padding: var(--size__xs) var(--size__m);
+      &::placeholder {
+        color: var(--color__base-semi);
+      }
+    }
+    select:focus {
+      color: var(--color__brand);
+    }
+    &--icon {
+      input,
+      select,
+      textarea {
+        padding-right: var(--size__l);
+      }
+    }
+    &--reversed {
+      input,
+      select,
+      textarea {
+        padding-left: var(--size__l);
+      }
+      .Control__icon {
+        left: 0;
+        order: -1;
+        right: auto !important;
+      }
+    }
+  }
+  &__label {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  &__icon {
+    @include smooth;
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
+    justify-content: center;
+    min-width: var(--size__l);
+    position: absolute;
+    right: 0;
+  }
+  &__action--left,
+  &__action--right {
+    flex-shrink: 0;
+    width: auto;
+    .Button {
+      border: none;
+      height: 100%;
+    }
+  }
+  &__action--left {
+    .Button {
+      border-right: rem(1) solid var(--color__base-light);
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+  &__action--right {
+    .Button {
+      border-left: rem(1) solid var(--color__base-light);
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+    + .Control__icon {
+      right: calc(var(--size__l) + var(--size__s));
+    }
+  }
+  &__status {
+    align-items: center;
+    color: white;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    width: calc(var(--size__s) + var(--size__m));
+  }
+  &--disabled {
+    .Control__wrap {
+      border-color: var(--color__base-ghost);
+      input,
+      select,
+      textarea {
+        &::placeholder {
+          color: var(--color__base-semi);
+        }
+      }
+    }
+    .Control__action {
+      cursor: not-allowed;
+      &:focus,
+      &:hover {
+        color: var(--color__base-mid);
+      }
+    }
+  }
+  &--invalid {
+    .Control__wrap {
+      border-color: var(--color__warn);
+    }
+    .Control__status {
+      background-color: var(--color__warn);
+    }
+  }
+  &--valid {
+    .Control__wrap {
+      border-color: var(--color__success);
+    }
+    .Control__status {
+      background-color: var(--color__success);
+    }
+  }
+  &--inline {
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;
+    .Badge {
+      bottom: rem(-4);
+      left: 0;
+      position: absolute;
+      transform: translateY(100%);
+    }
+    .Control__label {
+      flex-shrink: 0;
+      width: auto;
+    }
+    .Control__wrap {
+      flex-grow: 1;
+    }
+  }
 }

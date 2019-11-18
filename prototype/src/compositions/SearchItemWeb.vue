@@ -25,7 +25,7 @@
           <h1>Awesome annotations go here!</h1>
         </slot>
       </section>
-      <Card :class="[$options.name + '__nav', 'margin__top--m oomph__v--s']">
+      <Card :padding="false" :class="[$options.name + '__nav', 'margin__top--m oomph__v--xs padding__bottom--s padding__left--m padding__right--m padding__top--s']">
         <section :class="$options.name + '__nav--item'">
           <header>
             <Icon name="external" />
@@ -41,7 +41,7 @@
               <strong>Annotators</strong>
             </p>
           </header>
-          <section class="margin__top--s oomph__h--xs">
+          <section class="oomph__h--xs">
             <Tag
               v-for="(person,index) in annotators"
               :key="index"
@@ -57,7 +57,7 @@
               <strong>Tags</strong>
             </p>
           </header>
-          <section class="margin__top--s oomph__h--xs">
+          <section class="oomph__h--xs">
             <Tag
               v-for="(tag,index) in tags"
               :key="index"

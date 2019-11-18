@@ -8,9 +8,12 @@
     >
       <Control icon="search" :label="false" :reverse="true">
         <section :class="$options.name + '__inner'">
-          <section v-if="tags.length" :class="[$options.name + '__tags', 'margin__right--s']">
+          <section
+            v-if="tags.length"
+            :class="[$options.name + '__tags', 'oomph__h--xs']"
+          >
             <Tag
-              v-for="(tag,index) in tags"
+              v-for="(tag, index) in tags"
               :key="index"
               :parent="tag.parent"
               :label="tag.label"
@@ -36,7 +39,11 @@
         </section>
       </Control>
       <section slot="menu" :class="$options.name + '__searchHelp'">
-        <button v-for="(item,index) in help" :key="index" @click="focusTag(item)">
+        <button
+          v-for="(item, index) in help"
+          :key="index"
+          @click="focusTag(item)"
+        >
           <span>{{ item.label }}</span>
           <p>{{ item.text }}</p>
         </button>
@@ -49,7 +56,12 @@
       <p v-if="!loggedIn" class="margin__left--s">
         <a href="https://hypothes.is/signup">Sign up</a>
       </p>
-      <Menu v-if="loggedIn" :active="groupsMenu" direction="right" v-click-outside="hideGroupsMenu">
+      <Menu
+        v-if="loggedIn"
+        :active="groupsMenu"
+        direction="right"
+        v-click-outside="hideGroupsMenu"
+      >
         <Button
           :dropdown="true"
           icon="groups"
@@ -59,10 +71,17 @@
         />
         <h5
           slot="menu"
-          class="border__bottom color__border--base-light color__type--base-semi padding__all--s"
-        >Groups</h5>
+          class="border__bottom color__border--base-light color__type--base-mid padding__all--s"
+        >
+          Groups
+        </h5>
         <NavItem slot="menu" label="Hypothesis Reading" />
-        <NavItem slot="menu" icon="plus" label="Create new group" :reverse="true" />
+        <NavItem
+          slot="menu"
+          icon="plus"
+          label="Create new group"
+          :reverse="true"
+        />
       </Menu>
       <Menu
         v-if="loggedIn"
@@ -80,8 +99,10 @@
         />
         <h5
           slot="menu"
-          class="border__bottom color__border--base-light color__type--base-semi padding__all--s"
-        >Settings</h5>
+          class="border__bottom color__border--base-light color__type--base-mid padding__all--s"
+        >
+          Settings
+        </h5>
         <NavItem slot="menu" label="Account details" />
         <NavItem slot="menu" label="Edit profile" />
         <NavItem slot="menu" label="Notifications" />

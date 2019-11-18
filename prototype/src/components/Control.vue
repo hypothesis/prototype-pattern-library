@@ -1,35 +1,66 @@
 <template>
   <section
-    :class="[$options.name, disabled ? $options.name + '--disabled':'', inline ? $options.name + '--inline':'', status ? $options.name + '--' + status:'', icon ? $options.name + '--icon':'']"
+    :class="[
+      $options.name,
+      disabled ? $options.name + '--disabled' : '',
+      inline ? $options.name + '--inline' : '',
+      status ? $options.name + '--' + status : '',
+      icon ? $options.name + '--icon' : ''
+    ]"
   >
     <label
       v-if="label"
       :for="labelID"
       :class="[
         $options.name + '__label',
-        inline ? 'margin__right--s':'margin__bottom--s',
+        inline ? 'margin__right--s' : 'margin__bottom--s',
         'color__type--base-mid type__size--xs-m'
       ]"
-    >{{ label }}</label>
-    <section
-      :class="[$options.name + '__wrap', reverse ? $options.name + '__wrap--reversed':'', 'border__all color__bg--contrast color__border--base-light']"
+      >{{ label }}</label
     >
-      <section v-if="$slots.actionLeft" :class="$options.name + '__action--left'">
+    <section
+      :class="[
+        $options.name + '__wrap',
+        reverse ? $options.name + '__wrap--reversed' : '',
+        'border__all color__bg--contrast color__border--base-light'
+      ]"
+    >
+      <section
+        v-if="$slots.actionLeft"
+        :class="$options.name + '__action--left'"
+      >
         <slot name="actionLeft"></slot>
       </section>
       <section v-if="status" :class="$options.name + '__status'">
-        <Icon :name="status === 'invalid' ? 'cancel':'check'" :size="14" />
+        <Icon :name="status === 'invalid' ? 'cancel' : 'check'" :size="14" />
       </section>
       <slot />
-      <section v-if="$slots.actionRight" :class="$options.name + '__action--right'">
+      <section
+        v-if="$slots.actionRight"
+        :class="$options.name + '__action--right'"
+      >
         <slot name="actionRight"></slot>
       </section>
-      <section v-if="icon" :class="[$options.name + '__icon', 'color__type--base-semi']">
+      <section
+        v-if="icon"
+        :class="[$options.name + '__icon', 'color__type--base-semi']"
+      >
         <Icon :name="icon" :size="14" />
       </section>
-      <Badge v-if="statusLabel && inline" :label="statusLabel" :micro="false" variant="contrast" />
+      <Badge
+        v-if="statusLabel && inline"
+        :label="statusLabel"
+        :micro="false"
+        variant="contrast"
+      />
     </section>
-    <Badge class="margin__top--s" v-if="statusLabel && !inline" :label="statusLabel" :micro="false" variant="contrast" />
+    <Badge
+      class="margin__top--s"
+      v-if="statusLabel && !inline"
+      :label="statusLabel"
+      :micro="false"
+      variant="contrast"
+    />
   </section>
 </template>
 <script>
@@ -40,14 +71,10 @@ export default {
   components: { Badge, Icon },
   computed: {
     labelID() {
-      let id = this.$slots.default[0].data.attrs.id;
-      if (id) {
-        return id;
+      if (this.label) {
+        return this._uid + "_" + this.label;
       } else {
-        console.log(
-          "You should consider adding an ID and name value for proper form control accessiblity."
-        );
-        return false;
+        return this._uid + "_control-label";
       }
     }
   },

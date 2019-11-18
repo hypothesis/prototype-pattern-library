@@ -18,7 +18,7 @@
       <section
         v-if="label"
         :class="[
-      $options.name + '__label', small ? 'type__size--s-m':'type__size--s-l', offset ? $options.name + '__label--offset':'', reverse ? 'margin__left--s':''
+      $options.name + '__label', small ? 'type__size--s-m':'type__size--s-l', offset ? $options.name + '__label--offset':'', reverse && icon ? 'margin__left--s':''
     ]"
       >{{ label }}</section>
       <section

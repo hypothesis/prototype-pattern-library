@@ -49,6 +49,9 @@
 					flex-shrink: 0;
 					margin-right: var(--size__s);
 				}
+				+ * {
+					padding-left: calc(var(--size__m) + var(--size__xs));
+				}
 			}
 		}
 		.url a {

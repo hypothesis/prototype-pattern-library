@@ -4,7 +4,15 @@
     <article :class="$options.name">
       <ComponentWrapper array="compositions" name="Annotation">
         <Annotation
-          :tags="[{ label: 'Cool tag title', path: '#coolurl'}, { label: 'Another great tag', path: '#coolurl'}, { label: 'A reallyl long, but equally important tag', path: '#coolurl'}]"
+          :editable="true"
+          :tags="[
+            { label: 'Cool tag title', path: '#coolurl' },
+            { label: 'Another great tag', path: '#coolurl' },
+            {
+              label: 'A reallyl long, but equally important tag',
+              path: '#coolurl'
+            }
+          ]"
         />
       </ComponentWrapper>
       <ComponentWrapper array="compositions" name="AppFrame">

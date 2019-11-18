@@ -41,7 +41,7 @@
 	}
 	&__inner {
 		flex-grow: 1;
-		margin-left: calc(var(--size__xs) + var(--size__m));
+		margin-left: var(--size__m);
 		overflow: hidden;
 		overflow-y: auto;
 	}

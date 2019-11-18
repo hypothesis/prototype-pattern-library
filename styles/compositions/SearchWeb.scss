@@ -1,58 +1,59 @@
 .SearchWeb {
-	align-items: center;
-	display: flex;
-	.Logo,
-	&__nav {
-		flex-shrink: 0;
-	}
-	&__search {
-		flex-grow: 1;
-		.Menu__wrap {
-			width: 100%;
-		}
-		&Help button {
-			@include smooth;
-			align-items: flex-start;
-			display: flex;
-			flex-wrap: wrap;
-			padding: var(--size__xs) var(--size__s);
-			text-align: left;
-			@include breakpoint(xsl) {
-				flex-wrap: nowrap;
-			}
-			&:focus,
-			&:hover {
-				background-color: var(--color__base-ghost);
-			}
-			+ button {
-				border-top: rem(1) solid var(--color__base-light);
-			}
-			span {
-				flex: 0 0 rem(56);
-				font-weight: bold;
-				font-size: var(--typeSize__s);
-				line-height: var(--typeLineheight__m);
-			}
-			p {
-				flex-grow: 1;
-				font-size: var(--typeSize__s);
-				line-height: var(--typeLineheight__m);
-			}
-		}
-	}
-	&__nav {
-		align-items: center;
-		display: inline-flex;
-	}
-	&__inner {
-		align-items: center;
-		display: inline-flex;
-		flex-grow: 1;
-	}
-	&__tags {
-		display: inline-flex;
-		> * + * {
-			margin-left: var(--size__xs);
-		}
-	}
+  align-items: center;
+  display: flex;
+  .Logo,
+  &__nav {
+    flex-shrink: 0;
+  }
+  &__search {
+    flex-grow: 1;
+    .Menu__wrap {
+      width: 100%;
+    }
+    &Help button {
+      @include smooth;
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      padding: var(--size__xs) var(--size__s);
+      text-align: left;
+      @include breakpoint(xsl) {
+        flex-wrap: nowrap;
+      }
+      &:focus,
+      &:hover {
+        background-color: var(--color__base-ghost);
+      }
+      + button {
+        border-top: rem(1) solid var(--color__base-light);
+      }
+      span {
+        flex: 0 0 rem(56);
+        font-weight: bold;
+        font-size: var(--typeSize__s);
+        line-height: var(--typeLineheight__m);
+      }
+      p {
+        flex-grow: 1;
+        font-size: var(--typeSize__s);
+        line-height: var(--typeLineheight__m);
+      }
+    }
+  }
+  &__nav {
+    align-items: center;
+    display: inline-flex;
+  }
+  &__inner {
+    align-items: center;
+    display: inline-flex;
+    flex-grow: 1;
+  }
+  &__tags {
+    display: inline-flex;
+    padding-left: var(--size__l);
+    + input {
+      padding-left: var(--size__s);
+    }
+  }
 }

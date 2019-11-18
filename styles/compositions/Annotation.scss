@@ -31,4 +31,7 @@
   &__actions {
     flex-shrink: 0;
   }
+  &__shareMenu .Menu__wrap {
+    width: rem(320);
+  }
 }
