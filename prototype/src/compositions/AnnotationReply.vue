@@ -37,48 +37,37 @@
       v-if="replyActive"
       :class="[$options.name + '__content', 'oomph__v--s padding__all--m']"
     >
-      <Control label="Your Comment">
-        <textarea
-          id="coolTextarea"
-          name="coolTextarea"
-          placeholder="Type into me…"
-          :value="comment"
-        ></textarea>
-      </Control>
-      <Control label="Tags">
-        <section :class="$options.name + '__tags'">
-          <section
-            v-if="tagsDynamic.length"
-            :class="[
-              $options.name + '__tags--wrap',
-              'oomph__h--xs padding__top--xs'
-            ]"
-          >
-            <Tag
-              v-for="(tag, index) in tagsDynamic"
-              :key="index"
-              :label="tag.label"
-              icon="cancel"
-              class="margin__all--xs"
-              @click.native="tags.pop(1)"
-            />
-          </section>
-          <input
-            id="coolTagsInput"
-            name="coolTagsInput"
-            placeholder="Add tags…"
-            type="text"
-            v-model="tagInput"
-            @keyup="addTag"
-            @keyup.enter="addTagCommaless"
-          />
-        </section>
-      </Control>
-      <Control icon="caret-down" label="Post to">
-        <select id="coolSelect" name="coolSelect" v-model="replyScope">
-          <option selected>{{ group }}</option>
-          <option>Only me</option>
-        </select>
+      <section>
+        <Control label="Your Comment">
+          <Editor slot="editor" />
+          <textarea
+            id="coolTextarea"
+            name="coolTextarea"
+            placeholder="Type into me…"
+            :value="comment"
+          ></textarea>
+        </Control>
+      </section>
+      <Control label="Tags" :hasTags="true">
+        <Tag
+          v-if="tagsDynamic.length"
+          v-for="(tag, index) in tagsDynamic"
+          :key="index"
+          :label="tag.label"
+          icon="cancel"
+          class="margin__all--xs"
+          @click.native="tags.pop(1)"
+          slot="tags"
+        />
+        <input
+          id="coolTagsInput"
+          name="coolTagsInput"
+          placeholder="Add tags…"
+          type="text"
+          v-model="tagInput"
+          @keyup="addTag"
+          @keyup.enter="addTagCommaless"
+        />
       </Control>
     </section>
     <footer
@@ -88,7 +77,33 @@
         'border__top color__border--base-light oomph__h--s padding__all--m'
       ]"
     >
-      <Button :label="actionText" @click.native="$emit('reply', 'success')" />
+      <ButtonGroup>
+        <Button :label="actionText" @click.native="$emit('reply', 'success')" />
+        <Menu :active="postOptions" v-click-outside="hidePostOptions">
+          <Button
+            class="border__left color__border--base-mid"
+            :dropdown="true"
+            :label="false"
+            @click.native="postOptions = !postOptions"
+          />
+          <NavItem
+            :active="replyScope === group"
+            icon="globe"
+            :label="'Post to ' + group"
+            :reverse="true"
+            @click.native="replyScope = group"
+            slot="menu"
+          />
+          <NavItem
+            :active="replyScope === 'Only me'"
+            icon="lock"
+            label="Only me"
+            :reverse="true"
+            @click.native="replyScope = 'Only me'"
+            slot="menu"
+          />
+        </Menu>
+      </ButtonGroup>
       <Button
         icon="cancel"
         label="Cancel"
@@ -106,14 +121,19 @@
 </template>
 <script>
 import Button from "@/components/Button";
+import ButtonGroup from "@/components/ButtonGroup";
 import CC from "@/components/CC";
 import Control from "@/components/Control";
+import Editor from "@/components/Editor";
+import Menu from "@/components/Menu";
+import NavItem from "@/components/NavItem";
 import Tag from "@/components/Tag";
 export default {
   name: "AnnotationReply",
-  components: { Button, CC, Control, Tag },
+  components: { Button, ButtonGroup, CC, Control, Editor, Menu, NavItem, Tag },
   data() {
     return {
+      postOptions: false,
       replyActive: true,
       replyScope: this.group,
       tagsDynamic: this.tags,
@@ -137,6 +157,9 @@ export default {
       } else {
         console.log("Hey dude, there’s nothing in this input!");
       }
+    },
+    hidePostOptions() {
+      this.postOptions = false;
     }
   },
   props: {

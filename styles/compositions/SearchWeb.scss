@@ -7,6 +7,12 @@
   }
   &__search {
     flex-grow: 1;
+    flex-shrink: 1;
+    .Control__wrap {
+      max-width: calc(100vw - 9.5rem);
+      overflow: hidden;
+      overflow-x: auto;
+    }
     .Menu__wrap {
       width: 100%;
     }
@@ -48,12 +54,5 @@
     align-items: center;
     display: inline-flex;
     flex-grow: 1;
-  }
-  &__tags {
-    display: inline-flex;
-    padding-left: var(--size__l);
-    + input {
-      padding-left: var(--size__s);
-    }
   }
 }

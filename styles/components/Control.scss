@@ -26,6 +26,7 @@
       flex-shrink: 1;
       font-size: var(--typeSize__m);
       line-height: var(--typeLineheight__l);
+      min-width: rem(240);
       padding: var(--size__xs) var(--size__m);
       &::placeholder {
         color: var(--color__base-semi);
@@ -42,9 +43,7 @@
       }
     }
     &--reversed {
-      input,
-      select,
-      textarea {
+      > *:first-child {
         padding-left: var(--size__l);
       }
       .Control__icon {
@@ -52,6 +51,9 @@
         order: -1;
         right: auto !important;
       }
+    }
+    &--tags {
+      flex-wrap: wrap;
     }
   }
   &__label {
@@ -155,5 +157,12 @@
     .Control__wrap {
       flex-grow: 1;
     }
+  }
+  &__tags {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 }

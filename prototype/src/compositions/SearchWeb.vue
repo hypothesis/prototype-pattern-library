@@ -6,37 +6,33 @@
       :class="[$options.name + '__search', 'margin__left--s margin__right--s']"
       v-click-outside="hideSearchMenu"
     >
-      <Control icon="search" :label="false" :reverse="true">
-        <section :class="$options.name + '__inner'">
-          <section
-            v-if="tags.length"
-            :class="[$options.name + '__tags', 'oomph__h--xs']"
-          >
-            <Tag
-              v-for="(tag, index) in tags"
-              :key="index"
-              :parent="tag.parent"
-              :label="tag.label"
-              icon="cancel"
-              @click.native="tags.pop(1)"
-            />
-          </section>
-          <input
-            id="search"
-            type="text"
-            placeholder="Search for something…"
-            v-model="searchValue"
-            @focus="searchActive = !searchActive"
-            @change="addTag"
-          />
-          <Button
-            v-if="searchValue"
-            icon="cancel"
-            :label="false"
-            variant="tertiary"
-            @click.native="clearSearch"
-          />
-        </section>
+      <Control icon="search" :label="false" :reverse="true" :hasTags="true">
+        <Tag
+          v-if="tags.length"
+          v-for="(tag, index) in tags"
+          :key="index"
+          :parent="tag.parent"
+          :label="tag.label"
+          icon="cancel"
+          @click.native="tags.pop(1)"
+          slot="tags"
+          class="margin__all--xs"
+        />
+        <input
+          id="search"
+          type="text"
+          placeholder="Search for something…"
+          v-model="searchValue"
+          @focus="searchActive = !searchActive"
+          @change="addTag"
+        />
+        <Button
+          v-if="searchValue"
+          icon="cancel"
+          :label="false"
+          variant="tertiary"
+          @click.native="clearSearch"
+        />
       </Control>
       <section slot="menu" :class="$options.name + '__searchHelp'">
         <button

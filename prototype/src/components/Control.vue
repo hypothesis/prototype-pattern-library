@@ -18,9 +18,11 @@
       ]"
       >{{ label }}</label
     >
+    <slot name="editor" />
     <section
       :class="[
         $options.name + '__wrap',
+        hasTags ? $options.name + '__wrap--tags' : '',
         reverse ? $options.name + '__wrap--reversed' : '',
         'border__all color__bg--contrast color__border--base-light'
       ]"
@@ -33,6 +35,9 @@
       </section>
       <section v-if="status" :class="$options.name + '__status'">
         <Icon :name="status === 'invalid' ? 'cancel' : 'check'" :size="14" />
+      </section>
+      <section v-if="$slots.tags" :class="$options.name + '__tags'">
+        <slot name="tags" />
       </section>
       <slot />
       <section
@@ -90,7 +95,8 @@ export default {
     label: { default: "Control label" },
     reverse: { default: false },
     status: { default: false },
-    statusLabel: { default: false }
+    statusLabel: { default: false },
+    hasTags: { default: false }
   }
 };
 </script>

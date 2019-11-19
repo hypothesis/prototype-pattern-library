@@ -2,6 +2,7 @@
   <button
     :class="[
       $options.name,
+      micro ? $options.name + '--micro' : '',
       'border__all color__bg--base-ghost color__border--base-light'
     ]"
   >
@@ -11,7 +12,7 @@
       target="_blank"
       :class="[
         $options.name + '__label',
-        'padding__left--xs padding__right--xs type__size--s-s'
+        micro ? 'type__size--xs-s' : 'type__size--s-m'
       ]"
     >
       {{ label }}
@@ -21,10 +22,10 @@
       :class="[
         $options.name + '__label',
         parent ? $options.name + '__label--parent' : '',
-        'padding__left--xs padding__right--xs type__size--s-s'
+        micro ? 'type__size--xs-s' : 'type__size--s-m'
       ]"
     >
-      <strong v-if="parent">{{ parent }}:</strong>
+      <strong v-if="parent" class="margin__right--xs">{{ parent }}:</strong>
       {{ label }}
     </section>
     <Badge
@@ -56,6 +57,7 @@ export default {
     count: { default: false },
     icon: { default: false },
     label: { default: "Tag label" },
+    micro: { default: false },
     parent: { default: false },
     path: { default: false }
   }

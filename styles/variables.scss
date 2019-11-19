@@ -1,122 +1,122 @@
 // Functions
 @function rem($size) {
-	$size-rem: $size/16;
-	@return #{$size-rem}rem;
+  $size-rem: $size/16;
+  @return #{$size-rem}rem;
 }
 
 // Maps
 $colors: (
-	base: hsl(240, 8%, 8%),
-	base-mid: hsl(240, 8%, 38%),
-	base-semi: hsl(240, 8%, 64%),
-	base-light: hsl(240, 8%, 75%),
-	base-ghost: hsl(240, 8%, 96%),
-	brand: hsl(346, 100%, 38%),
-	success: hsl(160, 100%, 32%),
-	warn: hsl(18, 75%, 64%),
-	contrast: #ffffff
+  base: hsl(240, 8%, 8%),
+  base-mid: hsl(240, 8%, 38%),
+  base-semi: hsl(240, 8%, 64%),
+  base-light: hsl(240, 8%, 75%),
+  base-ghost: hsl(240, 8%, 96%),
+  brand: hsl(346, 100%, 38%),
+  success: hsl(160, 100%, 32%),
+  warn: hsl(18, 75%, 64%),
+  contrast: #ffffff
 );
 
 $colors__dark: (
-	base: #ffffff,
-	base-mid: hsl(240, 8%, 64%),
-	base-semi: hsl(240, 8%, 48%),
-	base-light: hsl(240, 8%, 38%),
-	base-ghost: hsl(240, 8%, 24%),
-	contrast: hsl(240, 8%, 8%),
-	contrast-extra: hsl(240, 8%, 1%)
+  base: #ffffff,
+  base-mid: hsl(240, 8%, 64%),
+  base-semi: hsl(240, 8%, 48%),
+  base-light: hsl(240, 8%, 38%),
+  base-ghost: hsl(240, 8%, 24%),
+  contrast: hsl(240, 8%, 8%),
+  contrast-extra: hsl(240, 8%, 1%)
 );
 
 $directions: (bottom, left, right, top);
 
 $sizes: (
-	xs: rem(4),
-	s: rem(8),
-	m: rem(16),
-	l: rem(32),
-	xl: rem(64)
+  xs: rem(4),
+  s: rem(8),
+  m: rem(16),
+  l: rem(32),
+  xl: rem(64)
 );
 
 $type__alignments: (center, left, right);
 
 $type__families: (
-	sans: (
-		"Lato",
-		sans-serif
-	),
-	system: (
-		-apple-system,
-		BlinkMacSystemFont,
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif
-	),
-	mono: (
-		"Source Code Pro",
-		monospace
-	)
+  sans: (
+    "Lato",
+    sans-serif
+  ),
+  system: (
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif
+  ),
+  mono: (
+    "Source Code Pro",
+    monospace
+  )
 );
 
 $type__lineheights: (
-	s: rem(16),
-	m: rem(24),
-	l: rem(32),
-	xl: rem(48)
+  s: rem(16),
+  m: rem(24),
+  l: rem(32),
+  xl: rem(48)
 );
 
 $type__sizes: (
-	xxs: rem(12),
-	xs: rem(14),
-	s: rem(16),
-	m: rem(18),
-	l: rem(24),
-	xl: rem(32),
-	xxl: rem(40)
+  xxs: rem(12),
+  xs: rem(14),
+  s: rem(16),
+  m: rem(18),
+  l: rem(24),
+  xl: rem(32),
+  xxl: rem(40)
 );
 
 // Mixins
 @mixin breakpoint($point) {
-	@if $point==xs {
-		@media (min-width: rem(16)) and (max-width: rem(736)) {
-			@content;
-		}
-	} @else if $point==xs-only {
-		@media (min-width: rem(16)) and (max-width: rem(414)) {
-			@content;
-		}
-	} @else if $point==xsl {
-		@media (min-width: rem(464)) {
-			@content;
-		}
-	} @else if $point==s {
-		@media (min-width: rem(752)) {
-			@content;
-		}
-	} @else if $point==m {
-		@media (min-width: rem(1008)) {
-			@content;
-		}
-	} @else if $point==l {
-		@media (min-width: rem(1264)) {
-			@content;
-		}
-	} @else if $point==ml {
-		@media (min-width: rem(1424)) {
-			@content;
-		}
-	} @else if $point==xl {
-		@media (min-width: rem(1584)) {
-			@content;
-		}
-	} @else if $point==xxl {
-		@media (min-width: rem(1616)) {
-			@content;
-		}
-	}
+  @if $point==xs {
+    @media (min-width: rem(16)) and (max-width: rem(736)) {
+      @content;
+    }
+  } @else if $point==xs-only {
+    @media (min-width: rem(16)) and (max-width: rem(414)) {
+      @content;
+    }
+  } @else if $point==xsl {
+    @media (min-width: rem(464)) {
+      @content;
+    }
+  } @else if $point==s {
+    @media (min-width: rem(752)) {
+      @content;
+    }
+  } @else if $point==m {
+    @media (min-width: rem(1008)) {
+      @content;
+    }
+  } @else if $point==l {
+    @media (min-width: rem(1264)) {
+      @content;
+    }
+  } @else if $point==ml {
+    @media (min-width: rem(1424)) {
+      @content;
+    }
+  } @else if $point==xl {
+    @media (min-width: rem(1584)) {
+      @content;
+    }
+  } @else if $point==xxl {
+    @media (min-width: rem(1616)) {
+      @content;
+    }
+  }
 }
 
 @mixin smooth {
-	transform: translate3d(0, 0, 0);
-	transition: all 0.375s ease-in;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.1875s ease-in;
 }

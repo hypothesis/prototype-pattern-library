@@ -3,7 +3,7 @@
   align-items: center;
   border-radius: var(--size__xs);
   display: inline-flex;
-  height: calc(var(--size__m) + var(--size__s));
+  height: var(--size__l);
   overflow: hidden;
   transform-origin: center;
   width: auto;
@@ -14,19 +14,23 @@
       color: var(--color__brand);
     }
   }
+  &--micro {
+    height: calc(var(--size__s) + var(--size__m));
+  }
   &__parent,
   &__action {
     align-items: center;
     display: inline-flex;
-    height: calc(var(--size__m) + var(--size__s));
+    height: var(--size__l);
   }
   &__action {
     @include smooth;
     flex-shrink: 0;
     justify-content: center;
-    width: calc(var(--size__m) + var(--size__s));
+    width: var(--size__l);
     &:focus,
     &:hover {
+      background-color: var(--color__contrast);
       color: var(--color__base);
     }
     .Tag:focus,
@@ -34,17 +38,16 @@
       border-color: var(--color__base-mid);
     }
   }
-  &__label,
-  &__parent {
-    white-space: nowrap;
-  }
   &__label {
     @include smooth;
     align-items: center;
     display: inline-flex;
     flex-shrink: 1;
-    height: calc(var(--size__m) + var(--size__s));
     max-width: 100%;
     overflow: hidden;
+    padding-left: rem(6);
+    padding-right: rem(6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

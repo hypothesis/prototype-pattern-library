@@ -1,0 +1,18 @@
+.ButtonGroup {
+  align-items: stretch;
+  display: inline-flex;
+  .Button {
+    min-height: rem(34);
+  }
+  > * {
+    &:first-child {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:last-child,
+    &:last-child .Button {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+}

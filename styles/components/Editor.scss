@@ -1,0 +1,34 @@
+.Editor {
+  align-items: center;
+  border-top-left-radius: var(--size__s);
+  border-top-right-radius: var(--size__s);
+  display: flex;
+  justify-content: space-between;
+  &__actions {
+    display: inline-flex;
+    flex: 1 1 auto;
+    height: var(--size__l);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  &__action {
+    align-items: center;
+    color: var(--color__base-mid);
+    display: inline-flex;
+    flex-shrink: 0;
+    height: var(--size__l);
+    justify-content: center;
+    width: var(--size__l);
+    &:focus,
+    &:hover {
+      color: var(--color__base);
+    }
+  }
+  .Button {
+    flex-shrink: 0;
+  }
+  + .Control__wrap {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
