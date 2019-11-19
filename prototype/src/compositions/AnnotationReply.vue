@@ -51,7 +51,7 @@
             v-if="tagsDynamic.length"
             :class="[
               $options.name + '__tags--wrap',
-              'oomph__h--xs padding__left--s'
+              'oomph__h--xs padding__top--xs'
             ]"
           >
             <Tag
@@ -59,6 +59,7 @@
               :key="index"
               :label="tag.label"
               icon="cancel"
+              class="margin__all--xs"
               @click.native="tags.pop(1)"
             />
           </section>
@@ -139,7 +140,7 @@ export default {
     }
   },
   props: {
-    actionText: { default: "Submit reply"},
+    actionText: { default: "Submit reply" },
     comment: { default: "" },
     group: { default: "Public" },
     tags: { default: () => [], type: Array / Object },

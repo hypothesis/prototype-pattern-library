@@ -13,8 +13,9 @@
         $options.name + '__label',
         'padding__left--xs padding__right--xs type__size--s-s'
       ]"
-      >{{ label }}</a
     >
+      {{ label }}
+    </a>
     <section
       v-else
       :class="[

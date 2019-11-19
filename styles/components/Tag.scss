@@ -40,6 +40,11 @@
   }
   &__label {
     @include smooth;
-    transform: translateY(rem(-2));
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 1;
+    height: calc(var(--size__m) + var(--size__s));
+    max-width: 100%;
+    overflow: hidden;
   }
 }

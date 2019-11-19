@@ -20,11 +20,14 @@
   &__tags {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     &--wrap {
       align-items: center;
       display: inline-flex;
       flex-grow: 1;
+      flex-wrap: wrap;
+      max-width: 100%;
     }
   }
   &__toggle {
