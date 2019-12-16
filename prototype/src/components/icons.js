@@ -251,7 +251,7 @@ export const icons = [
   },
   {
     name: "sort",
-    stroke: "M12 8v6-6zm3 4l-3 3-3-3M4 8V2v6zM1 4l3-3 3 3"
+    stroke: "M5 9V2v7zM1 5l4-4 4 4m2 2v7-7zm-4 4l4 4 4-4"
   },
   {
     name: "tag",
