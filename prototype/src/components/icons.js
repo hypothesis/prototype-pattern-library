@@ -265,5 +265,10 @@ export const icons = [
   {
     name: "trash",
     stroke: "M2 4h12l-2 11H4L2 4zM1 1h14H1z"
+  },
+  {
+    name: "triangle",
+    path:
+      "M7.295 4.293l-7 7C-.335 11.923.11 13 1.002 13h14c.89 0 1.337-1.077.707-1.707l-7-7a1 1 0 00-1.414 0z"
   }
 ];
