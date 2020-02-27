@@ -5,11 +5,18 @@
       :key="item"
       :class="[
         $options.name + '__item',
-        currentlySelected === item ? $options.name + '__item--selected':'',
-        'padding__left--s padding__right--s']"
+        currentlySelected === item ? $options.name + '__item--selected' : ''
+      ]"
       @click="updateSelected(item)"
     >
-      <span :class="[$options.name + '__item--label', 'type__size--m-l']">{{ item }}</span>
+      <section
+        :class="[
+          $options.name + '__item--label',
+          'padding__left--s padding__right--s type__align--center type__size--s-m'
+        ]"
+      >
+        <strong>{{ item }}</strong>
+      </section>
     </button>
   </section>
 </template>
@@ -41,16 +48,19 @@ export default {
 <style lang="scss">
 .SegmentedController {
   align-items: stretch;
-  background-color: var(--color__contrast);
-  border-radius: rem(20);
+  background-color: var(--color__base-ghost);
+  border-radius: var(--size__s);
   display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: rem(480);
+  width: 100%;
   [data-theme="dark"] & {
     background-color: var(--color__contrast-extra);
   }
   &__item {
+    @include smooth;
     align-items: center;
-    border: rem(1) solid var(--color__base-light);
-    border-right-width: 0;
     color: var(--color__base-mid);
     display: inline-flex;
     flex: 1 0;
@@ -58,33 +68,42 @@ export default {
     justify-content: center;
     &:focus,
     &:hover {
-      background-color: var(--color__base-ghost);
+      color: var(--color__base);
     }
     &:first-child {
-      border-bottom-left-radius: rem(20);
-      border-top-left-radius: rem(20);
-    }
-    &:last-child {
-      border-bottom-right-radius: rem(20);
-      border-right-width: rem(1);
-      border-top-right-radius: rem(20);
-    }
-    &--selected {
-      background-color: var(--color__brand);
-      border-color: var(--color__brand);
-      box-shadow: 0 rem(2) rem(4) rem(-2) rgba(black, 0.1),
-        0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
-      color: white;
-      &:focus,
-      &:hover {
-        background-color: var(--color__brand);
+      border-bottom-left-radius: var(--size__s);
+      border-top-left-radius: var(--size__s);
+      .SegmentedController__item--label {
+        border-left: none;
       }
     }
-    &__label {
+    &:last-child {
+      border-bottom-right-radius: var(--size__s);
+      border-top-right-radius: var(--size__s);
+    }
+    &--selected {
+      background-color: var(--color__contrast);
+      border-radius: var(--size__s);
+      box-shadow: 0 rem(2) rem(4) rem(-2) rgba(black, 0.1),
+        0 rem(8) rem(16) rem(-8) rgba(black, 0.25);
+      color: var(--color__base);
+      &:focus,
+      &:hover {
+        color: var(--color__brand);
+      }
+      .SegmentedController__item--label,
+      + .SegmentedController__item .SegmentedController__item--label {
+        border-left: none;
+      }
+    }
+    &--label {
+      @include smooth;
+      border-left: rem(1) solid var(--color__base-light);
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      width: 100%;
     }
   }
 }

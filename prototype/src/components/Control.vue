@@ -34,7 +34,7 @@
         <slot name="actionLeft"></slot>
       </section>
       <section v-if="status" :class="$options.name + '__status'">
-        <Icon :name="status === 'invalid' ? 'cancel' : 'check'" :size="14" />
+        <Icon :name="status === 'invalid' ? 'cancel' : 'check'" :size="14" :width="3" />
       </section>
       <section v-if="$slots.tags" :class="$options.name + '__tags'">
         <slot name="tags" />

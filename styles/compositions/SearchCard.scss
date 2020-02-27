@@ -1,0 +1,17 @@
+.SearchCard {
+  &__header,
+  &__footer {
+    align-items: center;
+    display: flex;
+  }
+  &__header {
+    justify-content: space-between;
+    &--label {
+      flex: 1 1;
+    }
+    .Button {
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+  }
+}

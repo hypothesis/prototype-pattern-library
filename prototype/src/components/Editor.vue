@@ -2,7 +2,7 @@
   <section
     :class="[
       $options.name,
-      'border__left border__right border__top color__border--base-light padding__all--s'
+      'border__left border__right border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs'
     ]"
   >
     <section :class="[$options.name + '__actions', 'oomph__h--s']">
@@ -30,14 +30,10 @@
       <button :class="$options.name + '__action'">
         <Icon name="list-unordered" />
       </button>
+      <button :class="$options.name + '__action'" @click="editable = !editable">
+        <Icon :name="editable ? 'preview' : 'preview-filled'" />
+      </button>
     </section>
-    <Button
-      class="margin__left--s"
-      :icon="editable ? 'preview' : 'preview-filled'"
-      :label="editable ? 'Preview' : 'Write'"
-      variant="secondary"
-      @click.native="editable = !editable"
-    />
   </section>
 </template>
 <script>

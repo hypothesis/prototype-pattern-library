@@ -87,6 +87,11 @@ export default {
       p:first-child {
         flex-basis: 100%;
       }
+      p {
+        align-items: center;
+        display: inline-flex;
+        flex-wrap: wrap;
+      }
       a {
         color: var(--color__brand);
         text-decoration: underline;

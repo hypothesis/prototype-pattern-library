@@ -103,7 +103,7 @@
     display: inline-flex;
     flex-shrink: 0;
     justify-content: center;
-    width: calc(var(--size__s) + var(--size__m));
+    width: calc(var(--size__s) + var(--size__l));
   }
   &--disabled {
     .Control__wrap {

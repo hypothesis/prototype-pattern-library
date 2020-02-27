@@ -28,7 +28,7 @@
           'color__type--base-mid padding__left--m'
         ]"
       >
-        <p>
+        <p class="type__size--s-m">
           <em>{{ quote }}</em>
         </p>
       </blockquote>

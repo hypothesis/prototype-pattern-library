@@ -44,7 +44,7 @@
     <footer
       :class="[
         $options.name + '__footer',
-        'border__top color__border--base-light padding__left--s padding__right--s'
+        'border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs'
       ]"
     >
       <Button
