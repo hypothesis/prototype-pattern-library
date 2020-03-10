@@ -1,0 +1,17 @@
+.AnnotationIndicator {
+  position: relative;
+  > header {
+    padding-left: calc(var(--size__m) + var(--size__s));
+  }
+  &__item {
+    align-items: center;
+    border-radius: 50%;
+    display: inline-flex;
+    height: calc(var(--size__m) + var(--size__s));
+    justify-content: center;
+    left: rem(-12);
+    position: absolute;
+    top: rem(8);
+    width: calc(var(--size__m) + var(--size__s));
+  }
+}

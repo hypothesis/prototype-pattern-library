@@ -1,9 +1,20 @@
 <template>
   <main v-if="path" :class="$options.name">
     <Head :title="path + ' • Example • Hypothes.is'" />
-    <AppFrame v-if="path === 'AppFrame'" height="100vh" :style="{ position: 'absolute', right: 0 }">
+    <AppFrame
+      v-if="path === 'AppFrame'"
+      height="100vh"
+      :style="{ position: 'absolute', right: 0 }"
+    >
       <Annotation
-        :tags="[{ label: 'Cool tag title', path: '#coolurl'}, { label: 'Another great tag', path: '#coolurl'}, { label: 'A reallyl long, but equally important tag', path: '#coolurl'}]"
+        :tags="[
+          { label: 'Cool tag title', path: '#coolurl' },
+          { label: 'Another great tag', path: '#coolurl' },
+          {
+            label: 'A reallyl long, but equally important tag',
+            path: '#coolurl'
+          }
+        ]"
       />
     </AppFrame>
     <LMSCredentials v-if="path === 'LMSCredentials'" />
@@ -12,12 +23,13 @@
     <Login v-if="path === 'Login'" />
     <Search v-if="path === 'Search'" />
     <Tagcloud v-if="path === 'Tagcloud'" />
+    <AnnotationVariations v-if="path === 'AnnotationVariations'" />
   </main>
   <main v-else :class="$options.name">
     <section :class="[$options.name + '__inner', 'oomph__v--m']">
       <h2>Various UI composition examples</h2>
       <router-link
-        v-for="(example,index) in examples"
+        v-for="(example, index) in examples"
         :key="index"
         :to="'/examples/' + example"
         :class="$options.name + '__item'"
@@ -35,6 +47,7 @@ import Annotation from "@/compositions/Annotation";
 import AppFrame from "@/compositions/AppFrame";
 import Card from "@/components/Card";
 import Icon from "@/components/Icon";
+import AnnotationVariations from "@/examples/AnnotationVariations";
 import LMSCredentials from "@/examples/LMSCredentials";
 import LMSGrader from "@/examples/LMSGrader";
 import LMSSelectFile from "@/examples/LMSSelectFile";
@@ -45,6 +58,7 @@ export default {
   name: "Example",
   components: {
     Annotation,
+    AnnotationVariations,
     AppFrame,
     Card,
     Icon,
@@ -69,7 +83,8 @@ export default {
         "LMSSelectFile",
         "Login",
         "Search",
-        "Tagcloud"
+        "Tagcloud",
+        "AnnotationVariations"
       ]
     };
   }

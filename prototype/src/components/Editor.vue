@@ -5,7 +5,7 @@
       'border__left border__right border__top color__border--base-light padding__bottom--xs padding__left--s padding__right--s padding__top--xs'
     ]"
   >
-    <section :class="[$options.name + '__actions', 'oomph__h--s']">
+    <section :class="$options.name + '__actions'">
       <button :class="$options.name + '__action'">
         <Icon name="editor-type-bold" />
       </button>

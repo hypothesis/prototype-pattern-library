@@ -12,6 +12,9 @@
       margin-top: rem(-8);
     }
   }
+  &__content:empty {
+    padding-bottom: 0;
+  }
   &__quote {
     @include smooth;
     border-left: var(--size__xs) solid var(--color__base-light);

@@ -5,9 +5,10 @@
   display: flex;
   justify-content: space-between;
   &__actions {
-    display: inline-flex;
+    display: flex;
     flex: 1 1 auto;
     height: var(--size__l);
+    justify-content: space-between;
     overflow: hidden;
     overflow-x: auto;
   }

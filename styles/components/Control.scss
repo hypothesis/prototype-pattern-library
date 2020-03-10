@@ -26,7 +26,7 @@
       flex-shrink: 1;
       font-size: var(--typeSize__m);
       line-height: var(--typeLineheight__l);
-      min-width: rem(240);
+      //min-width: rem(240);
       padding: var(--size__xs) var(--size__m);
       &::placeholder {
         color: var(--color__base-semi);

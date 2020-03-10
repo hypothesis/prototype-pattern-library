@@ -1,9 +1,6 @@
 <template>
   <a
-    :class="[
-      $options.name,
-      'color__type--base-mid oomph__h--xs type__size--s-m'
-    ]"
+    :class="[$options.name, 'color__type--base-mid type__size--xs-s']"
     href="http://creativecommons.org/publicdomain/zero/1.0/"
     title="View more information about the Creative Commons Public Domain dedication"
     target="_blank"
@@ -26,6 +23,9 @@ export default {
   &:hover {
     color: var(--color__brand);
     text-decoration: underline;
+  }
+  .Icon {
+    transform: translateY(rem(2));
   }
 }
 </style>

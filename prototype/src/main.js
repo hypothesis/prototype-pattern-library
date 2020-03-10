@@ -8,6 +8,7 @@ import Head from "vue-headful";
 
 Vue.component("Head", Head);
 Vue.directive("ClickOutside", ClickOutside);
+Vue.use(require("vue-moment"));
 
 new Vue({
 	router,
