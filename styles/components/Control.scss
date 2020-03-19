@@ -126,10 +126,10 @@
   }
   &--invalid {
     .Control__wrap {
-      border-color: var(--color__warn);
+      border-color: var(--color__error);
     }
     .Control__status {
-      background-color: var(--color__warn);
+      background-color: var(--color__error);
     }
   }
   &--valid {

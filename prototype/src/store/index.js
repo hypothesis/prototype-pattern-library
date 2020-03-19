@@ -30,6 +30,7 @@ export default new Vuex.Store({
 			"base-light",
 			"base-ghost",
 			"brand",
+			"error",
 			"success",
 			"warn"
 		],
