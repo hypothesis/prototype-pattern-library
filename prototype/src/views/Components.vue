@@ -20,7 +20,11 @@
           </figcaption>
         </Card>
         <Card>
-          <Badge label="Something bold goes here!" :micro="false" variant="contrast" />
+          <Badge
+            label="Something bold goes here!"
+            :micro="false"
+            variant="contrast"
+          />
           <figcaption>
             <p>
               <em>Contrast variant in a larger size</em>
@@ -30,7 +34,12 @@
       </ComponentWrapper>
       <ComponentWrapper name="Button">
         <Card>
-          <Button icon="share" :iconSize="16" :label="false" variant="tertiary" />
+          <Button
+            icon="share"
+            :iconSize="16"
+            :label="false"
+            variant="tertiary"
+          />
           <figcaption>
             <p>
               <em>Icon only (tertiary)</em>
@@ -38,7 +47,13 @@
           </figcaption>
         </Card>
         <Card>
-          <Button :dropdown="true" icon="profile" :iconSize="16" :label="false" variant="tertiary" />
+          <Button
+            :dropdown="true"
+            icon="profile"
+            :iconSize="16"
+            :label="false"
+            variant="tertiary"
+          />
           <figcaption>
             <p>
               <em>Icon + dropdown (tertiary)</em>
@@ -46,7 +61,12 @@
           </figcaption>
         </Card>
         <Card>
-          <Button icon="notes" :iconSize="16" :label="false" variant="secondary" />
+          <Button
+            icon="notes"
+            :iconSize="16"
+            :label="false"
+            variant="secondary"
+          />
           <figcaption>
             <p>
               <em>Icon only (secondary)</em>
@@ -78,7 +98,11 @@
           </figcaption>
         </Card>
         <Card>
-          <Button icon="filter" label="Only selected student" variant="secondary" />
+          <Button
+            icon="filter"
+            label="Only selected student"
+            variant="secondary"
+          />
           <figcaption>
             <p>
               <em>Label + icon (secondary)</em>
@@ -98,21 +122,31 @@
         <Card>
           <p>
             The
-            <code>Card</code> component is what we call a “slot” component—it’s purpose is to wrap any matter of content in a reusable, predictable structure. We can control the content more globally and structure reusable props if we’d like. I’m currently using the component to wrap all the presentation layers of this Pattern Library—neat huh?
+            <code>Card</code> component is what we call a “slot” component—it’s
+            purpose is to wrap any matter of content in a reusable, predictable
+            structure. We can control the content more globally and structure
+            reusable props if we’d like. I’m currently using the component to
+            wrap all the presentation layers of this Pattern Library—neat huh?
           </p>
         </Card>
       </ComponentWrapper>
       <ComponentWrapper name="Control">
         <p>
           The
-          <code>Control</code> component provides a dynamic wrapper element around common control inputs. By using a combination of
-          <code>action</code>&nbsp;
-          <code>icon</code> and
-          <code>reverse</code> props we can achieve a consistent look for our controls using one component.
+          <code>Control</code> component provides a dynamic wrapper element
+          around common control inputs. By using a combination of
+          <code>action</code>&nbsp; <code>icon</code> and
+          <code>reverse</code> props we can achieve a consistent look for our
+          controls using one component.
         </p>
         <Card>
           <Control>
-            <input id="coolInput" name="coolInput" placeholder="Type into me…" type="text" />
+            <input
+              id="coolInput"
+              name="coolInput"
+              placeholder="Type into me…"
+              type="text"
+            />
           </Control>
           <figcaption>
             <p>
@@ -144,7 +178,12 @@
               value="https://somereallylongurl.withsome.1202020?"
               type="text"
             />
-            <Button slot="actionRight" icon="copy" label="Copy" variant="muted" />
+            <Button
+              slot="actionRight"
+              icon="copy"
+              label="Copy"
+              variant="muted"
+            />
           </Control>
           <figcaption>
             <p>
@@ -169,7 +208,11 @@
         </Card>
         <Card>
           <Control label="Your comment">
-            <textarea id="coolTextarea" name="coolTextarea" placeholder="Type into me…"></textarea>
+            <textarea
+              id="coolTextarea"
+              name="coolTextarea"
+              placeholder="Type into me…"
+            ></textarea>
           </Control>
           <figcaption>
             <p>
@@ -195,8 +238,8 @@
         <Card class="oomph__v--m">
           <Control
             label="Invalid input"
-            :status="invalidValue ? 'valid': 'invalid'"
-            :statusLabel="invalidValue ? '': 'Missing value'"
+            :status="invalidValue ? 'valid' : 'invalid'"
+            :statusLabel="invalidValue ? '' : 'Missing value'"
           >
             <input
               id="invalidInput"
@@ -208,8 +251,8 @@
           </Control>
           <Control
             label="Valid input"
-            :status="validValue ? 'valid': 'invalid'"
-            :statusLabel="validValue ? '': 'Missing value'"
+            :status="validValue ? 'valid' : 'invalid'"
+            :statusLabel="validValue ? '' : 'Missing value'"
           >
             <input
               id="validInput"
@@ -228,11 +271,19 @@
       </ComponentWrapper>
       <ComponentWrapper name="Icon">
         <p class="tip">
-          <Badge label="Tip" :micro="false" variant="brand" />Need a copy of one of these icons as an SVG? Click the icon and it will be copied to your clipboard.
+          <Badge label="Tip" :micro="false" variant="brand" />Need a copy of one
+          of these icons as an SVG? Click the icon and it will be copied to your
+          clipboard.
         </p>
-        <Badge v-if="timer" class="status" :label="timer" :micro="false" variant="contrast" />
+        <Badge
+          v-if="timer"
+          class="status"
+          :label="timer"
+          :micro="false"
+          variant="contrast"
+        />
         <section class="icons">
-          <Card v-for="(icon,index) in icons" :key="index">
+          <Card v-for="(icon, index) in icons" :key="index">
             <button
               :aria-label="'Click to copy the ' + icon + ' icon'"
               class="icon type__align--center"
@@ -251,8 +302,11 @@
       <ComponentWrapper name="Menu">
         <p>
           The
-          <code>Menu</code> component is a hybrid slot/wrapper component which provides a way to wrap any matter of content with an element which controls the position of the menu that floats underneath it. You can pass an
-          <code>active</code> prop to trigger the visibilty of the menu. The menu itself can accept children via a slot.
+          <code>Menu</code> component is a hybrid slot/wrapper component which
+          provides a way to wrap any matter of content with an element which
+          controls the position of the menu that floats underneath it. You can
+          pass an <code>active</code> prop to trigger the visibilty of the menu.
+          The menu itself can accept children via a slot.
         </p>
         <Card>
           <Menu :active="controlMenuFocused" class="controlMenuFocused">
@@ -263,7 +317,9 @@
                 @focus="controlMenuFocused = !controlMenuFocused"
               />
             </Control>
-            <p slot="menu" class="padding__all--m">A bunch of really cool filter stuffs</p>
+            <p slot="menu" class="padding__all--m">
+              A bunch of really cool filter stuffs
+            </p>
           </Menu>
           <figcaption>
             <p>
@@ -302,16 +358,27 @@
       <ComponentWrapper name="NavItem">
         <p>
           The
-          <code>NavItem</code> compoonent shines in menus and takes many of the properties of a
-          <code>Button</code> component. One of the best use cases where this particular component is flexible is with nesting children
-          <code>NavItem</code> comnponents inside a parent using the
+          <code>NavItem</code> compoonent shines in menus and takes many of the
+          properties of a <code>Button</code> component. One of the best use
+          cases where this particular component is flexible is with nesting
+          children <code>NavItem</code> comnponents inside a parent using the
           <code>nested</code> slot.
         </p>
         <Card>
           <NavItem :dropdown="true">
-            <NavItem icon="external" label="Option 1" :small="true" slot="nested" />
+            <NavItem
+              icon="external"
+              label="Option 1"
+              :small="true"
+              slot="nested"
+            />
             <NavItem icon="copy" label="Option 2" :small="true" slot="nested" />
-            <NavItem icon="leave" label="Option 3" :small="true" slot="nested" />
+            <NavItem
+              icon="leave"
+              label="Option 3"
+              :small="true"
+              slot="nested"
+            />
           </NavItem>
           <figcaption>
             <p>
@@ -357,8 +424,7 @@
             <p>
               <em>
                 Tag with
-                <code>parent</code> and
-                <code>icon</code> props
+                <code>parent</code> and <code>icon</code> props
               </em>
             </p>
           </figcaption>
@@ -369,8 +435,7 @@
             <p>
               <em>
                 Tag with
-                <code>count</code> and
-                <code>micro</code> props
+                <code>count</code> and <code>micro</code> props
               </em>
             </p>
           </figcaption>
@@ -403,7 +468,7 @@ export default {
     Library,
     Menu,
     NavItem,
-    Tag
+    Tag,
   },
   data() {
     return {
@@ -412,7 +477,7 @@ export default {
       icons: icons,
       timer: false,
       invalidValue: "",
-      validValue: "Yep, I check out"
+      validValue: "Yep, I check out",
     };
   },
   methods: {
@@ -427,7 +492,7 @@ export default {
       let dummy = document.createElement("input");
       document.body.appendChild(dummy);
       dummy.setAttribute("id", "dummy_id");
-      document.getElementById("dummy_id").value = code;
+      document.getElementById("dummy_id").value = this.removeData(code);
       dummy.select();
       document.execCommand("copy");
       document.body.removeChild(dummy);
@@ -435,8 +500,15 @@ export default {
       setTimeout(() => {
         this.timer = false;
       }, 1500);
-    }
-  }
+    },
+    removeData(string) {
+      let split = string.split(" ");
+      let cleaned = split.filter((word) => {
+        return !word.includes("data-v");
+      });
+      return cleaned.join(" ");
+    },
+  },
 };
 </script>
 <style lang="scss">
