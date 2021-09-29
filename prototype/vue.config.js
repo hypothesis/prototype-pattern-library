@@ -6,13 +6,13 @@ module.exports = {
     themeColor: "#BD1C2B",
     msTileColor: "#BD1C2B",
     appleMobileWebAppCapable: "yes",
-    appleMobileWebAppStatusBarStyle: "black translucent"
+    appleMobileWebAppStatusBarStyle: "black translucent",
   },
   css: {
     loaderOptions: {
       sass: {
-        data: `@import "@/../../styles/variables.scss";`
-      }
-    }
-  }
+        data: `@import "@/../../styles/variables.scss";`,
+      },
+    },
+  },
 };

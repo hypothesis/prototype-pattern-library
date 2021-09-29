@@ -287,7 +287,7 @@
             <button
               :aria-label="'Click to copy the ' + icon + ' icon'"
               class="icon type__align--center"
-              @click.self="copyIcon"
+              @click.self="copyIcon(icon.name)"
             >
               <Icon :name="icon.name" :size="24" />
             </button>
@@ -455,7 +455,7 @@ import NavItem from "@/components/NavItem";
 import Tag from "@/components/Tag";
 import ComponentWrapper from "@/compositions/presentational/ComponentWrapper";
 import Library from "@/compositions/presentational/Library";
-import { icons } from "../components/icons";
+import icons from "@/components/icons/icons.json";
 export default {
   name: "Components",
   components: {
@@ -481,32 +481,23 @@ export default {
     };
   },
   methods: {
-    copyIcon() {
+    copyIcon(icon) {
       this.timer = false;
-      let children = event.srcElement.childNodes[0];
-      let code = children.outerHTML.replace(
-        new RegExp('width="24" height="24"', "g"),
-        'width="16" height="16"'
-      );
-      let title = children.getAttribute("class").replace("Icon Icon--", "");
+      const iconFiltered = this.icons.filter((item) => {
+        return item.name === icon;
+      })[0];
+      const code = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="${iconFiltered.path}"></path></svg>`;
       let dummy = document.createElement("input");
       document.body.appendChild(dummy);
       dummy.setAttribute("id", "dummy_id");
-      document.getElementById("dummy_id").value = this.removeData(code);
+      document.getElementById("dummy_id").value = code;
       dummy.select();
       document.execCommand("copy");
       document.body.removeChild(dummy);
-      this.timer = "Copied “" + title + "” icon";
+      this.timer = "Copied “" + icon + "” icon";
       setTimeout(() => {
         this.timer = false;
       }, 1500);
-    },
-    removeData(string) {
-      let split = string.split(" ");
-      let cleaned = split.filter((word) => {
-        return !word.includes("data-v");
-      });
-      return cleaned.join(" ");
     },
   },
 };

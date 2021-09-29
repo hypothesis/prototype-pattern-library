@@ -1,24 +1,26 @@
 <template>
   <button
     :class="[
-    $options.name,
-    $options.name + '--' + variant,
-    reverse ? $options.name + '--reversed':''
-  ]"
-    :aria-label="label ? '':'Button with ' + icon + ' action'"
+      $options.name,
+      $options.name + '--' + variant,
+      reverse ? $options.name + '--reversed' : '',
+    ]"
+    :aria-label="label ? '' : 'Button with ' + icon + ' action'"
   >
-    <section v-if="icon" :class="[$options.name + '__icon', reverse ? 'margin__left--s':'']">
+    <section
+      v-if="icon"
+      :class="[$options.name + '__icon', reverse ? 'margin__left--s' : '']"
+    >
       <Icon :name="icon" :size="iconSize" />
     </section>
     <section
       v-if="label"
-      :class="[
-      $options.name + '__label',
-      'type__size--s-l'
-    ]"
-    >{{ label }}</section>
+      :class="[$options.name + '__label', 'type__size--s-l']"
+    >
+      {{ label }}
+    </section>
     <section v-if="dropdown" :class="$options.name + '__dropdown'">
-      <Icon name="caret-down" :size="12" :width="3" />
+      <Icon name="caret-down" :size="12" />
     </section>
   </button>
 </template>
@@ -33,8 +35,8 @@ export default {
     iconSize: { default: 14 },
     label: { default: "Button label" },
     reverse: { default: false },
-    variant: { default: "primary" }
-  }
+    variant: { default: "primary" },
+  },
 };
 </script>
 <style lang="scss">

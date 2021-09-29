@@ -5,7 +5,7 @@
       disabled ? $options.name + '--disabled' : '',
       inline ? $options.name + '--inline' : '',
       status ? $options.name + '--' + status : '',
-      icon ? $options.name + '--icon' : ''
+      icon ? $options.name + '--icon' : '',
     ]"
   >
     <label
@@ -14,7 +14,7 @@
       :class="[
         $options.name + '__label',
         inline ? 'margin__right--s' : 'margin__bottom--s',
-        'color__type--base-mid type__size--xs-m'
+        'color__type--base-mid type__size--xs-m',
       ]"
       >{{ label }}</label
     >
@@ -24,7 +24,7 @@
         $options.name + '__wrap',
         hasTags ? $options.name + '__wrap--tags' : '',
         reverse ? $options.name + '__wrap--reversed' : '',
-        'border__all color__bg--contrast color__border--base-light'
+        'border__all color__bg--contrast color__border--base-light',
       ]"
     >
       <section
@@ -34,7 +34,11 @@
         <slot name="actionLeft"></slot>
       </section>
       <section v-if="status" :class="$options.name + '__status'">
-        <Icon :name="status === 'invalid' ? 'cancel' : 'check'" :size="14" :width="3" />
+        <Icon
+          :name="status === 'invalid' ? 'cancel' : 'check'"
+          :size="14"
+          :width="3"
+        />
       </section>
       <section v-if="$slots.tags" :class="$options.name + '__tags'">
         <slot name="tags" />
@@ -81,11 +85,11 @@ export default {
       } else {
         return this._uid + "_control-label";
       }
-    }
+    },
   },
   data() {
     return {
-      dynamicValue: this.value
+      dynamicValue: this.value,
     };
   },
   props: {
@@ -96,8 +100,8 @@ export default {
     reverse: { default: false },
     status: { default: false },
     statusLabel: { default: false },
-    hasTags: { default: false }
-  }
+    hasTags: { default: false },
+  },
 };
 </script>
 <style lang="scss">

@@ -1,0 +1,10 @@
+{
+  "name": "hypothes.is icons",
+  "version": "1.0.0",
+  "description": "Service to build JSON from folder of icons",
+  "private": true,
+  "scripts": {
+    "build": "node index.js"
+  },
+  "license": "UNLICENSED"
+}

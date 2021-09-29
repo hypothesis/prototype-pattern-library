@@ -18,7 +18,9 @@
         <section :class="$options.name + '__props--group'">
           <h5>Default</h5>
           <p>
-            <code class="color__bg--base-ghost color__type--base-mid">{{ prop.default }}</code>
+            <code class="color__bg--base-ghost color__type--base-mid">{{
+              prop.default
+            }}</code>
           </p>
         </section>
         <section v-if="prop.notes" :class="$options.name + '__props--group'">
@@ -32,7 +34,8 @@
               v-for="option in prop.options"
               :key="option"
               class="margin__right--xs"
-            >{{ option }}</code>
+              >{{ option }}</code
+            >
           </p>
         </section>
         <section :class="$options.name + '__props--group'">
@@ -51,20 +54,20 @@ export default {
   computed: {
     getProps() {
       let array = this.$store.state.components;
-      if(this.array === 'compositions') {
+      if (this.array === "compositions") {
         array = this.$store.state.compositions;
       }
-      let filtered = array.filter(item => {
+      let filtered = array.filter((item) => {
         return item.title === this.name;
       });
-      let props = filtered.map(item => item.props).flat();
+      let props = filtered.map((item) => item.props).flat();
       return props;
-    }
+    },
   },
   props: {
     array: { default: "components" },
-    name: { default: "Button" }
-  }
+    name: { default: "Button" },
+  },
 };
 </script>
 <style lang="scss">
@@ -95,6 +98,12 @@ export default {
       a {
         color: var(--color__brand);
         text-decoration: underline;
+        &:before,
+        &:after {
+          content: "";
+          display: inline-block;
+          width: var(--size__xs);
+        }
       }
     }
     &--group {

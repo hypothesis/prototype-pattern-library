@@ -1,9 +1,6 @@
 <template>
   <svg
-    :class="[
-      $options.name,
-      $options.name + '--' + name
-    ]"
+    :class="[$options.name, $options.name + '--' + name]"
     xmlns="http://www.w3.org/2000/svg"
     :width="size"
     :height="size"
@@ -12,48 +9,36 @@
     focusable="false"
   >
     <g v-for="icon in filteredIcon" :key="icon.name" fill-rule="evenodd">
-      <rect fill="none" stroke="none" x="0" y="0" :width="size" :height="size" />
-      <path
-        v-if="icon.stroke"
-        fill="none"
-        stroke="currentColor"
-        :stroke-linecap="rounded ? 'round':'square'"
-        :stroke-linejoin="rounded ? 'round':'miter'"
-        :stroke-width="width"
-        :d="icon.stroke"
-      />
-      <path v-else fill="currentColor" stroke="none" :d="icon.path" />
+      <path fill="currentColor" :d="icon.path" />
+      <rect fill="none" x="0" y="0" :width="size" :height="size" />
     </g>
   </svg>
 </template>
 <script>
-import { icons } from "./icons";
+import icons from "./icons/icons.json";
 export default {
   name: "Icon",
   computed: {
     filteredIcon() {
-      return this.icons.filter(icon => {
+      return this.icons.filter((icon) => {
         return icon.name === this.name;
       });
-    }
+    },
   },
   data() {
     return {
-      icons: icons
+      icons: icons,
     };
   },
   props: {
     name: { default: "arrow-down" },
-    rounded: { default: true },
     size: { default: 14 },
-    width: { default: 2 }
-  }
+  },
 };
 </script>
 <style lang="scss">
 .Icon {
   flex-shrink: 0;
-  stroke: currentColor;
   transition: stroke 0.375s ease-in;
 }
 </style>
