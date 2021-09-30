@@ -1,10 +1,10 @@
 {
-  "name": "hypothes.is icons",
+  "name": "icon-json-generator",
   "version": "1.0.0",
-  "description": "Service to build JSON from folder of icons",
-  "private": true,
+  "description": "Service to build a JSON file from folder of icons",
   "scripts": {
     "build": "node index.js"
   },
-  "license": "UNLICENSED"
+  "author": "Jared Pendergraft <jaredpdesigns@gmail.com>",
+  "license": "ISC"
 }

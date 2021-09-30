@@ -1,22 +1,22 @@
 const fs = require("fs");
-const dir = fs.readdirSync("static");
+const dirPath = "static";
 
 function readIcons() {
+  const dir = fs.readdirSync(dirPath).filter((item) => item.includes(".svg"));
   let arr = [];
   dir.forEach((file) => {
     const name = file.replace(".svg", "");
     const path = fs
-      .readFileSync(`static/${file}`, "utf8")
-      .toString()
-      .split("><")[1]
-      .split("=")[2]
-      .replace('"', "")
-      .replace(" fill-rule", "")
-      .replace('"/', "")
-      .replace('"', "");
+      .readFileSync(`${dirPath}/${file}`, "utf-8")
+      .split("><")
+      .filter((item) => item.includes("path"))[0]
+      .split('" ')
+      .filter((item) => item.includes("d="))[0]
+      .replace('d="', "")
+      .replace('"/', "");
     arr.push({ name: name, path: path });
   });
-  fs.writeFileSync("icons.json", JSON.stringify(arr, null, 1));
+  fs.writeFileSync("icons.json", JSON.stringify(arr, null, 2));
 }
 
 readIcons();
